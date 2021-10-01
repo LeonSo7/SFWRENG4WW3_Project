@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import './styles/App.css';
-import Home from './components/Home'
+import SearchPage from './pages/SearchPage'
+
+/* Import Bootstrap */
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      results: {}
-    }
   }
 
   render() {
     return (
-      <div>
-        <Home />
+      <div>        
+        <SearchPage/>
       </div>
     );
   }
