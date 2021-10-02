@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+.wrapper > * {
+  flex: 1 100%;
+  /* flex-flow: row wrap; */
+}
+
+@media all and (min-width: 600px) {
+  /* */
+}
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;

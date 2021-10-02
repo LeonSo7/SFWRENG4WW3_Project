@@ -1,0 +1,14 @@
+.searchBarDiv {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    margin-left: 15%;
+    margin-right: 15%;
+    
+}
+
+.searchBarInput {
+    /* width: 70%; */
+    /* margin: auto; */
+    /* margin-right: 5%; */
+}

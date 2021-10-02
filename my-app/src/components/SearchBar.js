@@ -1,18 +1,14 @@
 import { Button, Form } from 'react-bootstrap';
+import '../styles/components/SearchBar.css'
 
 const SearchBar = () => (
     <Form>
-        {/* <label>
-            <span></span>
-        </label> */}
-        {/* <input
-            type="text"
-            id="header-search"
-            placeholder="Search for desserts"
-            name="s" 
-        /> */}
-        <Form.Control placeholder = "Search for desserts..."/>
-        <Button type="submit" variant="outline-primary">Search</Button>
+        <Form.Group>
+            <div class="searchBarDiv">
+                <Form.Control class="searchBarInput" placeholder = "Search for desserts..."/>
+                <Button type="submit" variant="outline-primary">Search</Button>
+            </div>
+        </Form.Group>
     </Form>
 );
 
