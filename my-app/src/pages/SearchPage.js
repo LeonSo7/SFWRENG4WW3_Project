@@ -10,8 +10,8 @@ class SearchPage extends Component {
     return (
       <div class="wrapper">
         <CommonHeader/>
-        <div class="searchPageTitleDiv">
-          <h1 class="searchPageTitleTxt">Find your next dessert!</h1>
+        <div id="searchPageTitleDiv">
+          <h1>Find your next dessert!</h1>
         </div>
         <div id="searchPageSearchBarDiv">
           <SearchBar/>

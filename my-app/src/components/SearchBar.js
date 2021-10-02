@@ -5,7 +5,7 @@ const SearchBar = () => (
     <Form>
         <Form.Group>
             <div class="searchBarDiv">
-                <Form.Control class="searchBarInput" placeholder = "Search for desserts..."/>
+                <Form.Control class="searchBarInput" type="search" placeholder="Search for desserts..."/>
                 <Button type="submit" variant="outline-primary">Search</Button>
             </div>
         </Form.Group>
