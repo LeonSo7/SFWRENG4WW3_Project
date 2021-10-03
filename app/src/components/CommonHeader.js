@@ -1,4 +1,5 @@
 import { Container, Navbar, Nav } from 'react-bootstrap';
+import '../styles/components/CommonHeader.css'
 
 const CommonHeader = () => (
     <Navbar bg="light" expand="lg">
@@ -8,9 +9,13 @@ const CommonHeader = () => (
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
                 <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/review">Write a Review</Nav.Link>
             </Nav>
-            <Nav className="justify-content-end">
-                <Nav.Link href="signup">Sign Up</Nav.Link>
+            <Nav className="justify-content-end"> 
+                <Nav.Link href="#">Log In</Nav.Link>
+            </Nav>
+            <Nav className={"justify-content-end navPill"} variant="pills"> 
+                <Nav.Link id="signUpLink" href="signup">Sign Up</Nav.Link>
             </Nav>
             </Navbar.Collapse>
         </Container>
