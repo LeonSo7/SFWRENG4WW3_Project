@@ -17,7 +17,7 @@ class ReviewSubmissionPage extends Component {
 
         <div id="reviewFormDiv">
             <Form>
-                <Form.Group className="mb-3" controlId="formReviewTitle">
+                <Form.Group className="mb-3" controlId="formReviewRating">
                     <Form.Label>Select Rating</Form.Label>
                     <div key={`inline-radio`} className="mb-3">
                         <Form.Check
