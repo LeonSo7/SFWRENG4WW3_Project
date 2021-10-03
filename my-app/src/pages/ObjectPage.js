@@ -17,13 +17,13 @@ class ObjectPage extends Component {
                         <p id="storeName">Emily's Ice Cream Parlor</p>
                         <p id="location">200 Sixteenth Street, L2C4H5 Hamilton Ontario</p>
                         <div>
-                            <p id="hours">Sunday: 12:00pm-10:00pm</p>
-                            <p id="hours">Monday: Closed</p>
-                            <p id="hours">Tuesday: 12:00pm-10:00pm</p>
-                            <p id="hours">Wednesday: 12:00pm-10:00pm</p>
-                            <p id="hours">Thursday: 12:00pm-10:00pm</p>
-                            <p id="hours">Friday: 12:00pm-11:00pm</p>
-                            <p id="hours">Saturday: 12:00pm-11:00pm</p>
+                            <p className="hours">Sunday: 12:00pm-10:00pm</p>
+                            <p className="hours">Monday: Closed</p>
+                            <p className="hours">Tuesday: 12:00pm-10:00pm</p>
+                            <p className="hours">Wednesday: 12:00pm-10:00pm</p>
+                            <p className="hours">Thursday: 12:00pm-10:00pm</p>
+                            <p className="hours">Friday: 12:00pm-11:00pm</p>
+                            <p className="hours">Saturday: 12:00pm-11:00pm</p>
                         </div>
                     </div>
 

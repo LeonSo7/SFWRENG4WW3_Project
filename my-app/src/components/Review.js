@@ -1,5 +1,3 @@
-import { Container, Navbar, Nav } from 'react-bootstrap';
-import { Link } from "react-router-dom";
 import React, { Component } from 'react';
 import '../styles/components/Review.css'
 
