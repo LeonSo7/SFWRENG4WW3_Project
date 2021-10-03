@@ -1,7 +1,6 @@
-/* img {
-    width: 20%;
-    height: 20%
-} */
+img {
+    width: 100%;
+}
 
 #storeInfo {
     padding: .5rem .5rem;
@@ -10,6 +9,7 @@
     margin-left: 5%;
     display: flex;
     justify-content: space-between;
+    flex-flow: row wrap;
 }   
 
 #reviews {
@@ -29,7 +29,7 @@
 
 .hours {
     font-size: 14px;
-    margin: 0%;
+    margin: 0 0 2% 0;
 }
 
 

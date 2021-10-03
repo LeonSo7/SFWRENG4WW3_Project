@@ -9,6 +9,7 @@ class Restaurant extends Component {
                 <h1>1</h1>
                 <h1 id="name">Emily's Ice Cream Parlour</h1>
                 <h2 id="rating">Rating: 4</h2>
+                <hr/>
             </div>
         );
     }

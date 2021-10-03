@@ -3,8 +3,8 @@ import '../styles/App.css';
 import '../styles/pages/SearchResultsPage.css';
 import CommonHeader from '../components/CommonHeader';
 import SearchBar from '../components/SearchBar';
-import Table from 'react-bootstrap/Table';
 import Restaurant from '../components/Restaurant';
+import map from '../assets/images/map.jpg';
 
 class SearchResultsPage extends Component {
   render() {
@@ -18,19 +18,11 @@ class SearchResultsPage extends Component {
         <div id="searchResults">
             <div id="results">
                 <h1>Results</h1>
-                <Table>
-                    <tbody>
-                        <tr>
-                            <td><Restaurant /></td>
-                        </tr>
-                        <tr>
-                            <td><Restaurant /></td>
-                        </tr>
-                    </tbody>
-                </Table>
+                <Restaurant />
+                <Restaurant />
             </div>
            
-            <img src="../assets/images/map.jpg" alt="Map"></img>
+            <img id="mainMap" src={map} alt="Map"/>
         </div>
 
     </div>
@@ -38,4 +30,4 @@ class SearchResultsPage extends Component {
   }
 }
 
-export default SearchPageResults;
+export default SearchResultsPage;

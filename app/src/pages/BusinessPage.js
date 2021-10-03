@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
-import '../styles/pages/ObjectPage.css'
+import '../styles/pages/BusinessPage.css'
 import CommonHeader from '../components/CommonHeader';
 import Review from '../components/Review';
 import Table from 'react-bootstrap/Table';
+import map from '../assets/images/map.jpg';
 
-class ObjectPage extends Component {
+class BusinessPage extends Component {
 
     render() {
 
@@ -28,22 +29,16 @@ class ObjectPage extends Component {
                     </div>
 
                     <div>
-                        <img src="./map.jpg" alt="Map"/>
+                        <img src={map} alt="Map"/>
                     </div>
                 </div>
 
                 <div id="reviews">
-                    <Table>
-                        <tbody>
-                            <tr>
-                                <td><Review /></td>
-                            </tr>
-                        </tbody>
-                    </Table>
+                   <Review />
                 </div>
             </div>
         );
     }
 }
 
-export default ObjectPage;
+export default BusinessPage;
