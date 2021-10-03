@@ -1,8 +1,0 @@
-#searchBarDiv {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    margin-left: 20%;
-    margin-right: 20%;
-    flex-grow: 1;
-}
