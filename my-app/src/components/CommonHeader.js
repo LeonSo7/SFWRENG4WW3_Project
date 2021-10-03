@@ -1,5 +1,4 @@
 import { Container, Navbar, Nav } from 'react-bootstrap';
-import { Link } from "react-router-dom";
 
 const CommonHeader = () => (
     <Navbar bg="light" expand="lg">
