@@ -1,0 +1,29 @@
+#homePageTitleDiv {
+    margin-bottom: 2.5%;
+    margin-top: 5%;
+    text-align: center;
+}
+
+#homePageSearchBarDiv {
+    margin-bottom: 5%;
+    margin-top: 2.5%;
+}
+
+.minorSectionDiv {
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 2%;
+}
+
+.minorSectionTitle {
+    margin: 2%;
+}
+
+#homePageTitleDiv {
+    margin-bottom: 2.5%;
+    margin-top: 5%;
+    text-align: center;
+}

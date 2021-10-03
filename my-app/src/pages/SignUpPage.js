@@ -16,32 +16,32 @@ class SignUpPage extends Component {
 
         <div id="signUpFormDiv">
             <Form>
-            <Row>
-                <Col>
-                    <Form.Group className="mb-3" controlId="formFirstName">
-                        <Form.Label>First Name</Form.Label>
-                        <Form.Control type="text" placeholder="First name"/>
-                    </Form.Group>
-                </Col>
-                <Col>
-                <Form.Group className="mb-3" controlId="formLastName">
-                        <Form.Label>Last Name</Form.Label>
-                        <Form.Control type="text" placeholder="Last name"/>
-                    </Form.Group>
-                </Col>
-            </Row>
+                <Row>
+                    <Col>
+                        <Form.Group className="mb-3" controlId="formFirstName">
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control type="text" placeholder="First name"/>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                    <Form.Group className="mb-3" controlId="formLastName">
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Control type="text" placeholder="Last name"/>
+                        </Form.Group>
+                    </Col>
+                </Row>
                 <Form.Group className="mb-3" controlId="formPhone">
                     <Form.Label>Phone</Form.Label>
                     <Form.Control type="tel" placeholder="Enter phone number"/>
                     <Form.Text className="text-muted">
-                    Don't worry! We'll never share your phone number with anyone else.
+                        Don't worry! We'll never share your phone number with anyone else.
                     </Form.Text>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email"/>
                     <Form.Text className="text-muted">
-                    Don't worry! We'll never share your email with anyone else.
+                        Don't worry! We'll never share your email with anyone else.
                     </Form.Text>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formPassword">

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
-import '../styles/pages/SearchResults.css';
+import '../styles/pages/SearchResultsPage.css';
 import CommonHeader from '../components/CommonHeader';
 import SearchBar from '../components/SearchBar';
 import Table from 'react-bootstrap/Table';
 import Restaurant from '../components/Restaurant';
 
-class SearchResults extends Component {
+class SearchResultsPage extends Component {
   render() {
     return (
       <div class="wrapper">
@@ -38,4 +38,4 @@ class SearchResults extends Component {
   }
 }
 
-export default SearchResults;
+export default SearchPageResults;

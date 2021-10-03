@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './styles/App.css';
-import SearchPage from './pages/SearchPage'
+import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage';
+import ReviewSubmissionPage from './pages/ReviewSubmissionPage';
+import AddBusinessPage from './pages/AddBusinessPage';
 import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -12,8 +14,10 @@ class App extends Component {
       <main className="App" >
         <Switch>
           {/* Routes */}
-          <Route path='/' component={SearchPage} exact/>
+          <Route path='/' component={HomePage} exact/>
           <Route path='/signup' component={SignUpPage}/>
+          <Route path='/review' component={ReviewSubmissionPage}/>
+          <Route path='/add-business' component={AddBusinessPage}/>
         </Switch>
       </main>
     );
