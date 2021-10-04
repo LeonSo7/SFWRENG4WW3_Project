@@ -3,7 +3,7 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/SignUpPage.css'
 import CommonHeader from '../components/CommonHeader';
-
+import Footer from '../components/Footer';
 
 class SignUpPage extends Component {
   render() {
@@ -57,6 +57,7 @@ class SignUpPage extends Component {
                 </Button>
             </Form>
         </div>
+        <Footer/>
     </div>
     );
   }

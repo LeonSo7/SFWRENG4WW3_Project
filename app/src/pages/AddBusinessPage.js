@@ -3,7 +3,7 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/AddBusinessPage.css'
 import CommonHeader from '../components/CommonHeader';
-
+import Footer from '../components/Footer';
 
 class AddBusinessPage extends Component {
   render() {
@@ -47,6 +47,7 @@ class AddBusinessPage extends Component {
                 </Button>
             </Form>
         </div>
+        <Footer/>
     </div>
     );
   }

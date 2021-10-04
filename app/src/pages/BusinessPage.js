@@ -3,7 +3,7 @@ import '../styles/App.css';
 import '../styles/pages/BusinessPage.css'
 import CommonHeader from '../components/CommonHeader';
 import Review from '../components/Review';
-import Table from 'react-bootstrap/Table';
+import Footer from '../components/Footer';
 import map from '../assets/images/map.jpg';
 
 class BusinessPage extends Component {
@@ -36,6 +36,8 @@ class BusinessPage extends Component {
                 <div id="reviews">
                    <Review />
                 </div>
+
+                <Footer/>
             </div>
         );
     }
