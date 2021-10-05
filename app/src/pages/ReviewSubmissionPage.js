@@ -23,32 +23,35 @@ class ReviewSubmissionPage extends Component {
                         <Form.Check
                             inline
                             label="1"
-                            name="group1"
+                            name="ratingRadioGroup"
                             id={`inline-radio-1`}
                             type={'radio'}
                         />
                         <Form.Check
                             inline
                             label="2"
-                            name="group1"
+                            name="ratingRadioGroup"
                             id={`inline-radio-2`}
                             type={'radio'}
                         />
                         <Form.Check
                             inline
                             label="3"
+                            name="ratingRadioGroup"
                             id={`inline-radio-3`}
                             type={'radio'}
                         />
                         <Form.Check
                             inline
                             label="4"
+                            name="ratingRadioGroup"
                             id={`inline-radio-4`}
                             type={'radio'}
                         />
                         <Form.Check
                             inline
                             label="5"
+                            name="ratingRadioGroup"
                             id={`inline-radio-5`}
                             type={'radio'}
                         />

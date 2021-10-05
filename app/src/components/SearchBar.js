@@ -1,6 +1,7 @@
 import { Button, Form } from 'react-bootstrap';
 import '../styles/components/SearchBar.css';
 import { Link } from 'react-router-dom';
+import { FiSearch } from 'react-icons/fi'
 
 const SearchBar = () => (
     <Form>
@@ -10,8 +11,9 @@ const SearchBar = () => (
                 <Link
                     to={{
                         pathname: "/search-results",
-                    }}>
-                    <Button type="submit" variant="primary">Search</Button>
+                    }}
+                    tabIndex="-1">
+                    <Button type="submit" variant="primary" aria-label="search"><FiSearch/></Button>
                 </Link>
             </div>
         </Form.Group>

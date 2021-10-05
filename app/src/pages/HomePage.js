@@ -46,7 +46,8 @@ class HomePage extends Component {
           <Link
               to={{
                 pathname: "/review",
-              }}>
+              }}
+              tabIndex="-1">
             <Button variant="primary" id="submitReviewBtn">Submit a review</Button>
           </Link>
         </div>
@@ -57,13 +58,13 @@ class HomePage extends Component {
           <Link
               to={{
                 pathname: "/add-business",
-              }}>
+              }}
+              tabIndex="-1">
             <Button variant="primary" id="submitLocationBtn">Add a dessert spot</Button>
           </Link>
         </div>
-
         <Footer/>
-    </div>
+      </div>
     );
   }
 }
