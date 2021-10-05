@@ -16,7 +16,7 @@ class HomePage extends Component {
 
         {/* Home page title */}
         <div id="homePageTitleDiv">
-          <h1>Find your next dessert!</h1>
+          <h1>Find your next scoop!</h1>
         </div>
 
         {/* Search */}
@@ -54,13 +54,13 @@ class HomePage extends Component {
 
         {/* Add dessert place */}
         <div id="submitNewDessertPlaceBtnDiv" class="minorSectionDiv">
-          <h2 class="minorSectionTitle">Are we missing a dessert spot?</h2>
+          <h2 class="minorSectionTitle">Are we missing an icecream shop?</h2>
           <Link
               to={{
                 pathname: "/add-business",
               }}
               tabIndex="-1">
-            <Button variant="primary" id="submitLocationBtn">Add a dessert spot</Button>
+            <Button variant="primary" id="submitLocationBtn">Add an icecream shop</Button>
           </Link>
         </div>
         <Footer/>
