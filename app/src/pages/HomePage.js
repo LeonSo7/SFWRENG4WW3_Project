@@ -5,7 +5,7 @@ import CommonHeader from '../components/CommonHeader';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
 import { Button, Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import Link from 'react-router-dom';
 
 
 class HomePage extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/ReviewSubmissionPage.css'
 import CommonHeader from '../components/CommonHeader';
