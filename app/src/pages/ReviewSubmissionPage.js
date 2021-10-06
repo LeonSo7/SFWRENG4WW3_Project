@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 class ReviewSubmissionPage extends Component {
   render() {
     return (
-      <div class="wrapper">
+      <div className="wrapper">
         <CommonHeader/>
         
         <div id="reviewSubmissionPageTitleDiv">

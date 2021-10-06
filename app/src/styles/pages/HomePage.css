@@ -22,7 +22,8 @@
     text-align: center;
 }
 
-.minorSectionTitle {
+.minorSectionTitleTxt{
+    font-size: max(2vw, 24px);
     margin: 2%;
 }
 
@@ -30,6 +31,10 @@
     margin-bottom: 2.5%;
     margin-top: 5%;
     text-align: center;
+}
+
+.homePageTitleTxt {
+    font-size: max(4vw, 32px);
 }
 
 #searchDropDownDiv{

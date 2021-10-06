@@ -5,18 +5,18 @@ import CommonHeader from '../components/CommonHeader';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
 import { Button, Dropdown } from 'react-bootstrap';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class HomePage extends Component {
   render() {
     return (
-      <div class="wrapper">
+      <div className="wrapper">
         <CommonHeader/>
 
         {/* Home page title */}
         <div id="homePageTitleDiv">
-          <h1>Find your next scoop!</h1>
+          <p className="homePageTitleTxt">Find your next scoop!</p>
         </div>
 
         {/* Search */}
@@ -41,8 +41,8 @@ class HomePage extends Component {
 
 
         {/* Submit a review button */}
-        <div id="submitReviewBtnDiv" class="minorSectionDiv">
-          <h2 class="minorSectionTitle">Help others decide on what to eat next!</h2>
+        <div id="submitReviewBtnDiv" className="minorSectionDiv">
+          <h2 className="minorSectionTitleTxt">Help others decide on what to eat next!</h2>
           <Link
               to={{
                 pathname: "/review",
@@ -53,8 +53,8 @@ class HomePage extends Component {
         </div>
 
         {/* Add dessert place */}
-        <div id="submitNewDessertPlaceBtnDiv" class="minorSectionDiv">
-          <h2 class="minorSectionTitle">Are we missing an icecream shop?</h2>
+        <div id="submitNewDessertPlaceBtnDiv" className="minorSectionDiv">
+          <h2 className="minorSectionTitleTxt">Are we missing an icecream shop?</h2>
           <Link
               to={{
                 pathname: "/add-business",

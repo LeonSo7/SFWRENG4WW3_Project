@@ -1,7 +1,7 @@
 import { Button, Form } from 'react-bootstrap';
 import '../styles/components/SearchBar.css';
-import Link from 'react-router-dom';
-import FiSearch from 'react-icons/fi'
+import { Link } from 'react-router-dom';
+import { FiSearch } from 'react-icons/fi'
 
 const SearchBar = () => (
     <Form>

@@ -10,7 +10,7 @@ import map from '../assets/images/map.jpg';
 class SearchResultsPage extends Component {
   render() {
     return (
-      <div class="wrapper">
+      <div className="wrapper">
         <CommonHeader/>
         <div id="searchPageSearchBarDiv">
           <SearchBar/>

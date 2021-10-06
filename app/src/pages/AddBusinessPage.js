@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 class AddBusinessPage extends Component {
   render() {
     return (
-      <div class="wrapper">
+      <div className="wrapper">
         <CommonHeader/>
         <div id="addBusinessPageTitleDiv">
           <h1>Add a business!</h1>
