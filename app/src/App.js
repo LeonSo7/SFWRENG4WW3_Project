@@ -8,13 +8,16 @@ import SearchResultsPage from './pages/SearchResultsPage';
 import BusinessPage from './pages/BusinessPage';
 import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CommonHeader from './components/CommonHeader';
+import Footer from './components/Footer';
 
 class App extends Component {
 
   render() {
     return (
       <main className="App" >
-        <Switch>
+        <CommonHeader/>
+        <Switch>        
           {/* Routes */}
           <Route path='/' component={HomePage} exact/>
           <Route path='/signup' component={SignUpPage}/>
@@ -23,6 +26,7 @@ class App extends Component {
           <Route path='/search-results' component={SearchResultsPage}/>
           <Route path='/business' component={BusinessPage}/>
         </Switch>
+        <Footer/>
       </main>
     );
   }

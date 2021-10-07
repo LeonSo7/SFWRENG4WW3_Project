@@ -2,15 +2,11 @@ import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/ReviewSubmissionPage.css'
-import CommonHeader from '../components/CommonHeader';
-import Footer from '../components/Footer';
 
 class ReviewSubmissionPage extends Component {
   render() {
     return (
       <div className="wrapper">
-        <CommonHeader/>
-        
         <div id="reviewSubmissionPageTitleDiv">
           <h1>Write your review!</h1>
         </div>
@@ -74,7 +70,6 @@ class ReviewSubmissionPage extends Component {
                 </Button>
             </Form>
         </div>
-        <Footer/>
     </div>
     );
   }

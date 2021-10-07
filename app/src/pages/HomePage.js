@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import '../styles/pages/HomePage.css';
-import CommonHeader from '../components/CommonHeader';
 import SearchBar from '../components/SearchBar';
-import Footer from '../components/Footer';
 import { Button, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
 
 class HomePage extends Component {
   render() {
     return (
       <div className="wrapper">
-        <CommonHeader/>
-
         {/* Home page title */}
         <div id="homePageTitleDiv">
           <p className="homePageTitleTxt">Find your next scoop!</p>
@@ -63,7 +58,6 @@ class HomePage extends Component {
             <Button variant="primary" id="submitLocationBtn">Add an icecream shop</Button>
           </Link>
         </div>
-        <Footer/>
       </div>
     );
   }

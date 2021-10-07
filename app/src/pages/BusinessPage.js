@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import '../styles/pages/BusinessPage.css'
-import CommonHeader from '../components/CommonHeader';
 import Review from '../components/Review';
-import Footer from '../components/Footer';
 import map from '../assets/images/map.jpg';
 
 class BusinessPage extends Component {
@@ -12,7 +10,6 @@ class BusinessPage extends Component {
 
         return (
             <div className="wrapper">
-                <CommonHeader/>
                 <div id="storeInfo">
                     <div>
                         <p id="storeName">Emily's Ice Cream Parlor</p>
@@ -36,8 +33,6 @@ class BusinessPage extends Component {
                 <div id="reviews">
                    <Review />
                 </div>
-
-                <Footer/>
             </div>
         );
     }

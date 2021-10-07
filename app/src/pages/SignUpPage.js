@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/SignUpPage.css'
-import CommonHeader from '../components/CommonHeader';
-import Footer from '../components/Footer';
 
 class SignUpPage extends Component {
   render() {
     return (
       <div class="wrapper">
-        <CommonHeader/>
         <div id="signUpPageTitleDiv">
           <h1>Sign up today!</h1>
         </div>
@@ -57,7 +54,6 @@ class SignUpPage extends Component {
                 </Button>
             </Form>
         </div>
-        <Footer/>
     </div>
     );
   }
