@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import '../styles/pages/BusinessPage.css'
-import Review from '../components/Review';
+import Review1 from '../components/reviews/Review';
+import Review2 from '../components/reviews/Review2';
+import Review3 from '../components/reviews/Review3';
 import map from '../assets/images/map.jpg';
 
 class BusinessPage extends Component {
@@ -30,7 +32,9 @@ class BusinessPage extends Component {
                 </div>
 
                 <div id="reviews">
-                   <Review />
+                   <Review1/>
+                   <Review2/>
+                   <Review3/>
                 </div>
             </div>
         );
