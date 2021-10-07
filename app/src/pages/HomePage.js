@@ -27,10 +27,10 @@ class HomePage extends Component {
 
                 <Dropdown.Menu>
                   <Dropdown.Item href="#">5 Star</Dropdown.Item>
-                  <Dropdown.Item href="#">4 Star</Dropdown.Item>
-                  <Dropdown.Item href="#">3 Star</Dropdown.Item>
-                  <Dropdown.Item href="#">2 Star</Dropdown.Item>
-                  <Dropdown.Item href="#">1 Star</Dropdown.Item>
+                  <Dropdown.Item href="#">4+ Star</Dropdown.Item>
+                  <Dropdown.Item href="#">3+ Star</Dropdown.Item>
+                  <Dropdown.Item href="#">2+ Star</Dropdown.Item>
+                  <Dropdown.Item href="#">1+ Star</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </div>

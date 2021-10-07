@@ -16,3 +16,23 @@
 #mainMap {
     width: 40%;
 }
+
+.h1 {
+    font-size: 14px;
+}
+
+@media screen and (max-width: 600px) {
+    #searchResultsDiv {
+        display: flex;
+        justify-content: space-around;
+        flex-flow: column;
+        margin: 0 15% 5% 15%;
+    }
+    #resultsDiv {
+        width: 100%;
+    }
+    #mainMap {
+        margin-top: 5%;
+        width: 100%;
+    }
+  }
