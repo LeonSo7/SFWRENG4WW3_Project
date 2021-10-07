@@ -7,7 +7,6 @@ import map from '../assets/images/map.jpg';
 class BusinessPage extends Component {
 
     render() {
-
         return (
             <div className="wrapper">
                 <div id="storeInfo">

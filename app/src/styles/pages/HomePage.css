@@ -17,10 +17,6 @@
     text-align: center;
 }
 
-/* .homePageTitleTxt {
-    font-size: max(4vw, 32px);
-} */
-
 #searchDropDownDiv{
     display: flex;
     justify-content: center;

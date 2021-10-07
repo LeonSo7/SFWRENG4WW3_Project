@@ -10,7 +10,6 @@ import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CommonHeader from './components/CommonHeader';
 import Footer from './components/Footer';
-import background from './assets/images/background.png';
 
 class App extends Component {
 

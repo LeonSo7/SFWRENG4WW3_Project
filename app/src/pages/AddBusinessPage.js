@@ -27,15 +27,15 @@ class AddBusinessPage extends Component {
                 </Form.Group>
                 <Row>
                     <Col>
-                        <Form.Group className="mb-3" controlId="formLongitude">
-                            <Form.Label>Longitude</Form.Label>
-                            <Form.Control type="number" placeholder="Longitude"/>
-                        </Form.Group>
-                    </Col>
-                    <Col>
                     <Form.Group className="mb-3" controlId="formLatitude">
                             <Form.Label>Latitude</Form.Label>
                             <Form.Control type="number" placeholder="Latitude"/>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="mb-3" controlId="formLongitude">
+                            <Form.Label>Longitude</Form.Label>
+                            <Form.Control type="number" placeholder="Longitude"/>
                         </Form.Group>
                     </Col>
                 </Row>

@@ -5,8 +5,8 @@ img {
 #storeInfo {
     padding: .5rem .5rem;
     margin-top: 5%;
-    margin-right: 5%;
-    margin-left: 5%;
+    margin-right: 15%;
+    margin-left: 15%;
     display: flex;
     justify-content: space-between;
     flex-flow: row wrap;
@@ -14,8 +14,8 @@ img {
 
 #reviews {
     margin-top: 5%;
-    margin-right: 5%;
-    margin-left: 5%;
+    margin-right: 15%;
+    margin-left: 15%;
 }   
 
 #storeName {

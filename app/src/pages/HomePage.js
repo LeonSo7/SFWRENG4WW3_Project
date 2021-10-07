@@ -9,12 +9,11 @@ class HomePage extends Component {
   render() {
     return (
       <div className="wrapper">
-        {/* Home page title */}
+        {/* Home page title & cover */}
         <div id="homePageTitleDiv">
             <div id="scoopsImg" >
-              <img src={Scoops}/>
+              <img src={Scoops} alt="Scoops logo and slogan graphic"/>
             </div>
-          {/* <p className="homePageTitleTxt">Find your next scoop!</p> */}
         </div>
 
         {/* Search */}
