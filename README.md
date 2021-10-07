@@ -3,7 +3,7 @@
 
 Course Name: Web Computing and Web Systems
 
-Group Name: TBD
+Group Name: Scoops
 
 Member 1: Leon So 
 
