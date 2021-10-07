@@ -6,9 +6,11 @@
 }
 
 #homePageSearchDiv {
-    margin-bottom: 2%;
+    margin-bottom: 10%;
     display: flex;
     flex-direction: column;
+    margin-top: 3%;
+    align-self: flex-start;
 }
 
 #homePageTitleDiv {
