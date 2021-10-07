@@ -5,8 +5,11 @@
 
 .wrapper {
   display: flex;
+  flex-direction: column;
   flex-flow: row wrap;
+  min-height: 100vh;
 }
+
 .wrapper > * {
   flex: 1 100%;
   /* flex-flow: row wrap; */
