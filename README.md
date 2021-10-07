@@ -1,4 +1,4 @@
-# SFWRENG4WW3_Project
+# COMPSCI4WW3_Project
 
 
 Course Name: Web Computing and Web Systems
