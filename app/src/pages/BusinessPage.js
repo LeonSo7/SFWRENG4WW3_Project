@@ -11,17 +11,17 @@ class BusinessPage extends Component {
         return (
             <div className="wrapper">
                 <div id="storeInfo">
-                    <div>
+                    <div id="info">
                         <p id="storeName">Emily's Ice Cream Parlor</p>
                         <p id="location">200 Sixteenth Street, L2C4H5 Hamilton Ontario</p>
                         <div>
-                            <p className="hours">Sunday: 12:00pm-10:00pm</p>
-                            <p className="hours">Monday: Closed</p>
-                            <p className="hours">Tuesday: 12:00pm-10:00pm</p>
-                            <p className="hours">Wednesday: 12:00pm-10:00pm</p>
-                            <p className="hours">Thursday: 12:00pm-10:00pm</p>
-                            <p className="hours">Friday: 12:00pm-11:00pm</p>
-                            <p className="hours">Saturday: 12:00pm-11:00pm</p>
+                            <p className="hours"><b>Sunday:</b> 12:00pm-10:00pm</p>
+                            <p className="hours"><b>Monday:</b> Closed</p>
+                            <p className="hours"><b>Tuesday:</b> 12:00pm-10:00pm</p>
+                            <p className="hours"><b>Wednesday:</b> 12:00pm-10:00pm</p>
+                            <p className="hours"><b>Thursday:</b> 12:00pm-10:00pm</p>
+                            <p className="hours"><b>Friday:</b> 12:00pm-11:00pm</p>
+                            <p className="hours"><b>Saturday:</b> 12:00pm-11:00pm</p>
                         </div>
                     </div>
 

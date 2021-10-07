@@ -4,8 +4,8 @@ import { IoIceCreamOutline } from 'react-icons/io5';
 
 const Footer = () => (
   <footer className="footer">
-    <p><IoIceCreamOutline/>Scoops</p>
+    <div className="brand"><IoIceCreamOutline/>Scoops</div>
   </footer>
 );
-  
+
 export default Footer;
