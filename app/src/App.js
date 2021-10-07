@@ -18,7 +18,6 @@ class App extends Component {
     return (
       <main className="App">
         <CommonHeader/>
-        <div style={{ backgroundImage: `url(${background})`, backgroundRepeat: "repeat-y", backgroundSize: "100%"}}>
           <Switch>        
             {/* Routes */}
             <Route path='/' component={HomePage} exact/>
@@ -29,7 +28,6 @@ class App extends Component {
             <Route path='/business' component={BusinessPage}/>
           </Switch>
           <Footer/>
-        </div>
       </main>
     );
   }
