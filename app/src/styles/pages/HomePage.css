@@ -1,35 +1,17 @@
 #homePageTitleDiv {
-    margin-bottom: 2.5%;
     margin-top: 5%;
     text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 #homePageSearchDiv {
-    margin-bottom: 5%;
-    margin-top: 2.5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.minorSectionDiv {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: auto;
     margin-bottom: 2%;
-    text-align: center;
-}
-
-.minorSectionTitleTxt{
-    font-size: max(2vw, 24px);
-    margin: 2%;
+    display: flex;
+    flex-direction: column;
 }
 
 #homePageTitleDiv {
-    margin-bottom: 2.5%;
-    margin-top: 5%;
     text-align: center;
 }
 
@@ -40,5 +22,5 @@
 #searchDropDownDiv{
     display: flex;
     justify-content: center;
-    margin-top: 1.5%;
+    margin-top: 2%;
 }

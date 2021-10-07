@@ -11,6 +11,7 @@ const CommonHeader = () => (
             <Nav className="me-auto">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/review">Write a Review</Nav.Link>
+                <Nav.Link href="/add-business">Add an Icecream Spot</Nav.Link>
             </Nav>
             <Nav className="justify-content-end"> 
                 <Nav.Link href="#">Log In</Nav.Link>

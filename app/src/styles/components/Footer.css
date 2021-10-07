@@ -2,8 +2,8 @@
     background-color: black;
     height: 70px;
     color: rgb(202, 202, 202);
-    margin-top: 5%;
     flex: 1;
+    bottom: 0;
 }
 
 #brand {

@@ -13,8 +13,8 @@ class SearchResultsPage extends Component {
           <SearchBar/>
         </div>
 
-        <div id="searchResults">
-            <div id="results">
+        <div id="searchResultsDiv">
+            <div id="resultsDiv">
                 <h1>Results</h1>
                 <Restaurant />
                 <Restaurant />

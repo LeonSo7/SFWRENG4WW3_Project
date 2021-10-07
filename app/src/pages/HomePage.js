@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import '../styles/App.css';
 import '../styles/pages/HomePage.css';
 import SearchBar from '../components/SearchBar';
-import { Button, Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Dropdown } from 'react-bootstrap';
 
 class HomePage extends Component {
   render() {
@@ -32,32 +31,7 @@ class HomePage extends Component {
                 </Dropdown.Menu>
               </Dropdown>
             </div>
-        </div>
-
-
-        {/* Submit a review button */}
-        <div id="submitReviewBtnDiv" className="minorSectionDiv">
-          <h2 className="minorSectionTitleTxt">Help others decide on what to eat next!</h2>
-          <Link
-              to={{
-                pathname: "/review",
-              }}
-              tabIndex="-1">
-            <Button variant="primary" id="submitReviewBtn">Submit a review</Button>
-          </Link>
-        </div>
-
-        {/* Add dessert place */}
-        <div id="submitNewDessertPlaceBtnDiv" className="minorSectionDiv">
-          <h2 className="minorSectionTitleTxt">Are we missing an icecream shop?</h2>
-          <Link
-              to={{
-                pathname: "/add-business",
-              }}
-              tabIndex="-1">
-            <Button variant="primary" id="submitLocationBtn">Add an icecream shop</Button>
-          </Link>
-        </div>
+          </div>
       </div>
     );
   }
