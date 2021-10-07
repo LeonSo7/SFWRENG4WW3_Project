@@ -11,7 +11,10 @@ class HomePage extends Component {
       <div className="wrapper">
         {/* Home page title */}
         <div id="homePageTitleDiv">
-          <p className="homePageTitleTxt">Find your next scoop!</p>
+            <div id="scoopsImg" >
+              <img src={Scoops}/>
+            </div>
+          {/* <p className="homePageTitleTxt">Find your next scoop!</p> */}
         </div>
 
         {/* Search */}
@@ -32,11 +35,6 @@ class HomePage extends Component {
                 </Dropdown.Menu>
               </Dropdown>
             </div>
-
-            <div id="scoopsImg" >
-              <img src={Scoops}/>
-            </div>
-
           </div>
       </div>
     );

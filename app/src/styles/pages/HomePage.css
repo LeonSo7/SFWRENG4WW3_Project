@@ -9,7 +9,7 @@
     margin-bottom: 10%;
     display: flex;
     flex-direction: column;
-    margin-top: 3%;
+    margin-top: 1%;
     align-self: flex-start;
 }
 
@@ -17,9 +17,9 @@
     text-align: center;
 }
 
-.homePageTitleTxt {
+/* .homePageTitleTxt {
     font-size: max(4vw, 32px);
-}
+} */
 
 #searchDropDownDiv{
     display: flex;
@@ -29,13 +29,13 @@
 
 #scoopsImg {
     width: 40%;
-    margin: 2% auto;
+    margin: auto;
     text-align: center;
 }
 
 @media screen and (max-width: 600px) {
     #scoopsImg {
-        width: 60%;
+        width: 80%;
         margin: 10% auto;
         text-align: center;
     }

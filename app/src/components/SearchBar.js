@@ -7,7 +7,7 @@ const SearchBar = () => (
     <Form>
         <Form.Group>
             <div id="searchBarDiv">
-                <Form.Control id="searchBarInput" type="search" placeholder="Search for desserts..."/>
+                <Form.Control id="searchBarInput" type="search" placeholder="Search for scoops..."/>
                 <Link
                     to={{
                         pathname: "/search-results",
