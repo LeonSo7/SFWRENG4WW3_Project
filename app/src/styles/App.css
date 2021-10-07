@@ -12,6 +12,8 @@
   flex-direction: column;
   flex-flow: row wrap;
   background-color: green;
+  /* Footer Height */
+  padding-bottom: 70px;
 }
 
 .wrapper > * {
