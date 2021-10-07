@@ -10,23 +10,26 @@ import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CommonHeader from './components/CommonHeader';
 import Footer from './components/Footer';
+import background from './assets/images/background.png';
 
 class App extends Component {
 
   render() {
     return (
-      <main className="App" >
+      <main className="App">
         <CommonHeader/>
-        <Switch>        
-          {/* Routes */}
-          <Route path='/' component={HomePage} exact/>
-          <Route path='/signup' component={SignUpPage}/>
-          <Route path='/review' component={ReviewSubmissionPage}/>
-          <Route path='/add-business' component={AddBusinessPage}/>
-          <Route path='/search-results' component={SearchResultsPage}/>
-          <Route path='/business' component={BusinessPage}/>
-        </Switch>
-        <Footer/>
+        <div style={{ backgroundImage: `url(${background})`, backgroundRepeat: "repeat-y", backgroundSize: "100%"}}>
+          <Switch>        
+            {/* Routes */}
+            <Route path='/' component={HomePage} exact/>
+            <Route path='/signup' component={SignUpPage}/>
+            <Route path='/review' component={ReviewSubmissionPage}/>
+            <Route path='/add-business' component={AddBusinessPage}/>
+            <Route path='/search-results' component={SearchResultsPage}/>
+            <Route path='/business' component={BusinessPage}/>
+          </Switch>
+          <Footer/>
+        </div>
       </main>
     );
   }
