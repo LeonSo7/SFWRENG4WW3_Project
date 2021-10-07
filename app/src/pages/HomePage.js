@@ -3,6 +3,7 @@ import '../styles/App.css';
 import '../styles/pages/HomePage.css';
 import SearchBar from '../components/SearchBar';
 import { Dropdown } from 'react-bootstrap';
+import Scoops from '../assets/images/scoops.png';
 
 class HomePage extends Component {
   render() {
@@ -31,6 +32,11 @@ class HomePage extends Component {
                 </Dropdown.Menu>
               </Dropdown>
             </div>
+
+            <div id="scoopsImg" >
+              <img src={Scoops}/>
+            </div>
+
           </div>
       </div>
     );

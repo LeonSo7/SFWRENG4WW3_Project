@@ -26,3 +26,18 @@
     justify-content: center;
     margin-top: 2%;
 }
+
+#scoopsImg {
+    width: 40%;
+    margin: 2% auto;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    #scoopsImg {
+        width: 60%;
+        margin: 10% auto;
+        text-align: center;
+    }
+  }
+
