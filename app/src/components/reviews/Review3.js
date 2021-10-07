@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/components/Review.css'
 
-class Review extends Component {
+class Review3 extends Component {
     render() {
         return(
             <div>
@@ -14,4 +14,4 @@ class Review extends Component {
     }
 }
 
-export default Review;
+export default Review3;
