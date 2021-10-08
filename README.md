@@ -1,4 +1,4 @@
-# COMPSCI4WW3_Project
+# COMPSCI4WW3_Project: Scoops
 
 
 Course Name: Web Computing and Web Systems
