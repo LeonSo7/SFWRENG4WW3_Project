@@ -3,6 +3,7 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/SignUpPage.css'
 
+//Sign up page
 class SignUpPage extends Component {
   render() {
     return (

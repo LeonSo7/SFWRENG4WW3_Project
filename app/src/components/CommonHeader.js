@@ -2,6 +2,7 @@ import { Container, Navbar, Nav } from 'react-bootstrap';
 import '../styles/components/CommonHeader.css'
 import { IoIceCreamOutline } from 'react-icons/io5';
 
+//Common Header
 const CommonHeader = () => (
     <Navbar bg="light" expand="lg">
         <Container>

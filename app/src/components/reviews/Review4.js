@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../styles/components/Review.css'
 
+//A Sample review for Coco Gelato
 class Review4 extends Component {
     render() {
         return(

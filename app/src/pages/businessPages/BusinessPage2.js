@@ -4,6 +4,7 @@ import '../../styles/pages/BusinessPage.css'
 import Review5 from '../../components/reviews/Review5';
 import map from '../../assets/images/map.jpg';
 
+//Business page showing info for Coco Gelato
 class BusinessPage2 extends Component {
 
     render() {
@@ -24,12 +25,13 @@ class BusinessPage2 extends Component {
                             <p className="hours"><b>Saturday:</b> 12:00pm-9:00pm</p>
                         </div>
                     </div>
-
+                    {/* Map showing location of business */}
                     <div>
                         <img id="businessMap" src={map} alt="Map" width="410px" height="360px"/>
                     </div>
                 </div>
 
+                {/* Business Reviews */}
                 <div id="reviews">
                    <Review5/>
                 </div>

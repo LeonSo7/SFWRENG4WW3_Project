@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../styles/components/Review.css'
 
+//A Sample review for Emily's Ice Cream Parlour
 class Review3 extends Component {
     render() {
         return(

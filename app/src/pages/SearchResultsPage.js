@@ -7,6 +7,7 @@ import SearchListing2 from '../components/searchListings/SearchListing2';
 import SearchListing3 from '../components/searchListings/SearchListing3';
 import map from '../assets/images/map.jpg';
 
+//A Sample search results page
 class SearchResultsPage extends Component {
   render() {
     return (
@@ -22,6 +23,7 @@ class SearchResultsPage extends Component {
                 <SearchListing2/>
                 <SearchListing3/>
             </div>
+            {/* Map Image */}
             <img id="mainMap" src={map} alt="Map" width="410px" height="360px"/>
         </div>
     </div>

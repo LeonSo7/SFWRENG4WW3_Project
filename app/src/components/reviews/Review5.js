@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../styles/components/Review.css'
 
+//A Sample review for FruitYoyo
 class Review5 extends Component {
     render() {
         return(

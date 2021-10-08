@@ -6,6 +6,7 @@ import Review2 from '../../components/reviews/Review2';
 import Review3 from '../../components/reviews/Review3';
 import map from '../../assets/images/map.jpg';
 
+//Business page for Emily's Ice Cream Parlor
 class BusinessPage extends Component {
 
     render() {
@@ -26,12 +27,13 @@ class BusinessPage extends Component {
                             <p className="hours"><b>Saturday:</b> 12:00pm-11:00pm</p>
                         </div>
                     </div>
-
+                    {/* Map showing location of business */}
                     <div>
                         <img id="businessMap" src={map} alt="Map" width="410px" height="360px"/>
                     </div>
                 </div>
 
+                {/* Business reviews */}
                 <div id="reviews">
                    <Review1/>
                    <Review2/>
