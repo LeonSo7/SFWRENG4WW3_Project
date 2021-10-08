@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import '../styles/App.css';
-import '../styles/pages/BusinessPage.css'
-import Review1 from '../components/reviews/Review';
-import Review2 from '../components/reviews/Review2';
-import Review3 from '../components/reviews/Review3';
-import map from '../assets/images/map.jpg';
+import '../../styles/App.css';
+import '../../styles/pages/BusinessPage.css'
+import Review1 from '../../components/reviews/Review';
+import Review2 from '../../components/reviews/Review2';
+import Review3 from '../../components/reviews/Review3';
+import map from '../../assets/images/map.jpg';
 
 class BusinessPage extends Component {
 
