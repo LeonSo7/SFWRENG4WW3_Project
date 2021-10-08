@@ -11,7 +11,7 @@ import BusinessPage3 from './pages/businessPages/BusinessPage3';
 import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CommonHeader from './components/CommonHeader';
-import Footer from './components/Footer';
+import Footer from './components/CommonFooter';
 
 class App extends Component {
 

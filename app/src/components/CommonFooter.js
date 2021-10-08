@@ -3,7 +3,7 @@ import '../styles/components/Footer.css'
 import { IoIceCreamOutline } from 'react-icons/io5';
 
 //Common Footer
-const Footer = () => (
+const CommonFooter = () => (
   <footer id="footer">
     <div id="brand">
       <IoIceCreamOutline/> Scoops
@@ -11,4 +11,4 @@ const Footer = () => (
   </footer>
 );
 
-export default Footer;
+export default CommonFooter;
