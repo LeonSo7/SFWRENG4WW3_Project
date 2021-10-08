@@ -23,6 +23,11 @@
     font-size: 14px;
 }
 
+#mainMapDiv{
+    width: 100%;
+    height: 100%;
+}
+
 /* On screens that are 1064px or less */
 @media screen and (max-width: 1064px) {
     #searchResultsDiv {
@@ -36,8 +41,13 @@
         width: 100%;
     }
 
+    #mainMapDiv{
+        margin-top: 5%;
+        width: 100%;
+        height: 100%;
+    }
+
     #mainMap {
-        /* margin-top: 5%; */
         width: 100%;
         height: auto;
     }
