@@ -17,6 +17,7 @@ class SearchResultsPage extends Component {
 
         <div id="searchResultsDiv">
             <div id="resultsDiv">
+                {/* Search results from user query */}
                 <h1>Results</h1>
                 <SearchListing/>
                 <SearchListing2/>

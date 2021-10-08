@@ -19,18 +19,19 @@ class App extends Component {
     return (
       <main className="App">
         <CommonHeader/>
-          <Switch>        
-            {/* Routes */}
-            <Route path='/' component={HomePage} exact/>
-            <Route path='/signup' component={SignUpPage}/>
-            <Route path='/review' component={ReviewSubmissionPage}/>
-            <Route path='/add-business' component={AddBusinessPage}/>
-            <Route path='/search-results' component={SearchResultsPage}/>
-            <Route path='/emilys-ice-cream-parlour' component={BusinessPage}/>
-            <Route path='/coco-gelato' component={BusinessPage2}/>
-            <Route path='/fruityoyo' component={BusinessPage3}/>
-          </Switch>
-          <Footer/>
+        <Switch>        
+          {/* Routes */}
+          <Route path='/' component={HomePage} exact/>
+          <Route path='/signup' component={SignUpPage}/>
+          <Route path='/review' component={ReviewSubmissionPage}/>
+          <Route path='/add-business' component={AddBusinessPage}/>
+          <Route path='/search-results' component={SearchResultsPage}/>
+          {/* Temporary routes for hard-coded business object pages */}
+          <Route path='/emilys-ice-cream-parlour' component={BusinessPage}/>
+          <Route path='/coco-gelato' component={BusinessPage2}/>
+          <Route path='/fruityoyo' component={BusinessPage3}/>
+        </Switch>
+        <Footer/>
       </main>
     );
   }

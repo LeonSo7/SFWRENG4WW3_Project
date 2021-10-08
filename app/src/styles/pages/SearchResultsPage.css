@@ -12,6 +12,7 @@
 
 #mainMap {
     width: 40%;
+    height: auto;
 }
 
 #searchPageSearchBarDiv {
@@ -22,6 +23,7 @@
     font-size: 14px;
 }
 
+/* On screens that are 1064px or less */
 @media screen and (max-width: 1064px) {
     #searchResultsDiv {
         display: flex;
@@ -35,7 +37,8 @@
     }
 
     #mainMap {
-        margin-top: 5%;
+        /* margin-top: 5%; */
         width: 100%;
+        height: auto;
     }
   }

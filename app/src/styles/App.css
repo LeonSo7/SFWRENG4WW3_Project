@@ -7,6 +7,7 @@
   position: relative;
 }
 
+/* Wrapper for main content */
 .wrapper {
   display: flex;
   flex-direction: column;

@@ -24,6 +24,10 @@
     font-weight: 500;
 }
 
+#averageRating {
+    font-size: 16px;
+}
+
 .hours {
     font-size: 14px;
     margin: 0 0 2% 0;
@@ -31,8 +35,10 @@
 
 #businessMap {
     width: 100%;
+    height: auto;
 }
 
+/* On screens that are 600px or less */
 @media screen and (max-width: 600px) {
     #info {
         margin-bottom: 5%;

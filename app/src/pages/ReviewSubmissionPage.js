@@ -11,6 +11,7 @@ class ReviewSubmissionPage extends Component {
           <h1>Write your review!</h1>
         </div>
 
+        {/* Review submission form */}
         <div id="reviewFormDiv">
             <Form>
                 <Form.Group className="mb-3" controlId="formReviewRating">

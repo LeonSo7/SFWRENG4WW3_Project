@@ -13,6 +13,7 @@ class BusinessPage2 extends Component {
                     <div id="info">
                         <p id="storeName">Coco Gelato</p>
                         <p id="location">81 Nineth Street, Hamilton, ON L9H2B1</p>
+                        <p id="averageRating">Average Rating: 3.5</p>
                         <div>
                             <p className="hours"><b>Sunday:</b> 1:00pm-9:00pm</p>
                             <p className="hours"><b>Monday:</b> Closed</p>

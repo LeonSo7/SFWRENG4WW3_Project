@@ -1,9 +1,4 @@
-#homePageTitleDiv {
-    margin-top: 5%;
-    text-align: center;
-    margin-left: 10%;
-    margin-right: 10%;
-}
+/* Search section styling */
 
 #homePageSearchDiv {
     margin-bottom: 10%;
@@ -13,14 +8,23 @@
     align-self: flex-start;
 }
 
-#homePageTitleDiv {
-    text-align: center;
-}
-
 #searchDropDownDiv{
     display: flex;
     justify-content: center;
     margin-top: 2%;
+}
+
+/* Scoops home page title section styling */
+
+#homePageTitleDiv {
+    margin-top: 5%;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#homePageTitleDiv {
+    text-align: center;
 }
 
 #scoopsImgDiv {
@@ -33,6 +37,7 @@
     height: auto;
 }
 
+/* On screens that are 600px or less, adjust title/slogan image styling */
 @media screen and (max-width: 600px) {
     #scoopsImgDiv {
         margin: 10% auto;
@@ -40,7 +45,7 @@
     }
 
     #scoopsImg {
-        width: 100%;
+        width: 95%;
         height: auto;
     }
   }

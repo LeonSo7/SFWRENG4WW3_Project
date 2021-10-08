@@ -11,6 +11,7 @@ class SignUpPage extends Component {
           <h1>Sign up today!</h1>
         </div>
 
+        {/* User registration form for sign up */}
         <div id="signUpFormDiv">
             <Form>
                 <Row>
