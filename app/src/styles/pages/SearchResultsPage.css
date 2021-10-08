@@ -2,10 +2,14 @@
     display: flex;
     justify-content: space-between;
     flex-flow: row;
-    margin: 0 15% 5% 15%;
+    margin: 1% 15% 5% 15%;
 }
 
-#resultsDiv {
+#results {
+    margin: 0 15% 0 15%;
+}
+
+#listingsDiv {
     margin-right: 5%;
     width: 55%;
 }
@@ -27,7 +31,7 @@
         margin: 0 15% 5% 15%;
     }
 
-    #resultsDiv {
+    #listingsDiv {
         width: 100%;
         margin-bottom: 5%;
     }
