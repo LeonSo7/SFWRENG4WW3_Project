@@ -6,13 +6,13 @@ import Review2 from '../../components/reviews/Review2';
 import Review3 from '../../components/reviews/Review3';
 import map from '../../assets/images/map.jpg';
 
-//Business page for Emily's Ice Cream Parlor
+//Business page showing info for Emily's Ice Cream Parlor
 class BusinessPage extends Component {
 
     render() {
         return (
             <div className="wrapper">
-                <div id="storeInfo">
+                <div id="storeInfoDiv">
                     <div id="info">
                         <p id="storeName">Emily's Ice Cream Parlor</p>
                         <p id="location">200 Sixteenth Street, L2C4H5 Hamilton Ontario</p>

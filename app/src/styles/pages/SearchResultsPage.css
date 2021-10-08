@@ -1,3 +1,4 @@
+/* Search results of listings and map */
 #searchResultsDiv {
     display: flex;
     justify-content: space-between;
@@ -5,25 +6,26 @@
     margin: 1% 15% 5% 15%;
 }
 
+/* Results text */
 #results {
     margin: 0 0 0 15%;
+    font-size: 14px;
 }
 
+/* Listings div with all the business listings */
 #listingsDiv {
     margin-right: 5%;
     width: 55%;
 }
 
+/* Search bar at the top of the page */
 #searchPageSearchBarDiv {
     margin: 3% 0 3% 0;
 }
 
-.h1 {
-    font-size: 14px;
-}
-
 /* On screens that are 1064px or less */
 @media screen and (max-width: 1064px) {
+    /* Put listings and map in a column */
     #searchResultsDiv {
         display: flex;
         justify-content: space-around;
@@ -31,6 +33,7 @@
         margin: 0 15% 5% 15%;
     }
 
+    /* Space between listings and map */
     #listingsDiv {
         width: 100%;
         margin-bottom: 5%;

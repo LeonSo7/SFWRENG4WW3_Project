@@ -1,13 +1,16 @@
+/* Reviewers name styling */
 .name {
     font-size: 15px;
     font-weight: 600;
 }
 
+/* Rating given by reviewer styling */
 .rating {
     font-size: 15px;
     font-weight: 400;
 }
 
+/* Review comments given by reviewer styling */
 .review {
     font-size: 14px;
     font-weight: 400;

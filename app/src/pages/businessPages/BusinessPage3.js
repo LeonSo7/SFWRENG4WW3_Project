@@ -10,7 +10,7 @@ class BusinessPage3 extends Component {
     render() {
         return (
             <div className="wrapper">
-                <div id="storeInfo">
+                <div id="storeInfoDiv">
                     <div id="info">
                         <p id="storeName">FruitYoyo</p>
                         <p id="location">1 Sixth Street, Hamilton, Ontario L2C1H3</p>

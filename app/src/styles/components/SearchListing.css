@@ -1,25 +1,31 @@
-.listingDiv:hover{
-    box-shadow: 0 0 3px 3px #f6f6f6;
-}
-
+/* Styling for each listing in the search page*/
 .listingDiv {
     padding: 5% 5% 5% 5%;
     border-radius: 3px;
     border: 1px solid #ececec;
     text-decoration: none;
     color: black;
+    margin-bottom: 2%;
 }
 
+/* Hover shadow for each listing */
+.listingDiv:hover{
+    box-shadow: 0 0 3px 3px #f6f6f6;
+}
+
+/* Name of the store in the listing */
 #name {
     font-size: 15px;
     font-weight: 600;
 }
 
+/* Store rating in the listing */
 #rating {
     font-size: 15px;
     font-weight: 400;
 }
 
+/* Remove the underline in the link */
 .searchListingLink {
     text-decoration: none;
 }
