@@ -5,15 +5,8 @@
     margin: 1% 15% 5% 15%;
 }
 
-<<<<<<< HEAD
-#resultsDiv {
-    margin-right: 5%;
-    width: 55%;
-    margin-bottom: 5%;
-=======
 #results {
     margin: 0 0 0 15%;
->>>>>>> 280de481ad452c2a2c374f4ee01da9543513799f
 }
 
 #listingsDiv {
@@ -38,14 +31,9 @@
         margin: 0 15% 5% 15%;
     }
 
-<<<<<<< HEAD
-    #resultsDiv {
-        width: 100%;
-=======
     #listingsDiv {
         width: 100%;
         margin-bottom: 5%;
->>>>>>> 280de481ad452c2a2c374f4ee01da9543513799f
     }
 
     #mainMap {
