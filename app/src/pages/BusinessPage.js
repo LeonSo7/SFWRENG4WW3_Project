@@ -27,7 +27,7 @@ class BusinessPage extends Component {
                     </div>
 
                     <div>
-                        <img src={map} alt="Map"/>
+                        <img id="mainMap" src={map} alt="Map" width="410px" height="360px"/>
                     </div>
                 </div>
 

@@ -23,17 +23,25 @@
     margin-top: 2%;
 }
 
-#scoopsImg {
-    width: 40%;
+#scoopsImgDiv {
     margin: auto;
     text-align: center;
 }
 
+#scoopsImg {
+    width: 60%;
+    height: auto;
+}
+
 @media screen and (max-width: 600px) {
-    #scoopsImg {
-        width: 80%;
+    #scoopsImgDiv {
         margin: 10% auto;
         text-align: center;
+    }
+
+    #scoopsImg {
+        width: 100%;
+        height: auto;
     }
   }
 

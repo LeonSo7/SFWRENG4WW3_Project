@@ -1,7 +1,3 @@
-img {
-    width: 100%;
-}
-
 #storeInfo {
     padding: .5rem .5rem;
     margin-top: 5%;
@@ -37,5 +33,9 @@ img {
 @media screen and (max-width: 600px) {
     #info {
         margin-bottom: 5%;
+    }
+
+    #mainMap {
+        width: 100%;
     }
   }

@@ -11,8 +11,8 @@ class HomePage extends Component {
       <div className="wrapper">
         {/* Home page title & cover */}
         <div id="homePageTitleDiv">
-            <div id="scoopsImg" >
-              <img src={Scoops} alt="Scoops logo and slogan graphic"/>
+            <div id="scoopsImgDiv" >
+              <img id="scoopsImg" src={Scoops} alt="Scoops logo and slogan graphic" width="732px" height="296px"/>
             </div>
         </div>
 
