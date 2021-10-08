@@ -23,9 +23,8 @@ class SearchResultsPage extends Component {
                 <SearchListing2/>
                 <SearchListing3/>
             </div>
-            <div id="mainMapDiv">
-              <img id="mainMap" src={map} alt="Map" width="410px" height="360px"/>
-            </div>
+            {/* Map of the location */}
+            <img id="mainMap" src={map} alt="Map" width="410px" height="360px"/>
         </div>
     </div>
     );

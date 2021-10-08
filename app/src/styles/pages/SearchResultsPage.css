@@ -10,22 +10,12 @@
     width: 55%;
 }
 
-#mainMap {
-    width: 40%;
-    height: auto;
-}
-
 #searchPageSearchBarDiv {
     margin: 3% 0 3% 0;
 }
 
 .h1 {
     font-size: 14px;
-}
-
-#mainMapDiv{
-    width: 100%;
-    height: 100%;
 }
 
 /* On screens that are 1064px or less */
@@ -39,12 +29,7 @@
 
     #resultsDiv {
         width: 100%;
-    }
-
-    #mainMapDiv{
-        margin-top: 5%;
-        width: 100%;
-        height: 100%;
+        margin-bottom: 5%;
     }
 
     #mainMap {
