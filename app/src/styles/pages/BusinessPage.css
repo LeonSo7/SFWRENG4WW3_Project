@@ -29,13 +29,12 @@
     margin: 0 0 2% 0;
 }
 
+#businessMap {
+    width: 100%;
+}
 
 @media screen and (max-width: 600px) {
     #info {
         margin-bottom: 5%;
-    }
-
-    #mainMap {
-        width: 100%;
     }
   }

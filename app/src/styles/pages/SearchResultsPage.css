@@ -1,12 +1,17 @@
 #searchResultsDiv {
     display: flex;
     justify-content: space-between;
-    flex-flow: row wrap;
+    flex-flow: row;
     margin: 0 15% 5% 15%;
 }
 
 #resultsDiv {
+    margin-right: 5%;
     width: 55%;
+}
+
+#mainMap {
+    width: 40%;
 }
 
 #searchPageSearchBarDiv {
@@ -17,7 +22,7 @@
     font-size: 14px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1064px) {
     #searchResultsDiv {
         display: flex;
         justify-content: space-around;
