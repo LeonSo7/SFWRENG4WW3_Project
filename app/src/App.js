@@ -7,7 +7,7 @@ import AddBusinessPage from './pages/Submission';
 import Results_Sample from './pages/Results_Sample';
 import BusinessPage from './pages/businessPages/Individual_Sample_1';
 import BusinessPage2 from './pages/businessPages/Individual_Sample_2';
-import BusinessPage3 from './pages/businessPages/BusinessPage3';
+import BusinessPage3 from './pages/businessPages/Individual_Sample_3';
 import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CommonHeader from './components/CommonHeader';

@@ -29,7 +29,7 @@ class Individual_Sample_1 extends Component {
                     </div>
                     {/* Map showing location of business */}
                     <div>
-                        <img id="businessMap" src={map} alt="Map" width="410px" height="360px"/>
+                        <img id="businessMap" srcSet={map + " 1x"} src={map} alt="Map" width="410px" height="360px"/>
                     </div>
                 </div>
 

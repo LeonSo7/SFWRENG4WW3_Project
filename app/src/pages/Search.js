@@ -14,7 +14,7 @@ class Search extends Component {
         {/* Home page title & cover */}
         <div id="homePageTitleDiv">
             <div id="bannerImgDiv" >
-              <img id="bannerImg" src={ScoopsSloganImg} alt="Scoops logo and slogan graphic" width="732px" height="296px"/>
+              <img id="bannerImg" srcSet={ScoopsSloganImg + " 1x"} src={ScoopsSloganImg} alt="Scoops logo and slogan graphic" width="732px" height="296px"/>
             </div>
         </div>
 
@@ -39,7 +39,7 @@ class Search extends Component {
           {/* Bottom banner graphic */}
           <div id="bottomBannerDiv">
             <div id="bannerImgDiv" >
-              <img id="bannerImg" src={ThreeConesImg} alt="Three ice cream cones graphic" width="686px" height="353px"/>
+              <img id="bannerImg" srcSet={ThreeConesImg + " 1x"} src={ThreeConesImg} alt="Three ice cream cones graphic" width="686px" height="353px"/>
             </div>
           </div>
         </div>

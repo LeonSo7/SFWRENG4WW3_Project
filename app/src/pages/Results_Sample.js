@@ -24,7 +24,7 @@ class Results_Sample extends Component {
                 <SearchListing3/>
             </div>
             {/* Map Image */}
-            <img id="mainMap" src={map} alt="Map" width="410px" height="360px"/>
+            <img id="mainMap" srcSet={map + " 1x"} src={map} alt="Map" width="410px" height="360px"/>
         </div>
     </div>
     );
