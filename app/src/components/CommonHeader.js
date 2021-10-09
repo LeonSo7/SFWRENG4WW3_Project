@@ -15,7 +15,7 @@ const CommonHeader = () => (
             <Nav className="me-auto">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/review">Write a Review</Nav.Link>
-                <Nav.Link href="/add-business">Add an Icecream Spot</Nav.Link>
+                <Nav.Link href="/add-business">Add an Ice Cream Spot</Nav.Link>
             </Nav>
             {/* Menu items aligned to the right-hand side of the navigation bar */}
             <Nav className="justify-content-end"> 

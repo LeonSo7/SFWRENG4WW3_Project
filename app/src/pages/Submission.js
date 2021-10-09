@@ -12,7 +12,7 @@ class Submission extends Component {
           <h1>Add a business!</h1>
         </div>
 
-        {/* Object submission for for adding a business (icecream shop) */}
+        {/* Object submission for for adding a business (ice cream shop) */}
         <div id="addBusinessFormDiv">
             <Form>
                 <Form.Group className="mb-3" controlId="formBusinessName">

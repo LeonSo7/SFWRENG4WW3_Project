@@ -39,7 +39,7 @@ class Search extends Component {
           {/* Bottom banner graphic */}
           <div id="bottomBannerDiv">
             <div id="bannerImgDiv" >
-              <img id="bannerImg" src={ThreeConesImg} alt="Three icecream cones graphic" width="686px" height="353px"/>
+              <img id="bannerImg" src={ThreeConesImg} alt="Three ice cream cones graphic" width="686px" height="353px"/>
             </div>
           </div>
         </div>
