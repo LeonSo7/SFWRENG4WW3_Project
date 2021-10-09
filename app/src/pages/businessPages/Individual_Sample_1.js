@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import '../../styles/App.css';
-import '../../styles/pages/BusinessPage.css'
+import '../../styles/pages/Individual_Sample.css'
 import Review1 from '../../components/reviews/Review';
 import Review2 from '../../components/reviews/Review2';
 import Review3 from '../../components/reviews/Review3';
 import map from '../../assets/images/map.jpg';
 
 //Business page showing info for Emily's Ice Cream Parlor
-class BusinessPage extends Component {
+class Individual_Sample_1 extends Component {
 
     render() {
         return (
@@ -44,4 +44,4 @@ class BusinessPage extends Component {
     }
 }
 
-export default BusinessPage;
+export default Individual_Sample_1;

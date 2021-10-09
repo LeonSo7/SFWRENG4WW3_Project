@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
-import '../styles/pages/SearchResultsPage.css';
+import '../styles/pages/Results_Sample.css';
 import SearchBar from '../components/SearchBar';
 import SearchListing from '../components/searchListings/SearchListing';
 import SearchListing2 from '../components/searchListings/SearchListing2';
@@ -8,7 +8,7 @@ import SearchListing3 from '../components/searchListings/SearchListing3';
 import map from '../assets/images/map.jpg';
 
 //A Sample search results page
-class SearchResultsPage extends Component {
+class Results_Sample extends Component {
   render() {
     return (
       <div className="wrapper">
@@ -31,4 +31,4 @@ class SearchResultsPage extends Component {
   }
 }
 
-export default SearchResultsPage;
+export default Results_Sample;

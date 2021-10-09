@@ -9,7 +9,7 @@
 /* Results text */
 #results {
     margin: 0 0 0 15%;
-    font-size: 14px;
+    font-size: 22px;
 }
 
 /* Listings div with all the business listings */
@@ -27,10 +27,8 @@
 @media screen and (max-width: 1064px) {
     /* Put listings and map in a column */
     #searchResultsDiv {
-        display: flex;
         justify-content: space-around;
         flex-flow: column;
-        margin: 0 15% 5% 15%;
     }
 
     /* Space between listings and map */

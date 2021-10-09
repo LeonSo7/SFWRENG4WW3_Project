@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import '../../styles/App.css';
-import '../../styles/pages/BusinessPage.css'
+import '../../styles/pages/Individual_Sample.css'
 import Review5 from '../../components/reviews/Review5';
 import map from '../../assets/images/map.jpg';
 
 //Business page showing info for Coco Gelato
-class BusinessPage2 extends Component {
+class Individual_Sample_2 extends Component {
 
     render() {
         return (
@@ -40,4 +40,4 @@ class BusinessPage2 extends Component {
     }
 }
 
-export default BusinessPage2;
+export default Individual_Sample_2;

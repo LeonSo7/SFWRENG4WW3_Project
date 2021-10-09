@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import '../styles/App.css';
-import '../styles/pages/AddBusinessPage.css'
+import '../styles/pages/Submission.css'
 
 //Form to add a new business to the site
-class AddBusinessPage extends Component {
+class Submission extends Component {
   render() {
     return (
       <div className="wrapper">
@@ -51,4 +51,4 @@ class AddBusinessPage extends Component {
   }
 }
 
-export default AddBusinessPage;
+export default Submission;

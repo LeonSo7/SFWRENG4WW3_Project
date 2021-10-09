@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
-import '../styles/pages/HomePage.css';
+import '../styles/pages/Search.css';
 import SearchBar from '../components/SearchBar';
 import { Dropdown } from 'react-bootstrap';
 import ScoopsSloganImg from '../assets/images/scoops.png';
 import ThreeConesImg from '../assets/images/three-cones.png';
 
-//The home page with search bar
-class HomePage extends Component {
+//The search page with search bar
+class Search extends Component {
   render() {
     return (
       <div className="wrapper">
@@ -48,4 +48,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default Search;
