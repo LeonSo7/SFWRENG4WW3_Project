@@ -13,6 +13,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CommonHeader from './components/CommonHeader';
 import Footer from './components/CommonFooter';
 
+require('dotenv').config();
+
 class App extends Component {
 
   render() {
