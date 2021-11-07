@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import '../styles/App.css';
 import '../styles/pages/Results_Sample.css';
 import SearchBar from '../components/SearchBar';
-import SearchListing from '../components/searchListings/SearchListing';
-import SearchListing2 from '../components/searchListings/SearchListing2';
-import SearchListing3 from '../components/searchListings/SearchListing3';
+import SearchListing from '../components/SearchListing';
 
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
@@ -34,19 +32,28 @@ class Results_Sample extends Component {
         lat: props.location.state.currentLat,
         lng: props.location.state.currentLng
       },
-      allMarkers: {
+      searchResults: {
         0: {
           store: "FruitYoyo",
+          location: "1 Sixth Street, Hamilton, Ontario L2C1H3",
+          averageRating: 4,
+          path: "fruityoyo",
           lat: 43.262342,
-          lng: -79.9234
+          lng: -79.9234,
         },
         1: {
           store: "Coco Gelato",
+          location: "81 Nineth Street, Hamilton, ON L9H2B1",
+          averageRating: 3.5,
+          path: "coco-gelato",
           lat: 43.2658,
           lng: -79.92545
         },
         2: {
           store: "Emily's Ice Cream Parlour",
+          location: "200 Sixteenth Street, L2C4H5 Hamilton Ontario",
+          averageRating: 4,
+          path: "emilys-ice-cream-parlour",
           lat: 43.2612,
           lng: -79.92
         }
@@ -88,9 +95,11 @@ class Results_Sample extends Component {
         <div id="searchResultsDiv">
             <div id="listingsDiv">
                 {/* Search results from user query */}
-                <SearchListing/>
-                <SearchListing2/>
-                <SearchListing3/>
+                {
+                Object.values(this.state.searchResults).map(info => (
+                  <SearchListing storeInfo={info}/>
+                ))
+              }
             </div>
             {/* Map */}
             <Map
@@ -105,7 +114,7 @@ class Results_Sample extends Component {
               }}
             >
               {
-                Object.values(this.state.allMarkers).map(info => (
+                Object.values(this.state.searchResults).map(info => (
                   <Marker 
                     name={info.store}
                     position = {{

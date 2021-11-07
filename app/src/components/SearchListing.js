@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../styles/components/SearchListing.css';
+import '../styles/components/SearchListing.css';
 import { Link } from 'react-router-dom';
 
 class SearchListing extends Component {
@@ -8,12 +8,12 @@ class SearchListing extends Component {
             <Link 
                 className="searchListingLink"
                 to={{
-                    pathname: "/emilys-ice-cream-parlour",
+                    pathname: `/${this.props.storeInfo.path}`,
                 }}>
                 <div className="listingDiv">                   
-                    <h1 id="name">Emily's Ice Cream Parlour</h1>
-                    <h2 id="rating">200 Sixteenth Street, Hamilton, ON L2C4H5</h2>
-                    <h2 id="rating">Rating: 4</h2>
+                    <h1 id="name">{this.props.storeInfo.store}</h1>
+                    <h2 id="rating">{this.props.storeInfo.location}</h2>
+                    <h2 id="rating">Rating: {this.props.storeInfo.averageRating}</h2>
                 </div>
             </Link>
         );
