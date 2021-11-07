@@ -25,14 +25,31 @@ class Results_Sample extends Component {
     super(props)
 
     this.state = {
-      initialLat: 43.261,
-      initialLng: -79.9225,
+      initialLat: 43.263,
+      initialLng: -79.921,
       activeMarkers: {},
       showInfo: false,
       //the user's geolocation or null if not searching by geolocation
       geoLocation: {
         lat: props.location.state.currentLat,
         lng: props.location.state.currentLng
+      },
+      allMarkers: {
+        0: {
+          store: "FruitYoyo",
+          lat: 43.262342,
+          lng: -79.9234
+        },
+        1: {
+          store: "Coco Gelato",
+          lat: 43.2658,
+          lng: -79.92545
+        },
+        2: {
+          store: "Emily's Ice Cream Parlour",
+          lat: 43.2612,
+          lng: -79.92
+        }
       }
     }
   }
@@ -43,6 +60,8 @@ class Results_Sample extends Component {
       activeMarkers: marker,
       selected: props
     })
+    console.log(this.state.activeMarkers)
+
   }
 
   onMarkerClose = () => {
@@ -85,34 +104,26 @@ class Results_Sample extends Component {
                   lng: this.state.initialLng
               }}
             >
-              <Marker 
-                position = {{
-                  lat: this.state.initialLat,
-                  lng: this.state.initialLng
-                }} 
-                onClick={this.onMarkerClick.bind(this)}
-              />
-              {/* <Marker 
-                lat = {43.77714113246414}
-                lng = {-80}
-                onClick={this.onMarkerClick.bind(this)}
-              /> */}
-              {/* <Marker 
-                position = {{
-                  lat: 43.77714113246414,
-                  lng: -79.9225
-                }} 
-                // lat = {43.77714113246414}
-                // lng = {-79.9225}
-                onClick={this.onMarkerClick.bind(this)}
-              /> */}
+              {
+                Object.values(this.state.allMarkers).map(info => (
+                  <Marker 
+                    name={info.store}
+                    position = {{
+                      lat: info.lat,
+                      lng: info.lng
+                    }} 
+                    onClick={this.onMarkerClick.bind(this)}
+                  />
+                ))
+                
+              }
               <InfoWindow
                 marker={this.state.activeMarkers}
                 visible={this.state.showInfo}
                 onClose={this.onMarkerClose.bind(this)}
                 >
                 <div>
-                  <strong>Ice cream shop</strong>
+                  <strong>{this.state.activeMarkers.name}</strong>
                   <div>
                   Click for more info
                   </div>
