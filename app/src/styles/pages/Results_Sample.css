@@ -15,13 +15,19 @@
 /* Listings div with all the business listings */
 #listingsDiv {
     margin-right: 5%;
-    width: 55%;
+    width: 40%;
 }
 
 /* Search bar at the top of the page */
 #searchPageSearchBarDiv {
     margin: 3% 0 3% 0;
 }
+
+/* #mainMap {
+    position: relative;  
+    width: 41px !important;
+    height: 350px !important;
+} */
 
 /* On screens that are 1064px or less */
 @media screen and (max-width: 1064px) {
@@ -37,8 +43,9 @@
         margin-bottom: 5%;
     }
 
-    #mainMap {
+    /* #mainMap {
+        position: relative;  
         width: 100%;
-        height: auto;
-    }
-  }
+        height: 100%;
+    } */
+}
