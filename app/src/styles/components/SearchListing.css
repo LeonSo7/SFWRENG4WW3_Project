@@ -1,11 +1,11 @@
 /* Styling for each listing in the search page*/
 .listingDiv {
-    padding: 5% 5% 5% 5%;
+    padding: 12px;
     border-radius: 3px;
     border: 1px solid #ececec;
     text-decoration: none;
     color: black;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
 }
 
 /* Hover shadow for each listing */

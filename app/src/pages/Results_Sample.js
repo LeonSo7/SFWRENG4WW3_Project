@@ -3,19 +3,7 @@ import '../styles/App.css';
 import '../styles/pages/Results_Sample.css';
 import SearchBar from '../components/SearchBar';
 import SearchListing from '../components/SearchListing';
-
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-
-const containerStyle = {
-  position: 'relative',  
-  width: '100%',
-  height: '100%'
-}
-
-const style = {
-  width: '100%',
-  height: '100%'
-}
+import Map from '../components/Map';
 
 //A Sample search results page
 class Results_Sample extends Component {
@@ -61,91 +49,39 @@ class Results_Sample extends Component {
     }
   }
 
-  onMarkerClick = (props, marker, e) => {
-    this.setState({
-      showInfo: true, 
-      activeMarkers: marker,
-      selected: props
-    })
-    console.log(this.state.activeMarkers)
-
-  }
-
-  onMarkerClose = () => {
-    this.setState({
-      showInfo: false, 
-      activeMarkers: {}
-    })
-  }
-
   render() {
-
     return (
-      
       <div className="wrapper">
         <div id="searchPageSearchBarDiv">
           <SearchBar/>
         </div>
+
+        {/* Display the geolocation value if it is searched using geolocation */}
         { this.state.geoLocation.lat != null && this.state.geoLocation.lng != null ?
         <h1 id="results"> Current Location: Latitude {this.state.geoLocation.lat}, Longitude {this.state.geoLocation.lng} </h1>
          :
         <div/>
         }
+
         <h1 id="results">Results</h1>
+
         <div id="searchResultsDiv">
+            <div>
+                <Map param={this.state}/>
+            </div>
             <div id="listingsDiv">
-                {/* Search results from user query */}
                 {
+                /* Search results from user query */
                 Object.values(this.state.searchResults).map(info => (
                   <SearchListing storeInfo={info}/>
                 ))
               }
             </div>
-            {/* Map */}
-            <Map
-              id="mainMap"
-              containerStyle={containerStyle}
-              style={style}
-              google={window.google}
-              zoom={15}
-              initialCenter={{
-                  lat: this.state.initialLat,
-                  lng: this.state.initialLng
-              }}
-            >
-              {
-                Object.values(this.state.searchResults).map(info => (
-                  <Marker 
-                    name={info.store}
-                    position = {{
-                      lat: info.lat,
-                      lng: info.lng
-                    }} 
-                    onClick={this.onMarkerClick.bind(this)}
-                  />
-                ))
-                
-              }
-              <InfoWindow
-                marker={this.state.activeMarkers}
-                visible={this.state.showInfo}
-                onClose={this.onMarkerClose.bind(this)}
-                >
-                <div>
-                  <strong>{this.state.activeMarkers.name}</strong>
-                  <div>
-                  Click for more info
-                  </div>
-                </div>
-              </InfoWindow>
-            </Map>
         </div>
     </div>
     );
   }
 }
 
-export default GoogleApiWrapper({
-  // apiKey: ("")
-}) (Results_Sample);
+export default Results_Sample;
 

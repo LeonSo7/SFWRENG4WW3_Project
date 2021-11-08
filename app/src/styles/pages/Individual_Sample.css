@@ -5,13 +5,17 @@
     margin-right: 15%;
     margin-left: 15%;
     display: flex;
-    justify-content: space-between;
     flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+#info {
+    margin-bottom: 1%;
 }
 
 /* Store reviews at bottom of page */
 #reviews {
-    margin-top: 5%;
+    margin-top: 5vh;
     margin-right: 15%;
     margin-left: 15%;
 }   
@@ -39,16 +43,13 @@
     margin: 0 0 2% 0;
 }
 
-/* Store map styling */
-#businessMap {
-    width: 100%;
-    height: auto;
-}
-
 /* On screens that are 600px or less */
 @media screen and (max-width: 600px) {
     /* Space between the store info and map */
     #info {
         margin-bottom: 5%;
     }
+    #reviews {
+        margin-top: 30vh;
+    }       
   }
