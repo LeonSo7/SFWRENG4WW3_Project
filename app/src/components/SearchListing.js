@@ -8,7 +8,7 @@ class SearchListing extends Component {
             <Link 
                 className="searchListingLink"
                 to={{
-                    pathname: `/${this.props.storeInfo.path}`,
+                    pathname: `/${this.props.storeInfo.path}`
                 }}>
                 <div className="listingDiv">                   
                     <h1 id="name">{this.props.storeInfo.store}</h1>

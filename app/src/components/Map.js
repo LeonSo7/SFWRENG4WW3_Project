@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Link } from 'react-router-dom';
 
 const containerStyle = {
   position: "relative",
@@ -23,6 +24,7 @@ class MapComponent extends Component {
     }
   }
 
+    /*Method to change the state when the marker on the map is clicked*/
     onMarkerClick = (props, marker, e) => {
       this.setState({
         showInfo: true, 
@@ -31,6 +33,7 @@ class MapComponent extends Component {
       })
     }
 
+    /*Method to change the state when the marker info is closed*/
     onMarkerClose = () => {
       this.setState({
         showInfo: false, 
@@ -57,6 +60,9 @@ class MapComponent extends Component {
               Object.values(this.state.searchResults).map(info => (
                 <Marker 
                   name={info.store}
+                  averageRating={info.averageRating}
+                  location={info.location}
+                  path={info.path}
                   position = {{
                     lat: info.lat,
                     lng: info.lng
@@ -80,12 +86,27 @@ class MapComponent extends Component {
               visible={this.state.showInfo}
               onClose={this.onMarkerClose.bind(this)}
               >
-              <div>
-                <strong>{this.state.activeMarkers.name}</strong>
                 <div>
-                Click for more info
-                </div>
+                  <strong>{this.state.activeMarkers.name}</strong>
+
+                  
+                  { //Only show this information for the search results page
+                  this.state.activeMarkers.averageRating != null && this.state.activeMarkers.location != null && this.state.activeMarkers.path != null ?
+                  <div>
+                    <div>
+                      Average Rating: {this.state.activeMarkers.averageRating}
+                    </div>
+                    <div>
+                      Location: {this.state.activeMarkers.location}
+                    </div>
+                    {console.log(this.state.activeMarkers.path)}
+                    <a href="./business"> Store Details</a>
+                  </div>
+                :
+                <div/>
+                }
               </div>
+
             </InfoWindow>
           </Map>
         </div> 

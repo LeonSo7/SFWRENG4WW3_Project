@@ -10,6 +10,8 @@ class Results_Sample extends Component {
   constructor(props) {
     super(props)
 
+    // console.log(props.location)
+
     this.state = {
       initialLat: 43.263,
       initialLng: -79.921,

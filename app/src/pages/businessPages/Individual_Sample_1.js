@@ -9,7 +9,7 @@ class Individual_Sample_1 extends Component {
 
     state = {
         storeName: "Emily's Ice Cream Parlour",
-        storeAddress: "200 Sixteenth Street, L2C4H5 Hamilton Ontario",
+        location: "200 Sixteenth Street, L2C4H5 Hamilton Ontario",
         hours: { Sun: "12:00pm-10:00pm", Mon: "Closed", Tues: "12:00pm-10:00pm", Wed: "12:00pm-10:00pm", Thurs: "12:00pm-10:00pm", Fri: "12:00pm-11:00pm", Sat: "12:00pm-11:00pm"},
         reviewerName: ["Hanna", "Lin"],
         rating: [4, 5],
@@ -27,7 +27,7 @@ class Individual_Sample_1 extends Component {
                 <div id="storeInfoDiv">
                     <div id="info">
                         <p id="storeName">{this.state.storeName}</p>
-                        <p id="location">{this.state.storeAddress}</p>
+                        <p id="location">{this.state.location}</p>
                         <p id="averageRating">Average Rating: {this.state.averageRating}</p>
                         <div>
                             <p className="hours"><b>Sunday:</b> {this.state.hours.Sun}</p>
