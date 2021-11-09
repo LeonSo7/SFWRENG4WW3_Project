@@ -6,7 +6,7 @@ import { Dropdown } from 'react-bootstrap';
 import ScoopsSloganImg from '../assets/images/scoops.png';
 import ThreeConesImg from '../assets/images/three-cones.png';
 
-//The search page with search bar
+// The search page with search bar
 class Search extends Component {
   render() {
     return (

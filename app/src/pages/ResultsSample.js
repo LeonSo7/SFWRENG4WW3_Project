@@ -5,7 +5,7 @@ import SearchBar from '../components/SearchBar';
 import SearchListing from '../components/SearchListing';
 import Map from '../components/Map';
 
-//A Sample search results page
+// A Sample search results page
 class ResultsSample extends Component {
   constructor(props) {
     super(props)
@@ -17,7 +17,7 @@ class ResultsSample extends Component {
       initialLng: -79.921,
       activeMarkers: {},
       showInfo: false,
-      //the user's geolocation or null if not searching by geolocation
+      // The user's geolocation or null if not searching by geolocation
       geoLocation: {
         lat: props.location.state.currentLat,
         lng: props.location.state.currentLng

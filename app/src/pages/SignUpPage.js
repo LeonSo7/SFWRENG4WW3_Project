@@ -3,7 +3,7 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/SignUpPage.css'
 
-//Sign up page
+// Sign up page
 class SignUpPage extends Component {
 
     constructor(props) {
@@ -102,7 +102,6 @@ class SignUpPage extends Component {
         // Formatting for more than 4 characters entered; restrict to 6 character input
         return `${postalCode.slice(0, 3)} ${postalCode.slice(3,6)}`;
     };
-
 
     render() {
         return (

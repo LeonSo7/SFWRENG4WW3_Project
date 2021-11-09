@@ -4,7 +4,7 @@ import '../../styles/pages/IndividualSample.css'
 import Review from '../../components/Review';
 import Map from '../../components/Map';
 
-//Business page showing info for FruitYoyo
+// Business page showing info for FruitYoyo
 class IndividualSample3 extends Component {
 
     state = {

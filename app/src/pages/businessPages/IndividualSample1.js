@@ -4,7 +4,7 @@ import '../../styles/pages/IndividualSample.css'
 import Review from '../../components/Review';
 import Map from '../../components/Map';
 
-//Business page showing info for Emily's Ice Cream Parlor
+// Business page showing info for Emily's Ice Cream Parlor
 class IndividualSample1 extends Component {
 
     state = {

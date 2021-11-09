@@ -4,7 +4,7 @@ import '../../styles/pages/IndividualSample.css'
 import Review from '../../components/Review';
 import Map from '../../components/Map';
 
-//Business page showing info for Coco Gelato
+// Business page showing info for Coco Gelato
 class IndividualSample2 extends Component {
 
     state = {

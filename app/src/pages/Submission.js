@@ -3,7 +3,7 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/Submission.css'
 
-//Form to add a new business to the site
+// Form to add a new business to the site
 class Submission extends Component {
   render() {
     return (

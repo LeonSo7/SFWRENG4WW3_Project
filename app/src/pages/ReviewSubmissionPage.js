@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/ReviewSubmissionPage.css'
 
-//Form to submit a review for a business 
+// Form to submit a review for a business 
 class ReviewSubmissionPage extends Component {
   render() {
     return (
