@@ -10,15 +10,18 @@ class SignUpPage extends Component {
         super(props);
         this.state = {
             validated: false,
-            phoneNumberInputValue: ""
+            phoneNumberInputValue: "",
+            firstNameInputValue: "",
+            lastNameInputValue: "",
+            postalCodeInputValue: ""
         };
     }
 
-    handleSubmit (event) {
-        const form = event.currentTarget;
+    handleSubmit (e) {
+        const form = e.currentTarget;
         if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
+          e.preventDefault();
+          e.stopPropagation();
         }
     
         this.setState({
@@ -26,12 +29,35 @@ class SignUpPage extends Component {
         });
     };
 
-    handlePhoneNumberInput = (e) => {
+    handleFirstNameInput (e) {
+        // Restrict input to only characters
+        var processed = e.target.value.replace(/[0-9]/g, '');
+        this.setState({
+            firstNameInputValue: processed
+        });
+    }
+
+    handleLastNameInput (e) {
+        // Restrict input to only characters
+        var processed = e.target.value.replace(/[0-9]/g, '');
+        this.setState({
+            lastNameInputValue: processed
+        });
+    }
+
+    handlePhoneNumberInput (e) {
         var formatted = this.formatPhoneNumber(e.target.value);
         this.setState({
             phoneNumberInputValue: formatted
         });
       };
+
+    handlePostalCodeInput (e) {
+        var formatted = this.formatPostalCode(e.target.value);
+        this.setState({
+            postalCodeInputValue: formatted
+        });
+    }
 
     // Format phone number input to (###) ###-####
     formatPhoneNumber(phoneNumber) {
@@ -58,6 +84,26 @@ class SignUpPage extends Component {
         return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3,6)}-${phoneNumber.slice(6, 10)}`;
     };
 
+    // Format postal code input to A#A #A#
+    formatPostalCode(postalCode) {
+        // If input is empty (e.g., user deletes the phone number)
+        if (!postalCode) {
+            return postalCode;
+        }
+        
+        // Remove spaces and to uppercase for processing
+        postalCode = postalCode.replace(/ /g,'').toUpperCase();;
+        
+        // Only apply formatting when the number of characters entered is greater than 3
+        if (postalCode.length <= 3) {
+            return postalCode;
+        }
+
+        // Formatting for more than 4 characters entered; restrict to 6 character input
+        return `${postalCode.slice(0, 3)} ${postalCode.slice(3,6)}`;
+    };
+
+
     render() {
         return (
             <div class="wrapper">
@@ -72,13 +118,25 @@ class SignUpPage extends Component {
                             <Col>
                                 <Form.Group className="mb-3" controlId="formFirstName">
                                     <Form.Label>First Name</Form.Label>
-                                    <Form.Control type="text" placeholder="First name" required/>
+                                    <Form.Control 
+                                        type="text" 
+                                        placeholder="First name" 
+                                        required
+                                        onChange={(e) => this.handleFirstNameInput(e)} 
+                                        value={this.state.firstNameInputValue}
+                                    />
                                 </Form.Group>
                             </Col>
                             <Col>
                             <Form.Group className="mb-3" controlId="formLastName">
                                     <Form.Label>Last Name</Form.Label>
-                                    <Form.Control type="text" placeholder="Last name" required/>
+                                    <Form.Control 
+                                        type="text" 
+                                        placeholder="Last name" 
+                                        required
+                                        onChange={(e) => this.handleLastNameInput(e)} 
+                                        value={this.state.lastNameInputValue}
+                                    />
                                 </Form.Group>
                             </Col>
                         </Row>
@@ -110,13 +168,28 @@ class SignUpPage extends Component {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" required/>
+                            <Form.Control 
+                                type="password" 
+                                placeholder="Password" 
+                                required
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$"
+                            />
+                            <Form.Control.Feedback type="invalid">
+                                Password must be between 8 and 15 characters long, contain at least one numeric digit, contain at least one uppercase letter, contain at least one lowercase letter, and at least one special character.
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formPostalCode">
                             <Form.Label>Postal Code</Form.Label>
-                            <Form.Control type="text" placeholder="Enter postal code" required/>
+                            <Form.Control 
+                                type="text" 
+                                placeholder="Enter postal code" 
+                                required
+                                onChange={(e) => this.handlePostalCodeInput(e)} 
+                                value={this.state.postalCodeInputValue}
+                                pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]"
+                            />
                             <Form.Control.Feedback type="invalid">
-                                Please enter a valid postal code.
+                                Please enter a valid Canadian postal code.
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Button variant="primary" type="submit">
