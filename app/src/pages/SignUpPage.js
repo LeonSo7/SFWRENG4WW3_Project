@@ -72,7 +72,7 @@ class SignUpPage extends Component {
                             <Col>
                                 <Form.Group className="mb-3" controlId="formFirstName">
                                     <Form.Label>First Name</Form.Label>
-                                    <Form.Control type="text" placeholder="First name" pattern="[A-Za-z]" required/>
+                                    <Form.Control type="text" placeholder="First name" required/>
                                 </Form.Group>
                             </Col>
                             <Col>
