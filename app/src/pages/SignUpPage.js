@@ -18,27 +18,27 @@ class SignUpPage extends Component {
     }
 
     // Handle for submission and validation state
-    handleSubmit (e) {
+    handleSubmit(e) {
         const form = e.currentTarget;
         if (form.checkValidity() === false) {
-          e.preventDefault();
-          e.stopPropagation();
+            e.preventDefault();
+            e.stopPropagation();
         }
-    
+
         this.setState({
             validated: true
         });
     };
 
-    handleFirstNameInput (e) {
+    handleFirstNameInput(e) {
         // Restrict input to only characters
         var processed = e.target.value.replace(/[0-9]/g, '');
         this.setState({
             firstNameInputValue: processed
         });
-    }
+    }ß
 
-    handleLastNameInput (e) {
+    handleLastNameInput(e) {
         // Restrict input to only characters
         var processed = e.target.value.replace(/[0-9]/g, '');
         this.setState({
@@ -46,14 +46,14 @@ class SignUpPage extends Component {
         });
     }
 
-    handlePhoneNumberInput (e) {
+    handlePhoneNumberInput(e) {
         var formatted = this.formatPhoneNumber(e.target.value);
         this.setState({
             phoneNumberInputValue: formatted
         });
-      };
+    };
 
-    handlePostalCodeInput (e) {
+    handlePostalCodeInput(e) {
         var formatted = this.formatPostalCode(e.target.value);
         this.setState({
             postalCodeInputValue: formatted
@@ -66,10 +66,10 @@ class SignUpPage extends Component {
         if (!phoneNumber) {
             return phoneNumber;
         }
-        
+
         // Remove any non-digit characters (restrict user to only entering digits)
         phoneNumber = phoneNumber.replace(/[^\d]/g, "");
-        
+
         // Only apply formatting when the phone number is greater than just area code (i.e., more than 3 digits)
         if (phoneNumber.length <= 3) {
             return phoneNumber;
@@ -79,10 +79,10 @@ class SignUpPage extends Component {
         if (phoneNumber.length <= 6) {
             return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
         }
-        
+
         // Formatting for 7-10 digits entered
         // Restrict input to 7 digits only (if user enters more, we will remove it)
-        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3,6)}-${phoneNumber.slice(6, 10)}`;
+        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
     };
 
     // Format postal code input to A#A #A#
@@ -91,24 +91,24 @@ class SignUpPage extends Component {
         if (!postalCode) {
             return postalCode;
         }
-        
+
         // Remove spaces and to uppercase for processing
-        postalCode = postalCode.replace(/ /g,'').toUpperCase();;
-        
+        postalCode = postalCode.replace(/ /g, '').toUpperCase();;
+
         // Only apply formatting when the number of characters entered is greater than 3
         if (postalCode.length <= 3) {
             return postalCode;
         }
 
         // Formatting for more than 4 characters entered; restrict to 6 character input
-        return `${postalCode.slice(0, 3)} ${postalCode.slice(3,6)}`;
+        return `${postalCode.slice(0, 3)} ${postalCode.slice(3, 6)}`;
     };
 
     render() {
         return (
             <div class="wrapper">
                 <div id="signUpPageTitleDiv">
-                <h1>Sign up today!</h1>
+                    <h1>Sign up today!</h1>
                 </div>
 
                 {/* User registration form for sign up */}
@@ -118,23 +118,23 @@ class SignUpPage extends Component {
                             <Col>
                                 <Form.Group className="mb-3" controlId="formFirstName">
                                     <Form.Label>First Name</Form.Label>
-                                    <Form.Control 
-                                        type="text" 
-                                        placeholder="First name" 
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="First name"
                                         required
-                                        onChange={(e) => this.handleFirstNameInput(e)} 
+                                        onChange={(e) => this.handleFirstNameInput(e)}
                                         value={this.state.firstNameInputValue}
                                     />
                                 </Form.Group>
                             </Col>
                             <Col>
-                            <Form.Group className="mb-3" controlId="formLastName">
+                                <Form.Group className="mb-3" controlId="formLastName">
                                     <Form.Label>Last Name</Form.Label>
-                                    <Form.Control 
-                                        type="text" 
-                                        placeholder="Last name" 
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Last name"
                                         required
-                                        onChange={(e) => this.handleLastNameInput(e)} 
+                                        onChange={(e) => this.handleLastNameInput(e)}
                                         value={this.state.lastNameInputValue}
                                     />
                                 </Form.Group>
@@ -142,11 +142,11 @@ class SignUpPage extends Component {
                         </Row>
                         <Form.Group className="mb-3" controlId="formPhone">
                             <Form.Label type="tel">Phone</Form.Label>
-                            <Form.Control 
-                                type="tel" 
-                                placeholder="Enter phone number" 
-                                required 
-                                onChange={(e) => this.handlePhoneNumberInput(e)} 
+                            <Form.Control
+                                type="tel"
+                                placeholder="Enter phone number"
+                                required
+                                onChange={(e) => this.handlePhoneNumberInput(e)}
                                 value={this.state.phoneNumberInputValue}
                                 pattern="^\(\d{3}\)\s\d{3}-\d{4}"
                             />
@@ -156,21 +156,21 @@ class SignUpPage extends Component {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formEmail">
                             <Form.Label>Email Address</Form.Label>
-                            <Form.Control 
-                                type="email" 
-                                placeholder="Enter email" 
+                            <Form.Control
+                                type="email"
+                                placeholder="Enter email"
                                 required
                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                                />
+                            />
                             <Form.Control.Feedback type="invalid">
                                 Please enter a valid email address.
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control 
-                                type="password" 
-                                placeholder="Password" 
+                            <Form.Control
+                                type="password"
+                                placeholder="Password"
                                 required
                                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$"
                             />
@@ -180,11 +180,11 @@ class SignUpPage extends Component {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formPostalCode">
                             <Form.Label>Postal Code</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                placeholder="Enter postal code" 
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter postal code"
                                 required
-                                onChange={(e) => this.handlePostalCodeInput(e)} 
+                                onChange={(e) => this.handlePostalCodeInput(e)}
                                 value={this.state.postalCodeInputValue}
                                 pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]"
                             />
@@ -199,7 +199,7 @@ class SignUpPage extends Component {
                 </div>
             </div>
         );
-  }
+    }
 }
 
 export default SignUpPage;
