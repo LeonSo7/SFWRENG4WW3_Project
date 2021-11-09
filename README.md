@@ -1,6 +1,6 @@
 # COMPSCI 4WW3 Project: Scoops
 
-Scoops is a website that allows users to browse for ice cream shops, and contribute through writing reviews.
+Scoops is a web application that allows users to browse for ice cream shops, and contribute through writing reviews.
 
 Course Name: Web Computing and Web Systems
 
