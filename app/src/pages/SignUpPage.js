@@ -17,6 +17,7 @@ class SignUpPage extends Component {
         };
     }
 
+    // Handle for submission and validation state
     handleSubmit (e) {
         const form = e.currentTarget;
         if (form.checkValidity() === false) {

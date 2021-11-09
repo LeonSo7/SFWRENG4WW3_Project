@@ -12,3 +12,24 @@
     margin-left: 10%;
     margin-right: 10%;
 }
+
+/* Disable increment and decrement arrows on number text inputs */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Use .preventValidation class for optional fields -- override validation styling */
+.was-validated .preventValidation.form-control:valid,
+.preventValidation.form-control.is-valid {
+  padding: 0.375rem 0.75rem;
+  border-color: #ced4da;
+  background-image: none;
+}
