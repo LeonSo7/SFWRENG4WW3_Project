@@ -10,7 +10,7 @@ Member 1: Leon So, 400127468, sol4
 
 Member 2: Joy Xiao, 400125285, xiaoz18
 
-Demo: http://3.19.199.96/
+Demo: https://insidescoops.live/
 
 Notes to marker:
 - To reach the search results page, please click the search bar button from the home page.
