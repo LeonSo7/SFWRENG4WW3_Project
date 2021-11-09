@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/Submission.css'
+import { TiLocationArrowOutline } from 'react-icons/ti';
 
 // Form to add a new business to the site
 class Submission extends Component {
@@ -9,7 +10,12 @@ class Submission extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            validated: false
+            validated: false,
+            coordinates: {
+                latitude: "",
+                longitude: ""
+            },
+            geolocationStatus: "Locate me"
         };
     }
 
@@ -23,6 +29,48 @@ class Submission extends Component {
 
         this.setState({
             validated: true
+        });
+    };
+
+    getLocation() {
+        if (!navigator.geolocation) {
+            this.setState({
+                geolocationStatus: "Geolocation is not supported by your browser"
+            });
+        } else {
+            this.setState({
+                geolocationStatus: "Retrieving location..."
+            });
+            navigator.geolocation.getCurrentPosition((position) => {
+                this.setState({
+                    geolocationStatus: "Locate me",
+                    coordinates: {
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude
+                    }
+                })
+                console.log(position.coords);
+            }, () => {
+                this.setState({
+                    geolocationStatus: "Unable to retrieve your location"
+                });
+            });
+        }
+    };
+
+    handleLongitudeInput(e) {
+        this.setState({
+            coordinates: {
+                longitude: e.target.value
+            }
+        });
+    };
+
+    handleLatitudeInput(e) {
+        this.setState({
+            coordinates: {
+                latitude: e.target.value
+            }
         });
     };
 
@@ -46,22 +94,39 @@ class Submission extends Component {
                         </Form.Group>
                         <Form.Group controlId="formReviewPhotoUpload" className="mb-3">
                             <Form.Label>Add photos of business</Form.Label>
-                            <Form.Control type="file" multiple accept=".jpg,.jpeg,.png"/>
+                            <Form.Control type="file" multiple accept=".jpg,.jpeg,.png" />
                         </Form.Group>
                         <Row>
                             <Col>
                                 <Form.Group className="mb-3" controlId="formLatitude">
                                     <Form.Label>Latitude</Form.Label>
-                                    <Form.Control type="number" step="any" placeholder="Latitude" required />
+                                    <Form.Control
+                                        type="number"
+                                        step="any"
+                                        placeholder="Latitude"
+                                        required
+                                        onChange={(e) => this.handleLatitudeInput(e)}
+                                        value={this.state.coordinates.latitude}
+                                    />
                                 </Form.Group>
                             </Col>
                             <Col>
                                 <Form.Group className="mb-3" controlId="formLongitude">
                                     <Form.Label>Longitude</Form.Label>
-                                    <Form.Control type="number" step="any" placeholder="Longitude" required />
+                                    <Form.Control
+                                        type="number"
+                                        step="any"
+                                        placeholder="Longitude"
+                                        required
+                                        onChange={(e) => this.handleLongitudeInput(e)}
+                                        value={this.state.coordinates.longitude}
+                                    />
                                 </Form.Group>
                             </Col>
                         </Row>
+                        <div id="geoLocationDiv" onClick={this.getLocation.bind(this)}>
+                                    <TiLocationArrowOutline size={20} /> {this.state.geolocationStatus}
+                        </div>
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>

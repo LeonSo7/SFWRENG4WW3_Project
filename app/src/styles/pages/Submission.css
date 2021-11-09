@@ -13,6 +13,15 @@
     margin-right: 10%;
 }
 
+#geoLocationDiv {
+  vertical-align: center;
+  margin-bottom: 20px;
+}
+
+#geoLocationDiv:hover {
+  color: #1266F1;
+}
+
 /* Disable increment and decrement arrows on number text inputs */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -24,4 +33,14 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+  #geoLocationDiv {
+    vertical-align: center;
+    /* margin-top: 36px; */
+    margin-top: 0;
+    margin-bottom: 20px;
+  } 
 }
