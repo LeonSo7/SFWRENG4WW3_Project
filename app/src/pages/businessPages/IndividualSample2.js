@@ -10,14 +10,15 @@ class IndividualSample2 extends Component {
     state = {
         storeName: "Coco Gelato",
         location: "81 Nineth Street, Hamilton, ON L9H2B1",
-        hours: { 
-            Sun: "12:00pm-10:00pm", 
-            Mon: "Closed", 
-            Tues: "12:00pm-10:00pm", 
-            Wed: "12:00pm-10:00pm", 
-            Thurs: "12:00pm-10:00pm", 
-            Fri: "12:00pm-11:00pm", 
-            Sat: "12:00pm-11:00pm"},
+        hours: {
+            Sun: "12:00pm-10:00pm",
+            Mon: "Closed",
+            Tues: "12:00pm-10:00pm",
+            Wed: "12:00pm-10:00pm",
+            Thurs: "12:00pm-10:00pm",
+            Fri: "12:00pm-11:00pm",
+            Sat: "12:00pm-11:00pm"
+        },
         reviewerName: ["Lannie King"],
         rating: [3.5],
         averageRating: 3.5,
@@ -46,18 +47,18 @@ class IndividualSample2 extends Component {
                             <p className="hours"><b>Saturday:</b> {this.state.hours.Sat}</p>
                         </div>
                     </div>
-                
+
                     {/* Map showing location of business */}
                     <div id="businessMap">
-                        <Map param={this.state}/>
+                        <Map param={this.state} />
                     </div>
                 </div>
 
                 {/* Business reviews */}
                 <div id="reviews">
-                    <Review 
-                        data={this.state.reviews[0]} 
-                        reviewerName={this.state.reviewerName[0]} 
+                    <Review
+                        data={this.state.reviews[0]}
+                        reviewerName={this.state.reviewerName[0]}
                         rating={this.state.rating[0]}
                     />
                 </div>

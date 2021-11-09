@@ -5,76 +5,96 @@ import '../styles/pages/ReviewSubmissionPage.css'
 
 // Form to submit a review for a business 
 class ReviewSubmissionPage extends Component {
-  render() {
-    return (
-      <div className="wrapper">
-        <div id="reviewSubmissionPageTitleDiv">
-          <h1>Write your review!</h1>
-        </div>
+    constructor(props) {
+        super(props);
+        this.state = {
+            validated: false
+        };
+    }
 
-        {/* Review submission form */}
-        <div id="reviewFormDiv">
-            <Form>
-                <Form.Group className="mb-3" controlId="formReviewRating">
-                    <Form.Label>Select Rating</Form.Label>
-                    <div key={`inline-radio`} className="mb-3">
-                        <Form.Check
-                            inline
-                            label="1"
-                            name="ratingRadioGroup"
-                            id={`inline-radio-1`}
-                            type={'radio'}
-                        />
-                        <Form.Check
-                            inline
-                            label="2"
-                            name="ratingRadioGroup"
-                            id={`inline-radio-2`}
-                            type={'radio'}
-                        />
-                        <Form.Check
-                            inline
-                            label="3"
-                            name="ratingRadioGroup"
-                            id={`inline-radio-3`}
-                            type={'radio'}
-                        />
-                        <Form.Check
-                            inline
-                            label="4"
-                            name="ratingRadioGroup"
-                            id={`inline-radio-4`}
-                            type={'radio'}
-                        />
-                        <Form.Check
-                            inline
-                            label="5"
-                            name="ratingRadioGroup"
-                            id={`inline-radio-5`}
-                            type={'radio'}
-                        />
-                    </div>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formReviewTitle">
-                    <Form.Label>Add a title</Form.Label>
-                    <Form.Control type="text" placeholder="Review title"/>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formReviewBody">
-                <Form.Label>Add a written review</Form.Label>
-                    <Form.Control as="textarea" rows={3} placeholder="What did you like or dislike? How did it taste?"/>
-                </Form.Group>
-                <Form.Group controlId="formReviewPhotoUpload" className="mb-3">
-                    <Form.Label>Add photos to your review</Form.Label>
-                    <Form.Control type="file" multiple />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
-        </div>
-    </div>
-    );
-  }
+    // Handle for submission and validation state
+    handleSubmit(e) {
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        this.setState({
+            validated: true
+        });
+    };
+
+    render() {
+        return (
+            <div className="wrapper">
+                <div id="reviewSubmissionPageTitleDiv">
+                    <h1>Write your review!</h1>
+                </div>
+
+                {/* Review submission form */}
+                <div id="reviewFormDiv">
+                    <Form>
+                        <Form.Group className="mb-3" controlId="formReviewRating">
+                            <Form.Label>Select Rating</Form.Label>
+                            <div key={`inline-radio`} className="mb-3">
+                                <Form.Check
+                                    inline
+                                    label="1"
+                                    name="ratingRadioGroup"
+                                    id={`inline-radio-1`}
+                                    type={'radio'}
+                                />
+                                <Form.Check
+                                    inline
+                                    label="2"
+                                    name="ratingRadioGroup"
+                                    id={`inline-radio-2`}
+                                    type={'radio'}
+                                />
+                                <Form.Check
+                                    inline
+                                    label="3"
+                                    name="ratingRadioGroup"
+                                    id={`inline-radio-3`}
+                                    type={'radio'}
+                                />
+                                <Form.Check
+                                    inline
+                                    label="4"
+                                    name="ratingRadioGroup"
+                                    id={`inline-radio-4`}
+                                    type={'radio'}
+                                />
+                                <Form.Check
+                                    inline
+                                    label="5"
+                                    name="ratingRadioGroup"
+                                    id={`inline-radio-5`}
+                                    type={'radio'}
+                                />
+                            </div>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formReviewTitle">
+                            <Form.Label>Add a title</Form.Label>
+                            <Form.Control type="text" placeholder="Review title" />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formReviewBody">
+                            <Form.Label>Add a written review</Form.Label>
+                            <Form.Control as="textarea" rows={3} placeholder="What did you like or dislike? How did it taste?" />
+                        </Form.Group>
+                        <Form.Group controlId="formReviewPhotoUpload" className="mb-3">
+                            <Form.Label>Add photos to your review</Form.Label>
+                            <Form.Control type="file" multiple />
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Submit
+                        </Button>
+                    </Form>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default ReviewSubmissionPage;
