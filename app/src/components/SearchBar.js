@@ -11,7 +11,7 @@ const SearchBar = () => (
                 <Link
                     to={{
                         pathname: "/search-results",
-                        /*For testing*/
+                        /* For testing */
                         state: { currentLat: 43.2610, currentLng: null }
                     }}
                     tabIndex="-1">

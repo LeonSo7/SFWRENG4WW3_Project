@@ -9,7 +9,14 @@ class IndividualSample3 extends Component {
 
     state = {
         storeName: "FruitYoyo",
-        hours: { Sun: "12:00pm-10:00pm", Mon: "Closed", Tues: "12:00pm-10:00pm", Wed: "12:00pm-10:00pm", Thurs: "12:00pm-10:00pm", Fri: "12:00pm-11:00pm", Sat: "12:00pm-11:00pm"},
+        hours: { 
+            Sun: "12:00pm-10:00pm", 
+            Mon: "Closed", 
+            Tues: "12:00pm-10:00pm", 
+            Wed: "12:00pm-10:00pm", 
+            Thurs: "12:00pm-10:00pm", 
+            Fri: "12:00pm-11:00pm", 
+            Sat: "12:00pm-11:00pm"},
         reviewerName: ["Jenneth Pan"],
         rating: [4],
         averageRating: 4,
@@ -47,7 +54,11 @@ class IndividualSample3 extends Component {
 
                 {/* Business reviews */}
                 <div id="reviews">
-                   <Review data={this.state.reviews[0]} reviewerName={this.state.reviewerName[0]} rating={this.state.rating[0]}/>
+                    <Review 
+                        data={this.state.reviews[0]} 
+                        reviewerName={this.state.reviewerName[0]} 
+                        rating={this.state.rating[0]}
+                    />
                 </div>
 
             </div>

@@ -1,14 +1,5 @@
 import React, {Component} from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import { Link } from 'react-router-dom';
-
-const containerStyle = {
-  position: "relative",
-  padding: '.5rem .5rem',
-  marginRight: '15%',
-  width: '70vw',
-  height: '40vh'
-}
 
 class MapComponent extends Component {
   constructor(props) {
@@ -24,7 +15,7 @@ class MapComponent extends Component {
     }
   }
 
-    /*Method to change the state when the marker on the map is clicked*/
+    /* Method to change the state when the marker on the map is clicked */
     onMarkerClick = (props, marker, e) => {
       this.setState({
         showInfo: true, 
@@ -33,7 +24,7 @@ class MapComponent extends Component {
       })
     }
 
-    /*Method to change the state when the marker info is closed*/
+    /* Method to change the state when the marker info is closed */
     onMarkerClose = () => {
       this.setState({
         showInfo: false, 
@@ -55,8 +46,9 @@ class MapComponent extends Component {
             }}
           >
             { 
-            // Display multiple markers for search results page
+            
             this.state.searchResults != null ?
+              // Display multiple markers for search results page
               Object.values(this.state.searchResults).map(info => (
                 <Marker 
                   name={info.store}
@@ -90,8 +82,10 @@ class MapComponent extends Component {
                   <strong>{this.state.activeMarkers.name}</strong>
 
                   
-                  { //Only show this information for the search results page
-                  this.state.activeMarkers.averageRating != null && this.state.activeMarkers.location != null && this.state.activeMarkers.path != null ?
+                  { 
+                  // Only show this information for the search results page
+                  this.state.activeMarkers.averageRating != null && this.state.activeMarkers.location != null 
+                    && this.state.activeMarkers.path != null ?
                   <div>
                     <div>
                       Average Rating: {this.state.activeMarkers.averageRating}
@@ -99,8 +93,13 @@ class MapComponent extends Component {
                     <div>
                       Location: {this.state.activeMarkers.location}
                     </div>
-                    {console.log(this.state.activeMarkers.path)}
-                    <a href="./business"> Store Details</a>
+                
+                    {
+                      // Log the route of the business' page
+                      console.log(this.state.activeMarkers.path)
+                    }
+                    { /* Link to corresponding business */ }
+                    <a href={"./" + this.state.activeMarkers.path}> Store Details</a>
                   </div>
                 :
                 <div/>
@@ -112,6 +111,15 @@ class MapComponent extends Component {
         </div> 
       )
     }
+  }
+
+  // Container style for map
+  const containerStyle = {
+    position: "relative",
+    padding: '.5rem .5rem',
+    marginRight: '15%',
+    width: '70vw',
+    height: '40vh'
   }
 
   export default GoogleApiWrapper ({

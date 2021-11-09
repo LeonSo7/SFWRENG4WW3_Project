@@ -60,9 +60,8 @@ class ResultsSample extends Component {
 
         {/* Display the geolocation value if it is searched using geolocation */}
         { this.state.geoLocation.lat != null && this.state.geoLocation.lng != null ?
-        <h1 id="results"> Current Location: Latitude {this.state.geoLocation.lat}, Longitude {this.state.geoLocation.lng} </h1>
-         :
-        <div/>
+          <h1 id="results"> Current Location: Latitude {this.state.geoLocation.lat}, Longitude {this.state.geoLocation.lng} </h1>
+          : <div/>
         }
 
         <h1 id="results">Results</h1>

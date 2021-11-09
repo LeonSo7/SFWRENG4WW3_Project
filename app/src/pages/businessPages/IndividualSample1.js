@@ -48,8 +48,16 @@ class IndividualSample1 extends Component {
 
                 {/* Business reviews */}
                 <div id="reviews">
-                   <Review data={this.state.reviews[0]} reviewerName={this.state.reviewerName[0]} rating={this.state.rating[0]}/>
-                   <Review data={this.state.reviews[1]} reviewerName={this.state.reviewerName[1]} rating={this.state.rating[1]}/>
+                    <Review 
+                        data={this.state.reviews[0]} 
+                        reviewerName={this.state.reviewerName[0]} 
+                        rating={this.state.rating[0]}
+                    />
+                    <Review 
+                        data={this.state.reviews[1]} 
+                        reviewerName={this.state.reviewerName[1]} 
+                        rating={this.state.rating[1]}
+                    />
                 </div>
 
             </div>
