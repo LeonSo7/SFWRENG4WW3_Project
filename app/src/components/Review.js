@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../styles/components/Review.css'
+import '../styles/components/Review.css'
 
 //A Sample review for Emily's Ice Cream Parlour
 class Review extends Component {

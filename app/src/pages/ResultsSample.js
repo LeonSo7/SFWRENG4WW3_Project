@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
-import '../styles/pages/Results_Sample.css';
+import '../styles/pages/ResultsSample.css';
 import SearchBar from '../components/SearchBar';
 import SearchListing from '../components/SearchListing';
 import Map from '../components/Map';
 
 //A Sample search results page
-class Results_Sample extends Component {
+class ResultsSample extends Component {
   constructor(props) {
     super(props)
 
@@ -85,5 +85,5 @@ class Results_Sample extends Component {
   }
 }
 
-export default Results_Sample;
+export default ResultsSample;
 

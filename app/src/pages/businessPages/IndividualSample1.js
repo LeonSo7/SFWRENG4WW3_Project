@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import '../../styles/App.css';
-import '../../styles/pages/Individual_Sample.css'
-import Review from '../../components/reviews/Review';
+import '../../styles/pages/IndividualSample.css'
+import Review from '../../components/Review';
 import Map from '../../components/Map';
 
-//Business page showing info for FruitYoyo
-class Individual_Sample_3 extends Component {
+//Business page showing info for Emily's Ice Cream Parlor
+class IndividualSample1 extends Component {
 
     state = {
-        storeName: "FruitYoyo",
+        storeName: "Emily's Ice Cream Parlour",
+        location: "200 Sixteenth Street, L2C4H5 Hamilton Ontario",
         hours: { Sun: "12:00pm-10:00pm", Mon: "Closed", Tues: "12:00pm-10:00pm", Wed: "12:00pm-10:00pm", Thurs: "12:00pm-10:00pm", Fri: "12:00pm-11:00pm", Sat: "12:00pm-11:00pm"},
-        reviewerName: ["Jenneth Pan"],
-        rating: [4],
+        reviewerName: ["Hanna", "Lin"],
+        rating: [4, 5],
         averageRating: 4,
-        reviews: ["BEST ICE CREAM EVER!"],
+        reviews: ["The ice cream here is the best! I've been coming here multiple times a week because it's just that good!", "My favourite flavour here is peach. Soooo good!!"],
         initialLat: 43.2612,
         initialLng: -79.92,
         activeMarkers: {},
@@ -48,6 +49,7 @@ class Individual_Sample_3 extends Component {
                 {/* Business reviews */}
                 <div id="reviews">
                    <Review data={this.state.reviews[0]} reviewerName={this.state.reviewerName[0]} rating={this.state.rating[0]}/>
+                   <Review data={this.state.reviews[1]} reviewerName={this.state.reviewerName[1]} rating={this.state.rating[1]}/>
                 </div>
 
             </div>
@@ -55,4 +57,4 @@ class Individual_Sample_3 extends Component {
     }
 }
 
-export default Individual_Sample_3;
+export default IndividualSample1;

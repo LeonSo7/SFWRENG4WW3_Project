@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import '../../styles/App.css';
-import '../../styles/pages/Individual_Sample.css'
-import Review from '../../components/reviews/Review';
+import '../../styles/pages/IndividualSample.css'
+import Review from '../../components/Review';
 import Map from '../../components/Map';
 
-//Business page showing info for Coco Gelato
-class Individual_Sample_2 extends Component {
+//Business page showing info for FruitYoyo
+class IndividualSample3 extends Component {
 
     state = {
-        storeName: "Coco Gelato",
-        location: "81 Nineth Street, Hamilton, ON L9H2B1",
+        storeName: "FruitYoyo",
         hours: { Sun: "12:00pm-10:00pm", Mon: "Closed", Tues: "12:00pm-10:00pm", Wed: "12:00pm-10:00pm", Thurs: "12:00pm-10:00pm", Fri: "12:00pm-11:00pm", Sat: "12:00pm-11:00pm"},
-        reviewerName: ["Lannie King"],
-        rating: [3.5],
-        averageRating: 3.5,
-        reviews: ["Pretty good."],
+        reviewerName: ["Jenneth Pan"],
+        rating: [4],
+        averageRating: 4,
+        reviews: ["BEST ICE CREAM EVER!"],
         initialLat: 43.2612,
         initialLng: -79.92,
         activeMarkers: {},
@@ -56,4 +55,4 @@ class Individual_Sample_2 extends Component {
     }
 }
 
-export default Individual_Sample_2;
+export default IndividualSample3;
