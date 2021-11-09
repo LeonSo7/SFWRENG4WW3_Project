@@ -8,10 +8,15 @@
     align-self: flex-start;
 }
 
-#searchDropDownDiv{
+#searchOptionsDiv{
     display: flex;
     justify-content: center;
     margin-top: 2%;
+}
+
+#searchOptionsDiv > * {
+    margin-right: 25px;
+    margin-left: 25px;
 }
 
 /* Scoops home page title section styling */

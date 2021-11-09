@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/App.css';
 import '../styles/pages/Search.css';
 import SearchBar from '../components/SearchBar';
-import { Dropdown } from 'react-bootstrap';
+import { Button, Dropdown } from 'react-bootstrap';
 import ScoopsSloganImg from '../assets/images/scoops.png';
 import ThreeConesImg from '../assets/images/three-cones.png';
 
@@ -27,7 +27,7 @@ class Search extends Component {
                 {/* Search */}
                 <div id="homePageSearchDiv">
                     <SearchBar />
-                    <div id="searchDropDownDiv">
+                    <div id="searchOptionsDiv">
                         <Dropdown className="d-inline mx-2">
                             <Dropdown.Toggle id="dropdown-autoclose-true">
                                 Search by rating
@@ -40,6 +40,9 @@ class Search extends Component {
                                 <Dropdown.Item href="#">1+ Star</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
+                        <Button>
+                            Search Near Me
+                        </Button>
                     </div>
 
                     {/* Bottom banner graphic */}
