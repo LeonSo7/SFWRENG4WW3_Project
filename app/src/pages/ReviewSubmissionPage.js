@@ -34,7 +34,7 @@ class ReviewSubmissionPage extends Component {
 
                 {/* Review submission form */}
                 <div id="reviewFormDiv">
-                    <Form>
+                    <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit.bind(this)}>
                         <Form.Group className="mb-3" controlId="formReviewRating">
                             <Form.Label>Select Rating</Form.Label>
                             <div key={`inline-radio`} className="mb-3">
@@ -44,6 +44,7 @@ class ReviewSubmissionPage extends Component {
                                     name="ratingRadioGroup"
                                     id={`inline-radio-1`}
                                     type={'radio'}
+                                    required
                                 />
                                 <Form.Check
                                     inline
@@ -77,15 +78,20 @@ class ReviewSubmissionPage extends Component {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formReviewTitle">
                             <Form.Label>Add a title</Form.Label>
-                            <Form.Control type="text" placeholder="Review title" />
+                            <Form.Control type="text" placeholder="Review title" required/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formReviewBody">
                             <Form.Label>Add a written review</Form.Label>
-                            <Form.Control as="textarea" rows={3} placeholder="What did you like or dislike? How did it taste?" />
+                            <Form.Control 
+                                as="textarea" 
+                                rows={3} 
+                                placeholder="What did you like or dislike? How did it taste?"
+                                required
+                            />
                         </Form.Group>
                         <Form.Group controlId="formReviewPhotoUpload" className="mb-3">
                             <Form.Label>Add photos to your review</Form.Label>
-                            <Form.Control type="file" multiple />
+                            <Form.Control type="file" multiple accept=".jpg,.jpeg,.png"/>
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Submit

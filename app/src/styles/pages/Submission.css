@@ -25,11 +25,3 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
-
-/* Use .preventValidation class for optional fields -- override validation styling */
-.was-validated .preventValidation.form-control:valid,
-.preventValidation.form-control.is-valid {
-  padding: 0.375rem 0.75rem;
-  border-color: #ced4da;
-  background-image: none;
-}

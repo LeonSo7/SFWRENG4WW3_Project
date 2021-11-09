@@ -46,7 +46,7 @@ class Submission extends Component {
                         </Form.Group>
                         <Form.Group controlId="formReviewPhotoUpload" className="mb-3">
                             <Form.Label>Add photos of business</Form.Label>
-                            <Form.Control type="file" multiple className="preventValidation" />
+                            <Form.Control type="file" multiple accept=".jpg,.jpeg,.png"/>
                         </Form.Group>
                         <Row>
                             <Col>
