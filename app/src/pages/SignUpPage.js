@@ -98,7 +98,12 @@ class SignUpPage extends Component {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formEmail">
                             <Form.Label>Email Address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" required/>
+                            <Form.Control 
+                                type="email" 
+                                placeholder="Enter email" 
+                                required
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                />
                             <Form.Control.Feedback type="invalid">
                                 Please enter a valid email address.
                             </Form.Control.Feedback>
