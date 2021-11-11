@@ -8,7 +8,6 @@ import Map from '../components/Map';
 // Sample search results page
 class ResultsSample extends Component {
     constructor(props) {
-        console.log(props);
         super(props)
 
         this.state = {
