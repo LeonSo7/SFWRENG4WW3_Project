@@ -5,9 +5,10 @@ import SearchBar from '../components/SearchBar';
 import SearchListing from '../components/SearchListing';
 import Map from '../components/Map';
 
-// A Sample search results page
+// Sample search results page
 class ResultsSample extends Component {
     constructor(props) {
+        console.log(props);
         super(props)
 
         this.state = {
@@ -17,8 +18,12 @@ class ResultsSample extends Component {
             showInfo: false,
             // The user's geolocation or null if not searching by geolocation
             coordinates: {
-                latitude: this.props.location.state.latitude,
-                longitude: this.props.location.state.longitude
+                latitude: this.props.location.state ? 
+                    (this.props.location.state.latitude ? this.props.location.state.latitude : null) 
+                    : null,
+                longitude: this.props.location.state ? 
+                    (this.props.location.state.longitude ? this.props.location.state.longitude : null) 
+                    : null,
             },
             searchResults: {
                 0: {

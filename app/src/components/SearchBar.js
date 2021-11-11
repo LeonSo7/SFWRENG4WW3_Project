@@ -11,8 +11,6 @@ const SearchBar = () => (
                 <Link
                     to={{
                         pathname: "/search-results",
-                        /* For testing */
-                        state: { currentLat: 43.2610, currentLng: null }
                     }}
                     tabIndex="-1">
                     <Button id="searchBarBtn" type="submit" variant="primary" aria-label="search"><FiSearch/></Button>
