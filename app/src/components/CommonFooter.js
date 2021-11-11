@@ -6,7 +6,7 @@ import { IoIceCreamOutline } from 'react-icons/io5';
 const CommonFooter = () => (
     <footer id="footer">
         <div id="brand">
-            <IoIceCreamOutline /> Scoops
+            <IoIceCreamOutline/> Scoops
         </div>
     </footer>
 );

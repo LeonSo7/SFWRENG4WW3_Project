@@ -27,6 +27,9 @@ class Search extends Component {
         const { history } = this.props;
 
         if (!navigator.geolocation) {
+            /* If browser does not support HTML5 geolocation api, disable geolocation search button
+             * and show an alert.
+             */
             this.setState({
                 geoSearchDisabled: true
             });
@@ -46,6 +49,9 @@ class Search extends Component {
                 /* Navigate to search results and pass in coordinates */
                 history.push("/search-results", this.state.coordinates);
             }, () => {
+                /* Show an alert and disable geolocation button if location cannot be retrieved.
+                 * e.g., location services not enables/permissions not granted
+                 */
                 alert("Unable to retrieve your location... Please enable location services and refresh to search nearby.");
                 this.setState({
                     geoSearchDisabled: true,
@@ -68,7 +74,8 @@ class Search extends Component {
                             src={ScoopsSloganImg}
                             alt="Scoops logo and slogan graphic"
                             width="732px"
-                            height="296px" />
+                            height="296px"
+                        />
                     </div>
                 </div>
 
@@ -92,7 +99,7 @@ class Search extends Component {
 
                         {/* Button for searching by current geolocation */}
                         <Button className="searchOption" onClick={this.searchByLocation.bind(this)} disabled={this.state.geoSearchDisabled}>
-                            {this.state.geoSearching ? <Spinner animation="border" size="sm"/> : null} {this.state.geoSearchLabel}
+                            {this.state.geoSearching ? <Spinner animation="border" size="sm" /> : null} {this.state.geoSearchLabel}
                         </Button>
                     </div>
 
@@ -105,10 +112,11 @@ class Search extends Component {
                                 src={ThreeConesImg}
                                 alt="Three ice cream cones graphic"
                                 width="686px"
-                                height="353px" />
+                                height="353px" 
+                            />
                         </div>
                     </div>
-                </div>ß
+                </div>
             </div>
         );
     }
