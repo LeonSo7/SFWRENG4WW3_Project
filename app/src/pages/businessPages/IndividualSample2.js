@@ -3,6 +3,7 @@ import '../../styles/App.css';
 import '../../styles/pages/IndividualSample.css'
 import Review from '../../components/Review';
 import Map from '../../components/Map';
+import {Animated} from "react-animated-css";
 
 // Business page showing info for Coco Gelato
 class IndividualSample2 extends Component {
@@ -34,7 +35,9 @@ class IndividualSample2 extends Component {
             <div className="wrapper">
                 <div id="storeInfoDiv">
                     <div id="info">
-                        <p id="storeName">{this.state.storeName}</p>
+                        <Animated animationIn="bounceIn" isVisible={true}>
+                            <p id="storeName">{this.state.storeName}</p>
+                        </Animated>
                         <p id="location">{this.state.location}</p>
                         <p id="averageRating">Average Rating: {this.state.averageRating}</p>
                         <div>
@@ -55,13 +58,15 @@ class IndividualSample2 extends Component {
                 </div>
 
                 {/* Business reviews */}
-                <div id="reviews">
-                    <Review
-                        data={this.state.reviews[0]}
-                        reviewerName={this.state.reviewerName[0]}
-                        rating={this.state.rating[0]}
-                    />
-                </div>
+                <Animated animationIn="slideInUp" isVisible={true}>
+                    <div id="reviews">
+                        <Review
+                            data={this.state.reviews[0]}
+                            reviewerName={this.state.reviewerName[0]}
+                            rating={this.state.rating[0]}
+                        />
+                    </div>
+                </Animated>
 
             </div>
         );

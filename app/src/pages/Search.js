@@ -6,6 +6,7 @@ import { Button, Dropdown, DropdownButton, Spinner } from 'react-bootstrap';
 import ScoopsSloganImg from '../assets/images/scoops.png';
 import ThreeConesImg from '../assets/images/three-cones.png';
 import { withRouter } from 'react-router-dom';
+import {Animated} from "react-animated-css";
 
 // The search page with search bar
 class Search extends Component {
@@ -76,16 +77,18 @@ class Search extends Component {
             <div className="wrapper">
                 {/* Home page title & cover */}
                 <div id="homePageTitleDiv">
-                    <div id="bannerImgDiv" >
-                        <img
-                            id="bannerImg"
-                            srcSet={ScoopsSloganImg + " 1x"}
-                            src={ScoopsSloganImg}
-                            alt="Scoops logo and slogan graphic"
-                            width="732px"
-                            height="296px"
-                        />
-                    </div>
+                    <Animated animationIn="bounceIn" isVisible={true}>
+                        <div id="bannerImgDiv" >
+                            <img
+                                id="bannerImg"
+                                srcSet={ScoopsSloganImg + " 1x"}
+                                src={ScoopsSloganImg}
+                                alt="Scoops logo and slogan graphic"
+                                width="732px"
+                                height="296px"
+                            />
+                        </div>
+                    </Animated>
                 </div>
 
                 {/* Search */}
@@ -120,16 +123,18 @@ class Search extends Component {
 
                     {/* Bottom banner graphic */}
                     <div id="bottomBannerDiv">
-                        <div id="bannerImgDiv" >
-                            <img
-                                id="bannerImg"
-                                srcSet={ThreeConesImg + " 1x"}
-                                src={ThreeConesImg}
-                                alt="Three ice cream cones graphic"
-                                width="686px"
-                                height="353px" 
-                            />
-                        </div>
+                        <Animated animationIn="bounce" isVisible={true}>
+                            <div id="bannerImgDiv">
+                                <img
+                                    id="bannerImg"
+                                    srcSet={ThreeConesImg + " 1x"}
+                                    src={ThreeConesImg}
+                                    alt="Three ice cream cones graphic"
+                                    width="686px"
+                                    height="353px" 
+                                />
+                            </div>
+                        </Animated>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import '../styles/pages/ResultsSample.css';
 import SearchBar from '../components/SearchBar';
 import SearchListing from '../components/SearchListing';
 import Map from '../components/Map';
+import {Animated} from "react-animated-css";
 
 // Sample search results page
 class ResultsSample extends Component {
@@ -76,14 +77,16 @@ class ResultsSample extends Component {
                     <div>
                         <Map param={this.state} />
                     </div>
-                    <div id="listingsDiv">
-                        {
-                            /* Search results from user query */
-                            Object.values(this.state.searchResults).map(info => (
-                                <SearchListing storeInfo={info} />
-                            ))
-                        }
-                    </div>
+                    <Animated animationIn="slideInUp" isVisible={true}>
+                        <div id="listingsDiv">
+                            {
+                                /* Search results from user query */
+                                Object.values(this.state.searchResults).map(info => (
+                                    <SearchListing storeInfo={info} />
+                                ))
+                            }
+                        </div>
+                    </Animated>
                 </div>
             </div>
         );

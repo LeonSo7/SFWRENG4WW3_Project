@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/ReviewSubmissionPage.css'
+import {Animated} from "react-animated-css";
 
 // Form to submit a review for a business 
 class ReviewSubmissionPage extends Component {
@@ -29,7 +30,9 @@ class ReviewSubmissionPage extends Component {
         return (
             <div className="wrapper">
                 <div id="reviewSubmissionPageTitleDiv">
-                    <h1>Write your review!</h1>
+                    <Animated animationIn="bounceIn" isVisible={true}>
+                        <h1>Write your review!</h1>
+                    </Animated>
                 </div>
 
                 {/* Review submission form */}

@@ -1,12 +1,17 @@
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import '../styles/components/CommonHeader.css'
 import { IoIceCreamOutline } from 'react-icons/io5';
+import {Animated} from "react-animated-css";
 
 //Common Header
 const CommonHeader = () => (
     <Navbar bg="light" expand="lg">
         <Container>
-            <Navbar.Brand href="/"><IoIceCreamOutline size={35}/></Navbar.Brand>
+            <Navbar.Brand href="/">
+                <Animated animationIn="swing" isVisible={true}>
+                    <IoIceCreamOutline size={35}/>
+                </Animated>
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
             {/* Collapsible navigation menu items */}

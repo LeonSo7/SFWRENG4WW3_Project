@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/SignUpPage.css'
+import {Animated} from "react-animated-css";
 
 // Sign up page
 class SignUpPage extends Component {
@@ -108,7 +109,9 @@ class SignUpPage extends Component {
         return (
             <div class="wrapper">
                 <div id="signUpPageTitleDiv">
-                    <h1>Sign up today!</h1>
+                    <Animated animationIn="bounceIn" isVisible={true}>
+                        <h1>Sign up today!</h1>
+                    </Animated>
                 </div>
 
                 {/* User registration form for sign up */}

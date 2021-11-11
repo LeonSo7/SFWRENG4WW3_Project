@@ -3,6 +3,7 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/Submission.css'
 import { TiLocationArrowOutline } from 'react-icons/ti';
+import {Animated} from "react-animated-css";
 
 // Form to add a new business to the site
 class Submission extends Component {
@@ -80,7 +81,9 @@ class Submission extends Component {
         return (
             <div className="wrapper">
                 <div id="addBusinessPageTitleDiv">
-                    <h1>Add a business!</h1>
+                    <Animated animationIn="bounceIn" isVisible={true}>
+                        <h1>Add a business!</h1>
+                    </Animated>
                 </div>
 
                 {/* Object submission for for adding a business (ice cream shop) */}
