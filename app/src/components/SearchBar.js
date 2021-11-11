@@ -15,7 +15,7 @@ const SearchBar = () => (
                         state: { currentLat: 43.2610, currentLng: null }
                     }}
                     tabIndex="-1">
-                    <Button id="searchBtn" type="submit" variant="primary" aria-label="search"><FiSearch/></Button>
+                    <Button id="searchBarBtn" type="submit" variant="primary" aria-label="search"><FiSearch/></Button>
                 </Link>
             </div>
         </Form.Group>
