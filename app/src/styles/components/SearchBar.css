@@ -6,3 +6,13 @@
     margin-right: 20%;
     flex-grow: 1;
 }
+
+#searchBarInput {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#searchBtn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
