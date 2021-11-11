@@ -7,9 +7,18 @@
 }
 
 /* Results text */
-#results {
+.mainHeading {
     margin: 0 0 0 15%;
     font-size: 22px;
+}
+
+#latitudeLongitudeDiv {
+    margin-bottom: 15px;
+}
+
+.latitudeLongitude {
+    margin: 0 0 0 15%;
+    font-size: 18px;
 }
 
 /* Listings div with all the business listings */

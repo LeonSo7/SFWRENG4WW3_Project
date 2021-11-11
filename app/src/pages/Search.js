@@ -2,12 +2,60 @@ import React, { Component } from 'react';
 import '../styles/App.css';
 import '../styles/pages/Search.css';
 import SearchBar from '../components/SearchBar';
-import { Button, Dropdown } from 'react-bootstrap';
+import { Button, Dropdown, Spinner } from 'react-bootstrap';
 import ScoopsSloganImg from '../assets/images/scoops.png';
 import ThreeConesImg from '../assets/images/three-cones.png';
+import { withRouter } from 'react-router-dom';
 
 // The search page with search bar
 class Search extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            coordinates: {
+                latitude: "",
+                longitude: ""
+            },
+            geoSearchDisabled: false,
+            geoSearchLabel: "Search Nearby",
+            geoSearching: false
+        };
+    }
+
+    searchByLocation() {
+        const { history } = this.props;
+
+        if (!navigator.geolocation) {
+            this.setState({
+                geoSearchDisabled: true
+            });
+            alert("Geolocation is not supported by your browser.");
+        } else {
+            this.setState({
+                geoSearchLabel: "Searching...",
+                geoSearching: true
+            })
+            navigator.geolocation.getCurrentPosition((position) => {
+                this.setState({
+                    coordinates: {
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude
+                    },
+                })
+                /* Navigate to search results and pass in coordinates */
+                history.push("/search-results", this.state.coordinates);
+            }, () => {
+                alert("Unable to retrieve your location... Please enable location services and refresh to search nearby.");
+                this.setState({
+                    geoSearchDisabled: true,
+                    geoSearching: false,
+                    geoSearchLabel: "Search Nearby"
+                });
+            });
+        }
+    };
+
     render() {
         return (
             <div className="wrapper">
@@ -28,9 +76,10 @@ class Search extends Component {
                 <div id="homePageSearchDiv">
                     <SearchBar />
                     <div id="searchOptionsDiv">
-                        <Dropdown className="d-inline mx-2">
+                        {/* Search by rating dropdown */}
+                        <Dropdown className="searchOption">
                             <Dropdown.Toggle id="dropdown-autoclose-true">
-                                Search by rating
+                                Search By Rating
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item href="#">5 Star</Dropdown.Item>
@@ -40,8 +89,10 @@ class Search extends Component {
                                 <Dropdown.Item href="#">1+ Star</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
-                        <Button>
-                            Search Near Me
+
+                        {/* Button for searching by current geolocation */}
+                        <Button className="searchOption" onClick={this.searchByLocation.bind(this)} disabled={this.state.geoSearchDisabled}>
+                            {this.state.geoSearching ? <Spinner animation="border" size="sm"/> : null} {this.state.geoSearchLabel}
                         </Button>
                     </div>
 
@@ -63,4 +114,4 @@ class Search extends Component {
     }
 }
 
-export default Search;
+export default withRouter(Search);

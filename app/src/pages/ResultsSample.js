@@ -10,17 +10,15 @@ class ResultsSample extends Component {
     constructor(props) {
         super(props)
 
-        // console.log(props.location)
-
         this.state = {
             initialLat: 43.263,
             initialLng: -79.921,
             activeMarkers: {},
             showInfo: false,
-            // Tßhe user's geolocation or null if not searching by geolocation
-            geoLocation: {
-                lat: props.location.state.currentLat,
-                lng: props.location.state.currentLng
+            // The user's geolocation or null if not searching by geolocation
+            coordinates: {
+                latitude: this.props.location.state.latitude,
+                longitude: this.props.location.state.longitude
             },
             searchResults: {
                 0: {
@@ -59,12 +57,16 @@ class ResultsSample extends Component {
                 </div>
 
                 {/* Display the geolocation value if it is searched using geolocation */}
-                {this.state.geoLocation.lat != null && this.state.geoLocation.lng != null ?
-                    <h1 id="results"> Current Location: Latitude {this.state.geoLocation.lat}, Longitude {this.state.geoLocation.lng} </h1>
-                    : <div />
+                {this.state.coordinates.latitude != null && this.state.coordinates.longitude != null ?
+                    <div id="latitudeLongitudeDiv">
+                        <h1 className="mainHeading">Current Location:</h1>
+                        <p className="latitudeLongitude">Latitude: {this.state.coordinates.latitude}</p>
+                        <p className="latitudeLongitude">Longitude: {this.state.coordinates.longitude}</p>
+                    </div>
+                    : <div/>
                 }
 
-                <h1 id="results">Results</h1>
+                <h1 className="mainHeading">Results</h1>
 
                 <div id="searchResultsDiv">
                     <div>

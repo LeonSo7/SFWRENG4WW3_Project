@@ -32,6 +32,7 @@ class Submission extends Component {
         });
     };
 
+    // Get geolocation (if possible) and update coordinates in state
     getLocation() {
         if (!navigator.geolocation) {
             this.setState({
@@ -49,7 +50,6 @@ class Submission extends Component {
                         longitude: position.coords.longitude
                     }
                 })
-                console.log(position.coords);
             }, () => {
                 this.setState({
                     geolocationStatus: "Unable to retrieve your location"
@@ -58,6 +58,7 @@ class Submission extends Component {
         }
     };
 
+    // Update longitude value in state
     handleLongitudeInput(e) {
         this.setState({
             coordinates: {
@@ -66,6 +67,7 @@ class Submission extends Component {
         });
     };
 
+    // Update latitude value in state
     handleLatitudeInput(e) {
         this.setState({
             coordinates: {
@@ -125,7 +127,7 @@ class Submission extends Component {
                             </Col>
                         </Row>
                         <div id="geoLocationDiv" onClick={this.getLocation.bind(this)}>
-                                    <TiLocationArrowOutline size={20} /> {this.state.geolocationStatus}
+                            <TiLocationArrowOutline size={20} /> {this.state.geolocationStatus}
                         </div>
                         <Button variant="primary" type="submit">
                             Submit

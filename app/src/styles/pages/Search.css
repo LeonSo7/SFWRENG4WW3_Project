@@ -11,6 +11,7 @@
 #searchOptionsDiv{
     display: flex;
     justify-content: center;
+    flex-direction: row;
     margin-top: 2%;
 }
 
@@ -26,6 +27,7 @@
     text-align: center;
     margin-left: 10%;
     margin-right: 10%;
+    align-items: center;
 }
 
 #homePageTitleDiv {
@@ -52,6 +54,10 @@
     margin-right: 10%;
 }
 
+.searchOption {
+    width: 160px;
+}
+
 /* On screens that are 600px or less, adjust title/slogan image styling */
 @media screen and (max-width: 600px) {
     #scoopsImgDiv {
@@ -63,5 +69,18 @@
         width: 95%;
         height: auto;
     }
+
+    #searchOptionsDiv{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 2%;
+        align-items: center;
+    }
+
+    .searchOption {
+        margin-top: 15px;   
+    }
+    
   }
 
