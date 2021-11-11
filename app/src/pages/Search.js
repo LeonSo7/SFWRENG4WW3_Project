@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/App.css';
 import '../styles/pages/Search.css';
 import SearchBar from '../components/SearchBar';
-import { Button, Dropdown, Spinner } from 'react-bootstrap';
+import { Button, Dropdown, DropdownButton, Spinner } from 'react-bootstrap';
 import ScoopsSloganImg from '../assets/images/scoops.png';
 import ThreeConesImg from '../assets/images/three-cones.png';
 import { withRouter } from 'react-router-dom';
@@ -19,9 +19,18 @@ class Search extends Component {
             },
             geoSearchDisabled: false,
             geoSearchLabel: "Search Nearby",
-            geoSearching: false
+            geoSearching: false,
+            filterByRatingDropdownText: "Filter By Rating"
         };
     }
+
+    // Handle user 
+    handleRatingSelect(e) {
+        console.log(e);
+        this.setState({
+            filterByRatingDropdownText: e.target.textContent
+        });
+    };
 
     searchByLocation() {
         const { history } = this.props;
@@ -84,19 +93,25 @@ class Search extends Component {
                     <SearchBar />
                     <div id="searchOptionsDiv">
                         {/* Search by rating dropdown */}
-                        <Dropdown className="searchOption">
-                            <Dropdown.Toggle id="dropdown-autoclose-true">
-                                Search By Rating
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#">5 Star</Dropdown.Item>
-                                <Dropdown.Item href="#">4+ Star</Dropdown.Item>
-                                <Dropdown.Item href="#">3+ Star</Dropdown.Item>
-                                <Dropdown.Item href="#">2+ Star</Dropdown.Item>
-                                <Dropdown.Item href="#">1+ Star</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-
+                        <div className="searchOption">
+                            <DropdownButton id="filterRatingDropDown" size="med" title={this.state.filterByRatingDropdownText}>
+                                <Dropdown.Item href="#">
+                                    <div onClick={(e) => this.handleRatingSelect(e)}>5 Star</div>
+                                </Dropdown.Item>
+                                <Dropdown.Item href="#">
+                                    <div onClick={(e) => this.handleRatingSelect(e)}>4+ Star</div>
+                                </Dropdown.Item>
+                                <Dropdown.Item href="#">
+                                    <div onClick={(e) => this.handleRatingSelect(e)}>3+ Star</div>
+                                </Dropdown.Item>
+                                <Dropdown.Item href="#">
+                                    <div onClick={(e) => this.handleRatingSelect(e)}>2+ Star</div>
+                                </Dropdown.Item>
+                                <Dropdown.Item href="#">
+                                    <div onClick={(e) => this.handleRatingSelect(e)}>1+ Star</div>
+                                </Dropdown.Item>
+                            </DropdownButton>
+                        </div>
                         {/* Button for searching by current geolocation */}
                         <Button className="searchOption" onClick={this.searchByLocation.bind(this)} disabled={this.state.geoSearchDisabled}>
                             {this.state.geoSearching ? <Spinner animation="border" size="sm" /> : null} {this.state.geoSearchLabel}

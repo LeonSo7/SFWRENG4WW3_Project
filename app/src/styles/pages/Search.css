@@ -55,8 +55,13 @@
 }
 
 .searchOption {
-    width: 160px;
+    width: 200px;
 }
+
+#filterRatingDropDown{
+    width: 100%;
+}
+
 
 /* On screens that are 600px or less, adjust title/slogan image styling */
 @media screen and (max-width: 600px) {
