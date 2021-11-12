@@ -75,6 +75,7 @@ class ResultsSample extends Component {
 
                 <div id="searchResultsDiv">
                     <div>
+                        {/* Show map with business shown with markers */}
                         <Map param={this.state} />
                     </div>
                     <Animated animationIn="slideInUp" isVisible={true}>

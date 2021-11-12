@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
+// Map to be used
 class MapComponent extends Component {
     constructor(props) {
         super(props)
@@ -73,6 +74,7 @@ class MapComponent extends Component {
                                 onClick={this.onMarkerClick.bind(this)}
                             />
                     }
+                    {/* Information window when the marker is clicked */}
                     <InfoWindow
                         marker={this.state.activeMarkers}
                         visible={this.state.showInfo}
@@ -80,8 +82,6 @@ class MapComponent extends Component {
                     >
                         <div>
                             <strong>{this.state.activeMarkers.name}</strong>
-
-
                             {
                                 // Only show this information for the search results page
                                 this.state.activeMarkers.averageRating != null && this.state.activeMarkers.location != null
@@ -93,11 +93,6 @@ class MapComponent extends Component {
                                         <div>
                                             Location: {this.state.activeMarkers.location}
                                         </div>
-
-                                        {
-                                            // Log the route of the business' page
-                                            console.log(this.state.activeMarkers.path)
-                                        }
                                         { /* Link to corresponding business */}
                                         <a href={"./" + this.state.activeMarkers.path}> Store Details</a>
                                     </div>

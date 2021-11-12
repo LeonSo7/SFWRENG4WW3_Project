@@ -52,6 +52,7 @@ class IndividualSample3 extends Component {
 
                     {/* Map showing location of business */}
                     <div id="businessMap">
+                        {/* Show map with business shown with markers */}
                         <Map param={this.state} />
                     </div>
                 </div>
