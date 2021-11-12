@@ -31,4 +31,5 @@ Notes to marker:
     10. Review listings on business pages (found in IndividualSample1.js, IndividualSample2.js, IndividualSample3.js)
 - For form validation, please see sign up page (SignUpPage.js), review submission page (ReviewSubmissionPage.js), business submission page (Submission.js)
 - For geolocation on object submission, please navigate to "Add an Ice Cream Spot" page (Submission.js) -- and then click "Locate Me"
+- The maps can be found on the search results page and the business object pages.
 - Click a pin on the map to see the information of the business. You can click the "Store Details" link to go to the business page of that business.
