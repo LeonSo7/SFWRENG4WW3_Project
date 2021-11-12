@@ -11,6 +11,7 @@ Member 1: Leon So, 400127468, sol4
 Member 2: Joy Xiao, 400125285, xiaoz18
 
 Demo: https://insidescoops.live/
+
 Github repo: https://github.com/LeonSo7/Scoops
 
 Notes to marker:
