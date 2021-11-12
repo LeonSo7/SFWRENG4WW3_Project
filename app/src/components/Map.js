@@ -6,13 +6,14 @@ class MapComponent extends Component {
     constructor(props) {
         super(props)
 
+        //Set state to values passed in or set to default values
         this.state = {
-            initialLat: this.props.param.initialLat,
-            initialLng: this.props.param.initialLng,
-            activeMarkers: this.props.param.activeMarkers,
-            showInfo: this.props.param.showInfo,
-            searchResults: this.props.param.searchResults,
-            storeName: this.props.param.storeName
+            initialLat: this.props.param.initialLat ? this.props.param.initialLat : 43.263,
+            initialLng: this.props.param.initialLng ? this.props.param.initialLng : -79.921,
+            activeMarkers: this.props.param.activeMarkers ? this.props.param.activeMarkers : {},
+            showInfo: this.props.param.showInfo ? this.props.param.showInfo : false,
+            searchResults: this.props.param.searchResults ? this.props.param.searchResults : null,
+            storeName: this.props.param.storeName ? this.props.param.storeName : null
         }
     }
 
@@ -40,7 +41,7 @@ class MapComponent extends Component {
                 <Map
                     containerStyle={containerStyle}
                     google={window.google}
-                    zoom={15}
+                    zoom={14}
                     initialCenter={{
                         lat: this.state.initialLat,
                         lng: this.state.initialLng
@@ -81,6 +82,7 @@ class MapComponent extends Component {
                         onClose={this.onMarkerClose.bind(this)}
                     >
                         <div>
+                            {/* Display the store name */}
                             <strong>{this.state.activeMarkers.name}</strong>
                             {
                                 // Only show this information for the search results page
@@ -114,7 +116,7 @@ const containerStyle = {
     padding: '.5rem .5rem',
     marginRight: '15%',
     width: '70vw',
-    height: '40vh'
+    height: '50vh'
 }
 
 export default GoogleApiWrapper({
