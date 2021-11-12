@@ -123,5 +123,5 @@ const containerStyle = {
 }
 
 export default GoogleApiWrapper({
-    // apiKey: ('')
+    apiKey: (process.env.REACT_APP_GOOGLE_API_KEY)
 })(MapComponent);
