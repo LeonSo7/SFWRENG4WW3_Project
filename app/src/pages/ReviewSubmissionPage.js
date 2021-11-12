@@ -13,7 +13,7 @@ class ReviewSubmissionPage extends Component {
         };
     }
 
-    // Handle for submission and validation state
+    // Handle submission button click and validation state
     handleSubmit(e) {
         const form = e.currentTarget;
         if (form.checkValidity() === false) {

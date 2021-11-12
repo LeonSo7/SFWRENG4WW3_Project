@@ -21,15 +21,14 @@ class Search extends Component {
             geoSearchDisabled: false,
             geoSearchLabel: "Search Nearby",
             geoSearching: false,
-            filterByRatingDropdownText: "Filter By Rating"
+            searchByRatingDropdownText: "Search By Rating"
         };
     }
 
-    // Handle user 
+    // Handle user rating selection for search by rating dropdown
     handleRatingSelect(e) {
-        console.log(e);
         this.setState({
-            filterByRatingDropdownText: e.target.textContent
+            searchByRatingDropdownText: e.target.textContent
         });
     };
 
@@ -97,7 +96,7 @@ class Search extends Component {
                     <div id="searchOptionsDiv">
                         {/* Search by rating dropdown */}
                         <div className="searchOption">
-                            <DropdownButton id="filterRatingDropDown" size="med" title={this.state.filterByRatingDropdownText}>
+                            <DropdownButton id="filterRatingDropDown" size="med" title={this.state.searchByRatingDropdownText}>
                                 <Dropdown.Item href="#">
                                     <div onClick={(e) => this.handleRatingSelect(e)}>5 Star</div>
                                 </Dropdown.Item>
