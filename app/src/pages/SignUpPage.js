@@ -88,7 +88,7 @@ class SignUpPage extends Component {
 
     // Format postal code input to A#A #A#
     formatPostalCode(postalCode) {
-        // If input is empty (e.g., user deletes the phone number)
+        // If input is empty (e.g., user deletes the postal code)
         if (!postalCode) {
             return postalCode;
         }
