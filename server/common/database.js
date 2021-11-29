@@ -1,4 +1,6 @@
-const mysql = require('mysql2');
+"use strict"
+const mysql = require('mysql');
+require('dotenv').config();
 
 var pool = mysql.createPool({
     host: process.env.DB_HOST,
@@ -15,13 +17,6 @@ pool.getConnection((err) => {
     }
     console.log('MySQL connected...')
 })
-
-// exports.getReviews = function(callback) {
-//     var sql = "SELECT * FROM reviews";
-//     db.query(sql, function(err, results) {
-//         // if 
-//     })
-// };
 
 
 
