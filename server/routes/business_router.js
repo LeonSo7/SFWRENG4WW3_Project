@@ -4,7 +4,6 @@ const express = require('express');
 const api = express.Router();
 const db = require('../common/database');
 
-
 // Get list of businesses and data
 api.get('/', function (req, res) {
     db.getBusinesses(function (err, results) {
