@@ -1,4 +1,5 @@
 "use strict";
+
 const express = require('express');
 const userAPI = require('./routes/user_router');
 const businessAPI = require('./routes/business_router');
