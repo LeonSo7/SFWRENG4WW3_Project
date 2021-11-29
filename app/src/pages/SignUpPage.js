@@ -29,6 +29,10 @@ class SignUpPage extends Component {
         this.setState({
             validated: true
         });
+
+        if (this.state.validated) {
+            
+        }
     };
 
     handleFirstNameInput(e) {
