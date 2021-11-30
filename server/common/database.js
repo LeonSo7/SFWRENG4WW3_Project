@@ -31,7 +31,7 @@ function _connectAndQuery(sqlStatement, callback) {
 }
 
 // Get table length for IDs
-// Assume entries cannot be deleted for this project!
+// Use length as ID -- assume entries cannot be deleted for this project!
 function _getTableSize(tableName, callback) {
     var sql = "SELECT COUNT(*) FROM " + tableName;
     _connectAndQuery(sql, function (err, size) {
@@ -99,7 +99,7 @@ exports.addUser = function (userData, callback) {
                 callback(true);
                 return;
             }
-            callback(false, cb);
+            callback(false);
         });
     });
 };

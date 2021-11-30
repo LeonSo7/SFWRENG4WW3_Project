@@ -23,7 +23,7 @@ api.post('/', function(req, res) {
             res.status(400).send("Bad request");
             return;
         }
-        // Successfully added
+        // Successfully added user
         res.status(200).send("Successfully added user");
     });
 });
