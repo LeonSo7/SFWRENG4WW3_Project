@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Dropdown, DropdownButton } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/ReviewSubmissionPage.css'
 import {Animated} from "react-animated-css";
@@ -9,9 +9,19 @@ class ReviewSubmissionPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            validated: false
+            validated: false,
+            searchByRatingDropdownText: "Select a store",
+            // Replace with all of the stores queried from the db
+            allBusinesses: ["Emily's", "Fruit"]
         };
     }
+
+    // Handle user rating selection for search by rating dropdown
+    handleRatingSelect(e) {
+        this.setState({
+            searchByRatingDropdownText: e.target.textContent
+        });
+    };
 
     // Handle submission button click and validation state
     handleSubmit(e) {
@@ -37,6 +47,21 @@ class ReviewSubmissionPage extends Component {
 
                 {/* Review submission form */}
                 <div id="reviewFormDiv">
+                    <div id="reviewDropdown">
+                        <div>Select a store to review</div>
+                        <DropdownButton id="filterRatingDropDown" size="med" title={this.state.searchByRatingDropdownText}>
+                        {this.state.allBusinesses.length > 0 ?
+                            Object.values(this.state.allBusinesses).map(info => (
+                                <Dropdown.Item href="#">
+                                    <div onClick={(e) => this.handleRatingSelect(e)}>{info}</div>
+                                </Dropdown.Item>
+                            ))
+                          :
+                          <div>
+                          </div>
+                        }
+                        </DropdownButton>
+                    </div>
                     <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit.bind(this)}>
                         <Form.Group className="mb-3" controlId="formReviewRating">
                             <Form.Label>Select Rating</Form.Label>
