@@ -24,8 +24,7 @@ const CommonHeader = () => (
             </Nav>
             {/* Menu items aligned to the right-hand side of the navigation bar */}
             <Nav className="justify-content-end"> 
-                {/* TODO: Currently a broken link -- page to be implemented. */}
-                <Nav.Link href="#">Log In</Nav.Link>
+                <Nav.Link href="login">Log In</Nav.Link>
             </Nav>
             <Nav className="justify-content-end"> 
                 <Nav.Link id="signUpLink" href="signup">Sign Up</Nav.Link>

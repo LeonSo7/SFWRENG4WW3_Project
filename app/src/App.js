@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles/App.css';
 import Search from './pages/Search';
 import SignUpPage from './pages/SignUpPage';
+import LoginPage from './pages/LoginPage';
 import ReviewSubmissionPage from './pages/ReviewSubmissionPage';
 import AddBusinessPage from './pages/Submission';
 import ResultsSample from './pages/ResultsSample';
@@ -25,6 +26,7 @@ class App extends Component {
           {/* Routes */}
           <Route path='/' component={Search} exact/>
           <Route path='/signup' component={SignUpPage}/>
+          <Route path='/login' component={LoginPage}/>
           <Route path='/review' component={ReviewSubmissionPage}/>
           <Route path='/add-business' component={AddBusinessPage}/>
           <Route path='/search-results' component={ResultsSample}/>
