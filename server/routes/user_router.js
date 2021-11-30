@@ -16,8 +16,8 @@ api.get('/', function (req, res) {
     });
 });
 
+// Add a user to the database
 api.post('/', function(req, res) {
-    // console.log(req)
     console.log(req.body)
     res.status(200).send("Successfully added user");
 });
