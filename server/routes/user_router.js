@@ -18,8 +18,14 @@ api.get('/', function (req, res) {
 
 // Add a user to the database
 api.post('/', function(req, res) {
-    console.log(req.body)
-    res.status(200).send("Successfully added user");
+    db.addUser(req.body, function (err) {
+        if (err) {
+            res.status(400).send("Bad request");
+            return;
+        }
+        // Successfully added
+        res.status(200).send("Successfully added user");
+    });
 });
 
 module.exports = api;

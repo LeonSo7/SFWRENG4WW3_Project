@@ -14,11 +14,10 @@ var pool = mysql.createPool({
 
 
 // Connects to the database and executes a SQL query
-function _connectAndQuery (sqlStatement, callback) {
+function _connectAndQuery(sqlStatement, callback) {
     // Get connection from the pool
     pool.getConnection(function (err, connection) {
         if (err) {
-            console.log(err);
             callback(true);
             return;
         }
@@ -31,14 +30,29 @@ function _connectAndQuery (sqlStatement, callback) {
     });
 }
 
+// Get table length for IDs
+// Assume entries cannot be deleted for this project!
+function _getTableSize(tableName, callback) {
+    var sql = "SELECT COUNT(*) FROM " + tableName;
+    _connectAndQuery(sql, function (err, size) {
+        if (err) {
+            console.log(err);
+            callback(true);
+            return;
+        }
+        size = JSON.parse(JSON.stringify(size))[0]['COUNT(*)'];
+        callback(false, size);
+    });
+}
+
 // GET businesses from database
 exports.getBusinesses = function (callback) {
     var sql = "SELECT * FROM STORES";
     _connectAndQuery(sql, function (err, cb) {
-        if (err) { 
-            console.log(err); 
-            callback(true); 
-            return; 
+        if (err) {
+            console.log(err);
+            callback(true);
+            return;
         }
         callback(false, cb);
     });
@@ -48,10 +62,10 @@ exports.getBusinesses = function (callback) {
 exports.getUsers = function (callback) {
     var sql = "SELECT * FROM USERS";
     _connectAndQuery(sql, function (err, cb) {
-        if (err) { 
-            console.log(err); 
-            callback(true); 
-            return; 
+        if (err) {
+            console.log(err);
+            callback(true);
+            return;
         }
         callback(false, cb);
     });
@@ -61,12 +75,31 @@ exports.getUsers = function (callback) {
 exports.getReviews = function (callback) {
     var sql = "SELECT * FROM REVIEWS";
     _connectAndQuery(sql, function (err, cb) {
-        if (err) { 
-            console.log(err); 
-            callback(true); 
-            return; 
+        if (err) {
+            callback(true);
+            return;
         }
         callback(false, cb);
+    });
+};
+
+exports.addUser = function (userData, callback) {
+    // Process user data and format into SQL statement
+    if (!userData) {
+        callback(false);
+    }
+
+    _getTableSize("USERS", function (err, size) {
+        var sql = `INSERT INTO USERS VALUES(${size}, "${userData.firstName}", "${userData.lastName}", ` +
+            `"${userData.phoneNumber}", "${userData.email}", "${userData.password}", "${userData.postalCode}")`;
+        _connectAndQuery(sql, function (err, cb) {
+            if (err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, cb);
+        });
     });
 };
 
