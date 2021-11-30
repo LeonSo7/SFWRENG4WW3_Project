@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import { Button, Col, Form, Row, Modal } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/SignUpPage.css'
 import { Animated } from "react-animated-css";
@@ -16,9 +16,26 @@ class SignUpPage extends Component {
             firstNameInputValue: "",
             lastNameInputValue: "",
             postalCodeInputValue: "",
+            show: false,
             emailInputValue: "",
             passwordInputValue: "",
         };
+    }
+
+    // Handle show the modal
+    handleShow() {
+        this.setState({
+            show: true
+        });
+    };
+
+    // redirect to home page
+    returnToHome(e) {
+        this.setState({
+            show: false
+        });
+
+        window.location.href='/'
     }
 
     // Handle for submission and validation state
@@ -51,9 +68,12 @@ class SignUpPage extends Component {
         }
 
         this.setState({
-            validated: true
-        })
+            validated: true,
+        });
 
+        if (this.state.validated) {
+            this.handleShow()
+        }
     };
 
     handleFirstNameInput(e) {
@@ -62,7 +82,7 @@ class SignUpPage extends Component {
         this.setState({
             firstNameInputValue: processed
         });
-    }
+    };
 
     handleLastNameInput(e) {
         // Restrict input to only characters
@@ -240,6 +260,24 @@ class SignUpPage extends Component {
                             Submit
                         </Button>
                     </Form>
+
+
+                    <Modal
+                        show={this.state.show}
+                        backdrop="static"
+                        keyboard={false}
+                    >
+                        <Modal.Header closeButton>
+                        <Modal.Title>Sign up successful!</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                        You're registered, {this.state.firstNameInputValue}!
+                        </Modal.Body>
+                        <Modal.Footer>
+                        <Button variant="primary" onClick={e => this.returnToHome(e)}>Return to home page</Button>
+                        </Modal.Footer>
+                    </Modal>
+
                 </div>
             </div>
         );
