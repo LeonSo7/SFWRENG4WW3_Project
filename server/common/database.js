@@ -58,7 +58,7 @@ exports.getBusinesses = function (callback) {
     });
 };
 
-// GET users from database
+// Get users from database
 exports.getUsers = function (callback) {
     var sql = "SELECT * FROM USERS";
     _connectAndQuery(sql, function (err, cb) {
@@ -71,7 +71,7 @@ exports.getUsers = function (callback) {
     });
 };
 
-// GET reviews from database
+// Get reviews from database
 exports.getReviews = function (callback) {
     var sql = "SELECT * FROM REVIEWS";
     _connectAndQuery(sql, function (err, cb) {
@@ -83,6 +83,7 @@ exports.getReviews = function (callback) {
     });
 };
 
+// Add user to database
 exports.addUser = function (userData, callback) {
     // Process user data and format into SQL statement
     if (!userData) {
