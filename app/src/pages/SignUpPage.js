@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/SignUpPage.css'
-import {Animated} from "react-animated-css";
+import { Animated } from "react-animated-css";
+import axios from 'axios';
 
 // Sign up page
 class SignUpPage extends Component {
@@ -14,7 +15,9 @@ class SignUpPage extends Component {
             phoneNumberInputValue: "",
             firstNameInputValue: "",
             lastNameInputValue: "",
-            postalCodeInputValue: ""
+            postalCodeInputValue: "",
+            emailInputValue: "",
+            passwordInputValue: "",
         };
     }
 
@@ -24,15 +27,33 @@ class SignUpPage extends Component {
         if (form.checkValidity() === false) {
             e.preventDefault();
             e.stopPropagation();
+        } else {
+            // After form is valid, add the user to the DB
+            let body = { 
+                firstName: this.state.firstNameInputValue,
+                lastName: this.state.lastNameInputValue,
+                phoneNumber: this.state.phoneNumberInputValue,
+                email: this.state.emailInputValue,
+                postalCode: this.state.postalCodeInputValue,
+                password: this.state.passwordInputValue
+             };
+            axios({
+                method: 'post',
+                url: 'http://localhost:3001/user',
+                data: JSON.stringify(body),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then((res) => {
+                console.log(res.status);
+                // TODO Handle success/error + popup 
+            });
         }
 
         this.setState({
             validated: true
-        });
+        })
 
-        if (this.state.validated) {
-            
-        }
     };
 
     handleFirstNameInput(e) {
@@ -41,7 +62,7 @@ class SignUpPage extends Component {
         this.setState({
             firstNameInputValue: processed
         });
-    }ß
+    }
 
     handleLastNameInput(e) {
         // Restrict input to only characters
@@ -50,6 +71,18 @@ class SignUpPage extends Component {
             lastNameInputValue: processed
         });
     }
+
+    handleEmailInput(e) {
+        this.setState({
+            emailInputValue: e.target.value
+        });
+    };
+
+    handlePasswordInput(e) {
+        this.setState({
+            passwordInputValue: e.target.value
+        });
+    };
 
     handlePhoneNumberInput(e) {
         var formatted = this.formatPhoneNumber(e.target.value);
@@ -167,6 +200,8 @@ class SignUpPage extends Component {
                                 type="email"
                                 placeholder="Enter email"
                                 required
+                                onChange={(e) => this.handleEmailInput(e)}
+                                value={this.state.emailInputValue}
                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                             />
                             <Form.Control.Feedback type="invalid">
@@ -179,6 +214,8 @@ class SignUpPage extends Component {
                                 type="password"
                                 placeholder="Password"
                                 required
+                                onChange={(e) => this.handlePasswordInput(e)}
+                                value={this.state.passwordInputValue}
                                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$"
                             />
                             <Form.Control.Feedback type="invalid">
