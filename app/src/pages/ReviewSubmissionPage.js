@@ -117,10 +117,10 @@ class ReviewSubmissionPage extends Component {
                                 required
                             />
                         </Form.Group>
-                        <Form.Group controlId="formReviewPhotoUpload" className="mb-3">
+                        {/* <Form.Group controlId="formReviewPhotoUpload" className="mb-3">
                             <Form.Label>Add photos to your review</Form.Label>
                             <Form.Control type="file" multiple accept=".jpg,.jpeg,.png"/>
-                        </Form.Group>
+                        </Form.Group> */}
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
