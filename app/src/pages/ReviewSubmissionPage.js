@@ -4,8 +4,9 @@ import { Button, Form } from 'react-bootstrap';
 import Select from 'react-select';
 import '../styles/App.css';
 import '../styles/pages/ReviewSubmissionPage.css'
-import {Animated} from "react-animated-css";
+import { Animated } from "react-animated-css";
 import axios from 'axios';
+import { FiBluetooth } from 'react-icons/fi';
 
 // Form to submit a review for a business 
 class ReviewSubmissionPage extends Component {
@@ -15,7 +16,8 @@ class ReviewSubmissionPage extends Component {
         this.state = {
             validated: false,
             businessOptions: [],
-            selectedBusinessOption: null, // id of selected business
+            selectedBusinessOption: null, // id of selected business,
+            submitted: false
         };
 
         // Make a fetch/get request using axios (an ajax framework) to get list of businesses
@@ -37,14 +39,14 @@ class ReviewSubmissionPage extends Component {
                     businessOptions: dropdownOptions
                 })
             });
-        
+
     }
 
     // Handle user rating selection for search by rating dropdown
     handleBusinessSelection(option) {
         this.setState({
             // Update state with id of selected business
-            selectedBusinessOption: option.value
+            selectedBusinessOption: option
         });
     };
 
@@ -57,9 +59,26 @@ class ReviewSubmissionPage extends Component {
         }
 
         this.setState({
-            validated: true
+            validated: true,
+            submitted: true
         });
     };
+
+    // Custom (invalid) styling for form validation of business dropdown
+    noBusinessOptionSelected = {
+        control: (provided) => ({
+            ...provided,
+            borderColor: '#dc3545',
+        }),
+    }
+
+    // Custom (valid) styling for form validation of business dropdown
+    businessOptionSelected = {
+        control: (provided) => ({
+            ...provided,
+            borderColor: '#198754',
+        }),
+    }
 
     render() {
         return (
@@ -78,14 +97,19 @@ class ReviewSubmissionPage extends Component {
                             <div>
                                 <div>Select a store to review</div>
                                 <Select
-                                    value={this.state.selectedOption}
+                                    value={this.state.selectedBusinessOption}
                                     onChange={this.handleBusinessSelection.bind(this)}
                                     options={this.state.businessOptions}
+                                    // Validation styling
+                                    styles={(!this.state.selectedBusinessOption & this.state.submitted)
+                                        ? this.noBusinessOptionSelected
+                                        : (!!this.state.selectedBusinessOption & this.state.submitted)
+                                            ? this.businessOptionSelected : {}}
                                 />
                             </div>
-                          :
-                          <div>
-                          </div>
+                            :
+                            <div>
+                            </div>
                         }
                     </div>
                     <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit.bind(this)}>
@@ -132,13 +156,13 @@ class ReviewSubmissionPage extends Component {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formReviewTitle">
                             <Form.Label>Add a title</Form.Label>
-                            <Form.Control type="text" placeholder="Review title" required/>
+                            <Form.Control type="text" placeholder="Review title" required />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formReviewBody">
                             <Form.Label>Add a written review</Form.Label>
-                            <Form.Control 
-                                as="textarea" 
-                                rows={3} 
+                            <Form.Control
+                                as="textarea"
+                                rows={3}
                                 placeholder="What did you like or dislike? How did it taste?"
                                 required
                             />
