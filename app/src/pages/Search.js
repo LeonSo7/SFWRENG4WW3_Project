@@ -7,10 +7,11 @@ import ScoopsSloganImg from '../assets/images/scoops.png';
 import ThreeConesImg from '../assets/images/three-cones.png';
 import { withRouter } from 'react-router-dom';
 import {Animated} from "react-animated-css";
+import { connect } from "react-redux";
+import { fetchUser } from "../actions/userActions";
 
 // The search page with search bar
 class Search extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -21,8 +22,14 @@ class Search extends Component {
             geoSearchDisabled: false,
             geoSearchLabel: "Search Nearby",
             geoSearching: false,
-            searchByRatingDropdownText: "Search By Rating"
+            searchByRatingDropdownText: "Search By Rating",
+            user: this.props.user
         };
+    }
+
+    componentDidMount() {
+        // this.props.fetchUser()
+        console.log("User Object: ", this.state.user);
     }
 
     // Handle user rating selection for search by rating dropdown
@@ -141,4 +148,13 @@ class Search extends Component {
     }
 }
 
-export default withRouter(Search);
+const mapStateToProps = state => {
+    return {
+        user: this.state.user
+    };
+};
+
+
+export default connect(
+    mapStateToProps,
+)(withRouter(Search));

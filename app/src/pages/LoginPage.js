@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Form, Row } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/SignUpPage.css'
+import { connect } from "react-redux";
 
 // Login page
 class LoginPage extends Component {
@@ -26,6 +27,11 @@ class LoginPage extends Component {
         this.setState({
             validated: true
         });
+
+        if (this.state.validated) {
+            this.props.updateUser
+        }
+
     };
 
     render() {
@@ -65,4 +71,14 @@ class LoginPage extends Component {
     }
 }
 
-export default LoginPage;
+const mapDispatchToProps = dispatch => {
+    return {
+      updateUser: () => {
+        dispatch({ type: "UPDATE_USER", user: user });
+      }
+    };
+  };
+
+  export default connect(
+    mapDispatchToProps,
+)(LoginPage);

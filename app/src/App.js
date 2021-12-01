@@ -13,10 +13,14 @@ import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CommonHeader from './components/CommonHeader';
 import Footer from './components/CommonFooter';
+// import ReduceFunction from './redux/reducers';
+// import {createStore} from 'redux';
 
 require('dotenv').config();
 
 class App extends Component {
+
+  // store = createStore(ReduceFunction)
 
   render() {
     return (

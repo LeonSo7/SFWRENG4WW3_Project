@@ -2,6 +2,7 @@ import { Container, Navbar, Nav } from 'react-bootstrap';
 import '../styles/components/CommonHeader.css'
 import { IoIceCreamOutline } from 'react-icons/io5';
 import {Animated} from "react-animated-css";
+import { connect } from "react-redux";
 
 //Common Header
 const CommonHeader = () => (
@@ -34,4 +35,13 @@ const CommonHeader = () => (
     </Navbar>
 );
 
-export default CommonHeader;
+const mapStateToProps = state => {
+    console.log("Header", state)
+    return {
+        user: state.user
+    };
+};
+
+export default connect(
+    mapStateToProps,
+)(CommonHeader);
