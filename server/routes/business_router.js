@@ -12,21 +12,49 @@ api.get('/', function (req, res) {
             res.status(500).send("Server Error");
             return;
         }
-        console.log(results)
-        // Respond with results as JSON
-        res.status(200).send(results);
+        var formattedBusinessData = []
+
+        for (var key of Object.keys(results)) {
+            var businessData = results[key]
+            formattedBusinessData.push(
+                {
+                    storeId: businessData.STOREID,
+                    storeName: businessData.STORENAME,
+                    description: businessData.DESCR,
+                    latitude: businessData.LATITUDE,
+                    longitude: businessData.LONGITUDE
+                }
+            )
+        }
+
+        res.status(200).send(JSON.stringify(formattedBusinessData));
     });
 });
 
-api.get('/:businessName', function (req, res) {
-    let businessName = req.params.businessName
+api.get('/:businessId', function (req, res) {
+    let businessId = req.params.businessId
 
-    // Check if business with provided name exists
-    if (businessName in testBusiness) {
-        res.status(200).send(testBusiness[businessName])
-    } else {
-        res.status(404).send("Invalid Business Name")
-    }
+    db.getBusinessById(businessId, function (err, businessData) {
+        if (err || !businessId) {
+            res.status(400).send("Bad request");
+            return;
+        }
+        // No user found with credentials
+        if (!businessData) {
+            res.status(404).send("Not found");
+            return;
+        } else {
+            // Business found -- return business data
+            var formattedBusinessData = JSON.stringify({
+                storeId: businessData.STOREID,
+                storeName: businessData.STORENAME,
+                description: businessData.DESCR,
+                latitude: businessData.LATITUDE,
+                longitude: businessData.LONGITUDE
+            });
+            res.status(200).send(formattedBusinessData);
+        }
+    });
 });
 
 module.exports = api;

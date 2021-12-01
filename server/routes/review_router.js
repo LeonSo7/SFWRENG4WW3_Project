@@ -11,8 +11,22 @@ api.get('/', function (req, res) {
             res.send(500, "Server Error");
             return;
         }
-        // Respond with results as JSON
-        res.status(200).send(results);
+        var formattedReviewData = []
+
+        for (var key of Object.keys(results)) {
+            var reviewData = results[key]
+            formattedReviewData.push(
+                {
+                    reviewerId: reviewData.REVIEWID,
+                    reviewerName: reviewData.REVIEWERNAME,
+                    title: reviewData.TITLE,
+                    reviewContent: reviewData.REVIEW,
+                    rating: reviewData.RATING
+                }
+            )
+        }
+
+        res.status(200).send(JSON.stringify(formattedReviewData));
     });
 });
 

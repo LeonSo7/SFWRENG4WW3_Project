@@ -127,6 +127,28 @@ exports.authUser = function (loginData, callback) {
     });
 };
 
+// Get business data querying by id
+exports.getBusinessById = function(businessId, callback) {
+    if (!businessId) {
+        callback(false);
+    }
+
+    var sql = `SELECT * FROM STORES WHERE ` +
+        `STOREID = ${businessId}`;
+    _connectAndQuery(sql, function (err, businessData) {
+        if (err) {
+            console.log(err);
+            callback(true);
+            return;
+        }
+        businessData = JSON.parse(JSON.stringify(businessData));
+
+        // Return data of business
+        callback(false, businessData[0]);
+
+    });
+}
+
 
 
 
