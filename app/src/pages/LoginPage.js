@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Form, Row } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/SignUpPage.css'
+import axios from 'axios';
 
 // Login page
 class LoginPage extends Component {
@@ -10,9 +11,14 @@ class LoginPage extends Component {
         super(props);
         this.state = {
             validated: false,
-            email: "",
-            passWord: "",
+            emailInputValue: "",
+            passWordInputValue: "",
         };
+    }
+
+    // Redirect to home page after successful login
+    navigateToLogin() {
+        window.location.href = '/'
     }
 
     // Handle for submission and validation state
@@ -21,10 +27,46 @@ class LoginPage extends Component {
         if (form.checkValidity() === false) {
             e.preventDefault();
             e.stopPropagation();
+        } else {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // HTTP POST request to add user to database
+            let body = {
+                email: this.state.emailInputValue.toLowerCase(),
+                password: this.state.passwordInputValue
+            }
+            axios({
+                method: 'post',
+                url: 'http://localhost:3001/user/auth',
+                data: JSON.stringify(body),
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Access-Control-Allow-Origin": "*",
+                }
+            }).then((res) => {
+                if (res.status == "200") {
+                    console.log(res.data);
+                    // TODO Store user data here to state
+                    this.navigateToLogin();
+                }
+            });
         }
 
         this.setState({
             validated: true
+        });
+    };
+
+    handleEmailInput(e) {
+        this.setState({
+            emailInputValue: e.target.value
+        });
+    };
+
+    handlePasswordInput(e) {
+        this.setState({
+            passwordInputValue: e.target.value
         });
     };
 
@@ -45,14 +87,18 @@ class LoginPage extends Component {
                                 placeholder="Enter email"
                                 required
                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                onChange={(e) => this.handleEmailInput(e)}
+                                value={this.state.emailInputValue}
                             />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formPassword">
+                        <Form.Group noValidate className="mb-3" controlId="formPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type="password"
                                 placeholder="Password"
                                 required
+                                onChange={(e) => this.handlePasswordInput(e)}
+                                value={this.state.passwordInputValue}
                             />
                         </Form.Group>
                         <Button variant="primary" type="submit">

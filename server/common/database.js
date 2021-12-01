@@ -104,6 +104,29 @@ exports.addUser = function (userData, callback) {
     });
 };
 
+// Check if user exists with provided username and password
+exports.authUser = function (loginData, callback) {
+    // Process login data and format into SQL statement
+    if (!loginData) {
+        callback(false);
+    }
+
+    var sql = `SELECT USERID, FIRSTNAME, LASTNAME, PHONE, EMAIL, POSTALCODE FROM USERS WHERE ` +
+        `EMAIL = "${loginData.email}" AND PASS = "${loginData.password}"`;
+    _connectAndQuery(sql, function (err, userData) {
+        if (err) {
+            console.log(err);
+            callback(true);
+            return;
+        }
+        userData = JSON.parse(JSON.stringify(userData));
+
+        // Return data of last user registered with email and password
+        callback(false, userData[Object.keys(userData).length - 1]);
+
+    });
+};
+
 
 
 

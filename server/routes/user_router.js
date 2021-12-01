@@ -28,4 +28,30 @@ api.post('/', function(req, res) {
     });
 });
 
+// Check if user exists with provided username and password
+api.post('/auth', function(req, res) {
+    db.authUser(req.body, function (err, userData) {
+        if (err) {
+            res.status(400).send("Bad request");
+            return;
+        }
+        // No user found with credentials
+        if (!userData){
+            res.status(401).send("Unauthorized");
+            return;
+        } else {
+            // Login successful - return user data to client
+            var formattedUserData = JSON.stringify({
+                userId: userData.USERID,
+                firstName: userData.FIRSTNAME,
+                lastName: userData.LASTNAME,
+                email: userData.EMAIL,
+                phoneNumber: userData.PHONE,
+                postalCode: userData.POSTALCODE
+            });
+            res.status(200).send(formattedUserData);
+        }
+    });
+});
+
 module.exports = api;
