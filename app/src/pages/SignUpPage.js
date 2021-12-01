@@ -18,62 +18,55 @@ class SignUpPage extends Component {
             postalCodeInputValue: "",
             show: false,
             emailInputValue: "",
-            passwordInputValue: "",
+            passwordInputValue: ""
         };
     }
 
-    // Handle show the modal
-    handleShow() {
-        this.setState({
-            show: true
-        });
-    };
-
-    // redirect to home page
-    returnToHome(e) {
+    // Redirect to login page after sign up
+    navigateToLogin() {
         this.setState({
             show: false
         });
-
-        window.location.href='/'
+        window.location.href = '/login'
     }
 
     // Handle for submission and validation state
-    handleSubmit(e) {
+    async handleSubmit(e) {
         const form = e.currentTarget;
         if (form.checkValidity() === false) {
             e.preventDefault();
             e.stopPropagation();
         } else {
-            // After form is valid, add the user to the DB
-            let body = { 
+            e.preventDefault();
+            e.stopPropagation();
+            let body = {
                 firstName: this.state.firstNameInputValue,
                 lastName: this.state.lastNameInputValue,
                 phoneNumber: this.state.phoneNumberInputValue,
-                email: this.state.emailInputValue,
-                postalCode: this.state.postalCodeInputValue,
+                email: this.state.emailInputValue.toLowerCase(),
+                postalCode: this.state.postalCodeInputValue.toUpperCase(),
                 password: this.state.passwordInputValue
-             };
+            };
+            // HTTP POST request to add user to database
             axios({
                 method: 'post',
                 url: 'http://localhost:3001/user',
                 data: JSON.stringify(body),
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Access-Control-Allow-Origin": "*",
                 }
             }).then((res) => {
-                console.log(res.status);
-                // TODO Handle success/error + popup 
+                if (res.status == "200") {
+                    this.setState({
+                        show: true
+                    });
+                }
             });
         }
-
         this.setState({
-            validated: true,
+            validated: true
         });
-
-        if (this.state.validated) {
-            this.handleShow()
-        }
     };
 
     handleFirstNameInput(e) {
@@ -173,7 +166,8 @@ class SignUpPage extends Component {
 
                 {/* User registration form for sign up */}
                 <div id="signUpFormDiv">
-                    <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit.bind(this)}>
+                    {/* <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit.bind(this)}> */}
+                    <Form noValidate validated={this.state.validated} onSubmit={(this.handleSubmit.bind(this))}>
                         <Row>
                             <Col>
                                 <Form.Group className="mb-3" controlId="formFirstName">
@@ -261,23 +255,21 @@ class SignUpPage extends Component {
                         </Button>
                     </Form>
 
-
                     <Modal
                         show={this.state.show}
                         backdrop="static"
                         keyboard={false}
                     >
                         <Modal.Header closeButton>
-                        <Modal.Title>Sign up successful!</Modal.Title>
+                            <Modal.Title>Sign up successful!</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                        You're registered, {this.state.firstNameInputValue}!
+                            You're registered, {this.state.firstNameInputValue}!
                         </Modal.Body>
                         <Modal.Footer>
-                        <Button variant="primary" onClick={e => this.returnToHome(e)}>Return to home page</Button>
+                            <Button variant="primary" onClick={e => this.navigateToLogin(e)}>Login</Button>
                         </Modal.Footer>
                     </Modal>
-
                 </div>
             </div>
         );

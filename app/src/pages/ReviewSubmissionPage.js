@@ -1,25 +1,52 @@
 import React, { Component } from 'react';
-import { Button, Form, Dropdown, DropdownButton } from 'react-bootstrap';
+// import { Button, Form, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
+import Select from 'react-select';
 import '../styles/App.css';
 import '../styles/pages/ReviewSubmissionPage.css'
-import {Animated} from "react-animated-css";
+import { Animated } from "react-animated-css";
+import axios from 'axios';
+import { FiBluetooth } from 'react-icons/fi';
 
 // Form to submit a review for a business 
 class ReviewSubmissionPage extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             validated: false,
-            searchByRatingDropdownText: "Select a store",
-            // Replace with all of the stores queried from the db
-            allBusinesses: ["Emily's", "Fruit"]
+            businessOptions: [],
+            selectedBusinessOption: null, // id of selected business,
+            submitted: false
         };
+
+        // Make a fetch/get request using axios (an ajax framework) to get list of businesses
+        axios.get("http://localhost:3001/business")
+            .then((res) => {
+                var businesses = res.data;
+                // Populate select business dropdown options
+                var dropdownOptions = []
+                for (var i = 0; i < businesses.length; i++) {
+                    var business = businesses[i];
+                    dropdownOptions.push(
+                        {
+                            label: business.storeName,
+                            value: business.storeId
+                        }
+                    )
+                }
+                this.setState({
+                    businessOptions: dropdownOptions
+                })
+            });
+
     }
 
     // Handle user rating selection for search by rating dropdown
-    handleRatingSelect(e) {
+    handleBusinessSelection(option) {
         this.setState({
-            searchByRatingDropdownText: e.target.textContent
+            // Update state with id of selected business
+            selectedBusinessOption: option
         });
     };
 
@@ -32,9 +59,26 @@ class ReviewSubmissionPage extends Component {
         }
 
         this.setState({
-            validated: true
+            validated: true,
+            submitted: true
         });
     };
+
+    // Custom (invalid) styling for form validation of business dropdown
+    noBusinessOptionSelected = {
+        control: (provided) => ({
+            ...provided,
+            borderColor: '#dc3545',
+        }),
+    }
+
+    // Custom (valid) styling for form validation of business dropdown
+    businessOptionSelected = {
+        control: (provided) => ({
+            ...provided,
+            borderColor: '#198754',
+        }),
+    }
 
     render() {
         return (
@@ -48,19 +92,25 @@ class ReviewSubmissionPage extends Component {
                 {/* Review submission form */}
                 <div id="reviewFormDiv">
                     <div id="reviewDropdown">
-                        <div>Select a store to review</div>
-                        <DropdownButton id="filterRatingDropDown" size="med" title={this.state.searchByRatingDropdownText}>
-                        {this.state.allBusinesses.length > 0 ?
-                            Object.values(this.state.allBusinesses).map(info => (
-                                <Dropdown.Item href="#">
-                                    <div onClick={(e) => this.handleRatingSelect(e)}>{info}</div>
-                                </Dropdown.Item>
-                            ))
-                          :
-                          <div>
-                          </div>
+                        {/* Search dropdown for businesses to review*/}
+                        {this.state.businessOptions.length > 0 ?
+                            <div>
+                                <div>Select a store to review</div>
+                                <Select
+                                    value={this.state.selectedBusinessOption}
+                                    onChange={this.handleBusinessSelection.bind(this)}
+                                    options={this.state.businessOptions}
+                                    // Validation styling
+                                    styles={(!this.state.selectedBusinessOption & this.state.submitted)
+                                        ? this.noBusinessOptionSelected
+                                        : (!!this.state.selectedBusinessOption & this.state.submitted)
+                                            ? this.businessOptionSelected : {}}
+                                />
+                            </div>
+                            :
+                            <div>
+                            </div>
                         }
-                        </DropdownButton>
                     </div>
                     <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit.bind(this)}>
                         <Form.Group className="mb-3" controlId="formReviewRating">
@@ -106,21 +156,21 @@ class ReviewSubmissionPage extends Component {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formReviewTitle">
                             <Form.Label>Add a title</Form.Label>
-                            <Form.Control type="text" placeholder="Review title" required/>
+                            <Form.Control type="text" placeholder="Review title" required />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formReviewBody">
                             <Form.Label>Add a written review</Form.Label>
-                            <Form.Control 
-                                as="textarea" 
-                                rows={3} 
+                            <Form.Control
+                                as="textarea"
+                                rows={3}
                                 placeholder="What did you like or dislike? How did it taste?"
                                 required
                             />
                         </Form.Group>
-                        <Form.Group controlId="formReviewPhotoUpload" className="mb-3">
+                        {/* <Form.Group controlId="formReviewPhotoUpload" className="mb-3">
                             <Form.Label>Add photos to your review</Form.Label>
                             <Form.Control type="file" multiple accept=".jpg,.jpeg,.png"/>
-                        </Form.Group>
+                        </Form.Group> */}
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
