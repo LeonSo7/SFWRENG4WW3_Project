@@ -74,13 +74,15 @@ class ReviewSubmissionPage extends Component {
                 <div id="reviewFormDiv">
                     <div id="reviewDropdown">
                         {/* Search dropdown for businesses to review*/}
-                        <div>Select a store to review</div>
                         {this.state.businessOptions.length > 0 ?
-                            <Select
-                                value={this.state.selectedOption}
-                                onChange={this.handleBusinessSelection.bind(this)}
-                                options={this.state.businessOptions}
-                            />
+                            <div>
+                                <div>Select a store to review</div>
+                                <Select
+                                    value={this.state.selectedOption}
+                                    onChange={this.handleBusinessSelection.bind(this)}
+                                    options={this.state.businessOptions}
+                                />
+                            </div>
                           :
                           <div>
                           </div>
