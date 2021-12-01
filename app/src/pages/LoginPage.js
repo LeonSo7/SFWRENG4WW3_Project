@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import '../styles/App.css';
-import '../styles/pages/SignUpPage.css'
+import '../styles/pages/LoginPage.css'
 import axios from 'axios';
+import { Animated } from "react-animated-css";
 
 // Login page
 class LoginPage extends Component {
@@ -41,7 +42,7 @@ class LoginPage extends Component {
             }
         }).then((res) => {
             if (res.status == "200") {
-                // TODO Store user data here to state
+                // TODO Store user data here to state in redux
                 this.navigateToLogin();
                 this.setState({
                     loginInvalid: false
@@ -79,12 +80,14 @@ class LoginPage extends Component {
     render() {
         return (
             <div class="wrapper">
-                <div id="signUpPageTitleDiv">
-                    <h1>Login</h1>
+                 <div id="loginPageTitleDiv">
+                    <Animated animationIn="bounceIn" isVisible={true}>
+                        <h1>Login</h1>
+                    </Animated>
                 </div>
 
                 {/* Login Page */}
-                <div id="signUpFormDiv">
+                <div id="loginFormDiv">
                     <Form onSubmit={this.handleSubmit.bind(this)}>
                         <Form.Group className="mb-3" controlId="formEmail">
                             <Form.Label>Email</Form.Label>
