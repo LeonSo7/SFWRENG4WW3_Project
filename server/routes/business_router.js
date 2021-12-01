@@ -12,6 +12,8 @@ api.get('/', function (req, res) {
             res.status(500).send("Server Error");
             return;
         }
+
+        // Format business data
         var formattedBusinessData = []
 
         for (var key of Object.keys(results)) {

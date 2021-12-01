@@ -11,6 +11,8 @@ api.get('/', function (req, res) {
             res.send(500, "Server Error");
             return;
         }
+
+        // Format review data
         var formattedReviewData = []
 
         for (var key of Object.keys(results)) {
