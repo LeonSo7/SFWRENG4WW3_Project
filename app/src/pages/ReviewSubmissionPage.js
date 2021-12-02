@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-// import { Button, Form, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Button, Form } from 'react-bootstrap';
 import Select from 'react-select';
 import '../styles/App.css';
 import '../styles/pages/ReviewSubmissionPage.css'
 import { Animated } from "react-animated-css";
 import axios from 'axios';
-import { FiBluetooth } from 'react-icons/fi';
 
 // Form to submit a review for a business 
 class ReviewSubmissionPage extends Component {

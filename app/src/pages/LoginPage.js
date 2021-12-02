@@ -17,7 +17,7 @@ class LoginPage extends Component {
             loginInvalid: false
         };
     }
-
+      
     // Redirect to home page after successful login
     navigateToLogin() {
         window.location.href = '/'
@@ -43,21 +43,21 @@ class LoginPage extends Component {
             }
         }).then((res) => {
             if (res.status == "200") {
-                // TODO Store user data here to state in redux
+                // Update the global state with the user data
+                this.props.updateUser(res.data);
+
                 this.navigateToLogin();
                 this.setState({
                     loginInvalid: false
                 });
             } else {
-                console.log("Fail")
                 this.setState({
                     emailInputValue: "",
                     passwordInputValue: "",
                     loginInvalid: true
                 });
             }
-        }).catch(() => {
-            console.log("Fail")
+        }).catch((e) => {
             this.setState({
                 emailInputValue: "",
                 passwordInputValue: "",
@@ -76,16 +76,11 @@ class LoginPage extends Component {
         this.setState({
             passwordInputValue: e.target.value
         });
-
-        if (this.state.validated) {
-            this.props.updateUser
-        }
-
     };
 
     render() {
         return (
-            <div class="wrapper">
+            <div className="wrapper">
                  <div id="loginPageTitleDiv">
                     <Animated animationIn="bounceIn" isVisible={true}>
                         <h1>Login</h1>
@@ -136,12 +131,13 @@ class LoginPage extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-      updateUser: () => {
-        dispatch({ type: "UPDATE_USER", user: user });
+      updateUser: user => {
+        dispatch({ type: "UPDATE_USER", payload: user });
       }
     };
   };
 
-  export default connect(
+export default connect(
+    null,
     mapDispatchToProps,
 )(LoginPage);

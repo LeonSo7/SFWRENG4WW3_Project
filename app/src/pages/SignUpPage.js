@@ -157,7 +157,7 @@ class SignUpPage extends Component {
 
     render() {
         return (
-            <div class="wrapper">
+            <div className="wrapper">
                 <div id="signUpPageTitleDiv">
                     <Animated animationIn="bounceIn" isVisible={true}>
                         <h1>Sign up today!</h1>
