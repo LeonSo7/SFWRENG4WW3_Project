@@ -20,15 +20,15 @@ CREATE TABLE USERS (
     PHONE char(14) NOT NULL, 
     EMAIL varchar(255) NOT NULL,
     PASS varchar(255) NOT NULL,
-    POSTALCODE char(6) NOT NULL,
+    POSTALCODE char(7) NOT NULL,
     PRIMARY KEY (USERID)
 );
 
-INSERT INTO USERS VALUES(0, "Jenneth", "Pan", "(416) 123-1234", "jenna@gmail.com", "password", "L2H2S1");
-INSERT INTO USERS VALUES(1, "Lannie",  "King", "(416) 322-5435", "lanna@hotmail.com", "password", "L2H1Q5");
-INSERT INTO USERS VALUES(2, "Hana", "Min", "(647) 234-8768", "hanna@hotmail.com", "password", "L2H2M5");
-INSERT INTO USERS VALUES(3, "Lin", "Cha", "(905) 546-5656", "lin@hotmail.com", "password", "L2H3R5");
-INSERT INTO USERS VALUES(4, "Emma", "Tin", "(416) 345-7864", "emma@hotmail.com", "password", "L3H4R5");
+INSERT INTO USERS VALUES(0, "Jenneth", "Pan", "(416) 123-1234", "jenna@gmail.com", "password", "L2H 2S1");
+INSERT INTO USERS VALUES(1, "Lannie",  "King", "(416) 322-5435", "lanna@hotmail.com", "password", "L2H 1Q5");
+INSERT INTO USERS VALUES(2, "Hana", "Min", "(647) 234-8768", "hanna@hotmail.com", "password", "L2H 2M5");
+INSERT INTO USERS VALUES(3, "Lin", "Cha", "(905) 546-5656", "lin@hotmail.com", "password", "L2H 3R5");
+INSERT INTO USERS VALUES(4, "Emma", "Tin", "(416) 345-7864", "emma@hotmail.com", "password", "L3H 4R5");
 
 CREATE TABLE REVIEWS (
     REVIEWID INTEGER NOT NULL,

@@ -27,8 +27,8 @@ Notes to marker:
     6. "Add a business!" heading (found in Submission.js)
     7. "Sign up today!" heading (found in SignUpPage.js)
     8. Review listings on search results page (found in ResultsSample.js)
-    9. Business name heading on business pages (found in IndividualSample1.js, IndividualSample2.js, IndividualSample3.js)
-    10. Review listings on business pages (found in IndividualSample1.js, IndividualSample2.js, IndividualSample3.js)
+    9. Business name heading on business pages (found in IndividualSample.js)
+    10. Review listings on business pages (found in IndividualSample.js)
 - For form validation, please see sign up page (SignUpPage.js), review submission page (ReviewSubmissionPage.js), business submission page (Submission.js)
 - For geolocation on object submission, please navigate to "Add an Ice Cream Spot" page (Submission.js) -- and then click "Locate Me"
 - The maps can be found on the search results page and the business object pages.
