@@ -13,7 +13,8 @@ class MapComponent extends Component {
             activeMarkers: this.props.param.activeMarkers ? this.props.param.activeMarkers : {},
             showInfo: this.props.param.showInfo ? this.props.param.showInfo : false,
             searchResults: this.props.param.searchResults ? this.props.param.searchResults : null,
-            storeName: this.props.param.storeName ? this.props.param.storeName : null
+            storeName: this.props.param.storeName ? this.props.param.storeName : null,
+            storeId: this.props.param.storeId ? this.props.param.searchResults : null
         }
     }
 
@@ -55,12 +56,13 @@ class MapComponent extends Component {
                                 <Marker
                                     name={info.store}
                                     averageRating={info.averageRating}
-                                    location={info.location}
-                                    path={info.path}
+                                    location={info.lat + ", " + info.lng}
+                                    path={`business/${info.storeId}`}
                                     position={{
                                         lat: info.lat,
                                         lng: info.lng
                                     }}
+                                    storeId={info.storeId}
                                     onClick={this.onMarkerClick.bind(this)}
                                 />
                             ))
@@ -72,6 +74,7 @@ class MapComponent extends Component {
                                     lat: this.state.initialLat,
                                     lng: this.state.initialLng
                                 }}
+                                storeId={this.state.storeId}
                                 onClick={this.onMarkerClick.bind(this)}
                             />
                     }
@@ -96,7 +99,7 @@ class MapComponent extends Component {
                                             Location: {this.state.activeMarkers.location}
                                         </div>
                                         { /* Link to corresponding business */}
-                                        <a href={"./" + this.state.activeMarkers.path}> Store Details</a>
+                                        <a href={"./business/" + this.state.activeMarkers.storeId}> Store Details</a>
                                     </div>
                                     :
                                     <div />

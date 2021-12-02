@@ -25,6 +25,11 @@
     font-weight: 400;
 }
 
+#loc {
+    font-size: 15px;
+    font-weight: 400;
+}
+
 /* Remove the underline in the link */
 .searchListingLink {
     text-decoration: none;

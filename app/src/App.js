@@ -6,9 +6,7 @@ import LoginPage from './pages/LoginPage';
 import ReviewSubmissionPage from './pages/ReviewSubmissionPage';
 import AddBusinessPage from './pages/Submission';
 import ResultsSample from './pages/ResultsSample';
-import BusinessPage from './pages/businessPages/IndividualSample1';
-import BusinessPage2 from './pages/businessPages/IndividualSample2';
-import BusinessPage3 from './pages/businessPages/IndividualSample3';
+import BusinessPage from './pages/IndividualSample';
 import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CommonHeader from './components/CommonHeader';
@@ -30,10 +28,8 @@ class App extends Component {
           <Route path='/review' component={ReviewSubmissionPage}/>
           <Route path='/add-business' component={AddBusinessPage}/>
           <Route path='/search-results' component={ResultsSample}/>
-          {/* Temporary routes for hard-coded business object pages */}
-          <Route path='/emilys-ice-cream-parlour' component={BusinessPage}/>
-          <Route path='/coco-gelato' component={BusinessPage2}/>
-          <Route path='/fruityoyo' component={BusinessPage3}/>
+          {/* business object pages */}
+          <Route path='/business/:id' component={BusinessPage}/>
         </Switch>
         <Footer/>
       </main>

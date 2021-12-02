@@ -27,31 +27,32 @@ class ResultsSample extends Component {
             },
             searchResults: {
                 0: {
+                    storeId: 0,
                     store: "FruitYoyo",
-                    location: "1 Sixth Street, Hamilton, Ontario L2C1H3",
                     averageRating: 4,
-                    path: "fruityoyo",
                     lat: 43.262342,
                     lng: -79.9234,
                 },
                 1: {
+                    storeId: 1,
                     store: "Coco Gelato",
-                    location: "81 Nineth Street, Hamilton, ON L9H2B1",
                     averageRating: 3.5,
-                    path: "coco-gelato",
                     lat: 43.2658,
                     lng: -79.92545
                 },
                 2: {
+                    storeId: 2,
                     store: "Emily's Ice Cream Parlour",
-                    location: "200 Sixteenth Street, L2C4H5 Hamilton Ontario",
                     averageRating: 4,
-                    path: "emilys-ice-cream-parlour",
                     lat: 43.2612,
                     lng: -79.92
                 }
             }
         }
+    }
+
+    componentDidMount() {
+        //TODO: replace searchResults state variable above with the businesses returned in search results
     }
 
     render() {
