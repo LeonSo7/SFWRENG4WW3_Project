@@ -4,6 +4,7 @@ import '../styles/App.css';
 import '../styles/pages/Submission.css'
 import { TiLocationArrowOutline } from 'react-icons/ti';
 import {Animated} from "react-animated-css";
+import axios from 'axios';
 
 // Form to add a new business to the site
 class Submission extends Component {
@@ -35,16 +36,16 @@ class Submission extends Component {
         // Send store info to DB 
 
         // Send photo to DB
-        axios({
-            method: "post",
-            url: "http://localhost:3001/images",
-            data: formData,
-            headers: { "Content-Type": "multipart/form-data" }
-          }).then(res => {
-            if (res.status === 200) {
-                console.log("sent pic to db")
-            }
-          });
+        // axios({
+        //     method: "post",
+        //     url: "http://localhost:3001/images",
+        //     data: formData,
+        //     headers: { "Content-Type": "multipart/form-data" }
+        //   }).then(res => {
+        //     if (res.status === 200) {
+        //         console.log("sent pic to db")
+        //     }
+        //   });
     
     };
 
