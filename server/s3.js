@@ -2,11 +2,6 @@ require('dotenv').config()
 const S3 = require('aws-sdk/clients/s3')
 const fs = require('fs')
 
-S3_BUCKET_NAME = "scoops"
-S3_BUCKET_REGION = "us-east-2"
-S3_BUCKET_ACCESS_KEY = "AKIAR2YTDSBW6JYTYNR2"
-S3_BUCKET_SECRET_KEY = "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"
-
 const s3 = new S3({
     S3_BUCKET_REGION,
     S3_BUCKET_ACCESS_KEY,
