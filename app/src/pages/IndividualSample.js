@@ -36,6 +36,8 @@ class IndividualSample extends Component {
         });
 
         // TODO: get the review data from db using store id: this.props.match.params.id
+
+        // TODO: get the image key
     }
 
     render() {
@@ -49,6 +51,10 @@ class IndividualSample extends Component {
                         <p>Description: {this.state.description}</p>
                         <p>Location: {this.state.latitude + ", " + this.state.longitude}</p>
                         <p>Average Rating: {this.state.averageRating}</p>
+                        
+                        {/* Image uploaded by the user */}
+                        <img src="/images/{put the key here}"></img>
+
                     </div>
 
                     {/* Map showing location of business */}

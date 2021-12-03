@@ -31,6 +31,21 @@ class Submission extends Component {
         this.setState({
             validated: true
         });
+
+        // Send store info to DB 
+
+        // Send photo to DB
+        axios({
+            method: "post",
+            url: "http://localhost:3001/images",
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" }
+          }).then(res => {
+            if (res.status === 200) {
+                console.log("sent pic to db")
+            }
+          });
+    
     };
 
     // Get geolocation (if possible) and update coordinates in state
