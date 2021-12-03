@@ -12,7 +12,7 @@ var pool = mysql.createPool({
     connectionLimit: 20
 });
 
-
+/* PRIVATE METHODS */
 // Connects to the database and executes a SQL query
 function _connectAndQuery(sqlStatement, callback) {
     // Get connection from the pool
@@ -48,6 +48,7 @@ function _getTableSize(tableName, callback) {
     });
 }
 
+/* BUSINESS/STORE QUERIES */
 // GET businesses from database
 exports.getBusinesses = function (latitude, longitude, rating, searchStr, callback) {
     // Construct SQL query based on search parameters
@@ -109,26 +110,38 @@ exports.getBusinesses = function (latitude, longitude, rating, searchStr, callba
     });
 };
 
-// Get users from database
+// Get business data querying by id
+exports.getBusinessById = function (businessId, callback) {
+    if (!businessId) {
+        callback(false);
+    }
+
+    var sql = `SELECT * FROM STORES WHERE ` +
+        `STOREID = ${businessId}`;
+
+    _connectAndQuery(sql, function (err, businessData) {
+        if (err) {
+            console.log(err);
+            callback(true);
+            return;
+        }
+
+        businessData = JSON.parse(JSON.stringify(businessData));
+
+        // Return data of business
+        callback(false, businessData[0]);
+
+    });
+}
+
+/* USERS QUERIES */
+// GET users from database
 exports.getUsers = function (callback) {
     var sql = "SELECT * FROM USERS";
 
     _connectAndQuery(sql, function (err, cb) {
         if (err) {
             console.log(err);
-            callback(true);
-            return;
-        }
-        callback(false, cb);
-    });
-};
-
-// Get reviews from database
-exports.getReviews = function (callback) {
-    var sql = "SELECT * FROM REVIEWS";
-
-    _connectAndQuery(sql, function (err, cb) {
-        if (err) {
             callback(true);
             return;
         }
@@ -183,29 +196,19 @@ exports.authUser = function (loginData, callback) {
     });
 };
 
-// Get business data querying by id
-exports.getBusinessById = function (businessId, callback) {
-    if (!businessId) {
-        callback(false);
-    }
+/* REVIEWS QUERIES */
+// GET reviews from database
+exports.getReviews = function (callback) {
+    var sql = "SELECT * FROM REVIEWS";
 
-    var sql = `SELECT * FROM STORES WHERE ` +
-        `STOREID = ${businessId}`;
-
-    _connectAndQuery(sql, function (err, businessData) {
+    _connectAndQuery(sql, function (err, cb) {
         if (err) {
-            console.log(err);
             callback(true);
             return;
         }
-
-        businessData = JSON.parse(JSON.stringify(businessData));
-
-        // Return data of business
-        callback(false, businessData[0]);
-
+        callback(false, cb);
     });
-}
+};
 
 
 
