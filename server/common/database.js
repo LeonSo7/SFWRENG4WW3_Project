@@ -77,6 +77,7 @@ exports.getBusinesses = function (latitude, longitude, rating, searchStr, callba
 
     /* WHERE portion of sql query */
     // Modify sql query to include search string
+    // Search will look for entries with STORENAME containing search string
     if (searchStr && searchStr != "") {
         sql += ` WHERE STORENAME LIKE "%${searchStr}%"`
     }
