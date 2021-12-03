@@ -95,7 +95,7 @@ exports.getBusinesses = function (latitude, longitude, rating, searchStr, callba
     }
 
     /* ORDER BY and LIMIT  portion of sql query (for longitude and latitude) */
-    // Modify sql query if latitude and longitude exists; narrow search using distance; this needs to be after WHERE clauses
+    // Modify sql query if latitude and longitude exists; narrow and order search results using distance (return 0-20 nearby stores only)
     if (latitude & longitude) {
         sql += ` ORDER BY DISTANCE LIMIT 0, 20`
     }
