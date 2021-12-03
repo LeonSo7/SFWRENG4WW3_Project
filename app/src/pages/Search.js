@@ -14,19 +14,41 @@ class Search extends Component {
         super(props);
         this.state = {
             coordinates: {
-                latitude: "",
-                longitude: ""
+                latitude: null,
+                longitude: null
             },
             geoSearchDisabled: false,
             geoSearchLabel: "Search Nearby",
             geoSearching: false,
             searchByRatingDropdownText: "Search By Rating",
-            user: this.props.user
+            user: this.props.user,
+            selectedRating: 1 // Default selected rating
         };
     }
 
     // Handle user rating selection for search by rating dropdown
     handleRatingSelect(e) {
+        if (e.target.textContent === "5 Star") {
+            this.setState({
+                selectedRating: 5
+            });
+        } else if (e.target.textContent === "4+ Star") {
+            this.setState({
+                selectedRating: 4
+            });
+        } else if (e.target.textContent === "3+ Star") {
+            this.setState({
+                selectedRating: 3
+            });
+        } else if (e.target.textContent === "2+ Star") {
+            this.setState({
+                selectedRating: 2
+            });
+        } else if (e.target.textContent === "1+ Star") {
+            this.setState({
+                selectedRating: 1
+            });
+        }
         this.setState({
             searchByRatingDropdownText: e.target.textContent
         });
@@ -59,7 +81,7 @@ class Search extends Component {
                 history.push("/search-results", this.state.coordinates);
             }, () => {
                 /* Show an alert and disable geolocation button if location cannot be retrieved.
-                 * e.g., location services not enables/permissions not granted
+                 * e.g., location services not enabled/permissions not granted
                  */
                 alert("Unable to retrieve your location... Please enable location services and refresh to search nearby.");
                 this.setState({

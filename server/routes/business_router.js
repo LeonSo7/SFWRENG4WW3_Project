@@ -6,7 +6,14 @@ const db = require('../common/database');
 
 // Get list of businesses and data
 api.get('/', function (req, res) {
-    db.getBusinesses(function (err, results) {
+
+    // Query parameters
+    let latitude = req.query.latitude;
+    let longitude = req.query.longitude;
+    let rating = req.query.rating;
+    let searchStr = req.query.searchStr;
+
+    db.getBusinesses(latitude, longitude, rating, searchStr, function (err, results) {
         if (err) {
             console.log(err);
             res.status(500).send("Server Error");

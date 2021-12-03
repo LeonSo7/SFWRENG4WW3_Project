@@ -49,8 +49,55 @@ function _getTableSize(tableName, callback) {
 }
 
 // GET businesses from database
-exports.getBusinesses = function (callback) {
-    var sql = "SELECT * FROM STORES";
+exports.getBusinesses = function (latitude, longitude, rating, searchStr, callback) {
+    // Construct SQL query based on search parameters
+    /* SELECT portion of sql query */
+    var sql = "SELECT *"; // Default sql to select all businesses
+
+    // Modify sql query if latitude and longitude exists; narrow search using distance
+    if (latitude & longitude) {
+        sql += `, (3959 * acos(cos(radians(${latitude})) * cos(radians(LATITUDE)) * ` +
+            `cos(radians(LONGITUDE) - radians(${longitude})) + sin(radians(${latitude})) * sin(radians(LATITUDE)))) AS DISTANCE`
+    }
+
+    if (rating) {
+        // Calculate average rating of each store
+        sql += `, COALESCE(AVG(RATING), 5) AS AVGRATING`
+    }
+
+    // End select portion of sql query
+    sql += ` FROM STORES S`
+
+    /* JOIN portion of sql query */
+    // Join with reviews table to calculate average rating
+    if (rating) {
+        sql += ` LEFT JOIN REVIEWS R ON S.STOREID = R.STOREID`
+    }
+
+    /* WHERE portion of sql query */
+    // Modify sql query to include search string
+    if (searchStr && searchStr != "") {
+        sql += ` WHERE STORENAME LIKE "%${searchStr}%"`
+    }
+
+    /* GROUPBY portion of sql query */
+
+    sql += ` GROUP BY S.STOREID`
+
+    /* HAVING portion of sql query */
+    if (rating && (latitude & longitude)) {
+        sql += ` HAVING AVGRATING >= ${rating} AND DISTANCE < 30`
+    } else if (rating) {
+        sql += ` HAVING AVGRATING >= ${rating}`
+    } else if (latitude & longitude) {
+        sql += ` HAVING DISTANCE < 30`
+    }
+
+    /* ORDER BY and LIMIT  portion of sql query (for longitude and latitude) */
+    // Modify sql query if latitude and longitude exists; narrow search using distance; this needs to be after WHERE clauses
+    if (latitude & longitude) {
+        sql += ` ORDER BY DISTANCE LIMIT 0, 20`
+    }
 
     _connectAndQuery(sql, function (err, cb) {
         if (err) {
@@ -137,7 +184,7 @@ exports.authUser = function (loginData, callback) {
 };
 
 // Get business data querying by id
-exports.getBusinessById = function(businessId, callback) {
+exports.getBusinessById = function (businessId, callback) {
     if (!businessId) {
         callback(false);
     }
@@ -151,7 +198,7 @@ exports.getBusinessById = function(businessId, callback) {
             callback(true);
             return;
         }
-        
+
         businessData = JSON.parse(JSON.stringify(businessData));
 
         // Return data of business

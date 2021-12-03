@@ -23,7 +23,8 @@ api.get('/', function (req, res) {
                     reviewerName: reviewData.REVIEWERNAME,
                     title: reviewData.TITLE,
                     reviewContent: reviewData.REVIEW,
-                    rating: reviewData.RATING
+                    rating: reviewData.RATING,
+                    storeId: reviewData.STOREID
                 }
             )
         }

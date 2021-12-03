@@ -49,6 +49,12 @@ class ResultsSample extends Component {
                 }
             }
         }
+
+        // Construct GET url to get businesses with url query parameters for search filtering
+        // Search by latitude and longitude -- 'Search Nearby' option selected on search page
+        if (this.coordinates.latitude && this.coordinates.longitude) {
+            // TODO
+        }
     }
 
     componentDidMount() {
