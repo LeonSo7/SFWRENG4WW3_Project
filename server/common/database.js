@@ -61,19 +61,15 @@ exports.getBusinesses = function (latitude, longitude, rating, searchStr, callba
             `cos(radians(LONGITUDE) - radians(${longitude})) + sin(radians(${latitude})) * sin(radians(LATITUDE)))) AS DISTANCE`
     }
 
-    if (rating) {
-        // Calculate average rating of each store
-        sql += `, COALESCE(AVG(RATING), 5) AS AVGRATING`
-    }
+    // Calculate average rating of each store
+    sql += `, COALESCE(AVG(RATING), 5) AS AVGRATING`
 
     // End select portion of sql query
     sql += ` FROM STORES S`
 
     /* JOIN portion of sql query */
     // Join with reviews table to calculate average rating
-    if (rating) {
-        sql += ` LEFT JOIN REVIEWS R ON S.STOREID = R.STOREID`
-    }
+    sql += ` LEFT JOIN REVIEWS R ON S.STOREID = R.STOREID`
 
     /* WHERE portion of sql query */
     // Modify sql query to include search string
@@ -102,6 +98,7 @@ exports.getBusinesses = function (latitude, longitude, rating, searchStr, callba
     }
 
     _connectAndQuery(sql, function (err, cb) {
+        console.log(cb);
         if (err) {
             console.log(err);
             callback(true);
