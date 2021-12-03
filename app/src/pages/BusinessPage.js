@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
-import '../styles/pages/IndividualSample.css'
+import '../styles/pages/BusinessPage.css'
 import Review from '../components/Review';
 import Map from '../components/Map';
 import {Animated} from "react-animated-css";
 import axios from 'axios';
 
 // Business page
-class IndividualSample extends Component {
+class BusinessPage extends Component {
 
     state = {
         storeName: "",
@@ -84,4 +84,4 @@ class IndividualSample extends Component {
     }
 }
 
-export default IndividualSample;
+export default BusinessPage;

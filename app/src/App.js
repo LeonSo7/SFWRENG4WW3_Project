@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage';
 import ReviewSubmissionPage from './pages/ReviewSubmissionPage';
 import AddBusinessPage from './pages/Submission';
 import ResultsSample from './pages/ResultsSample';
-import BusinessPage from './pages/IndividualSample';
+import BusinessPage from './pages/BusinessPage';
 import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CommonHeader from './components/CommonHeader';
