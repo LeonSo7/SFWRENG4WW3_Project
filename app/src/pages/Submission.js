@@ -58,7 +58,6 @@ class Submission extends Component {
             "Access-Control-Allow-Origin": "*",
             }
           }).then(res => {
-              console.log("res", res)
             if (res.status == 200) {
                 // Save the picture key in the db
                 console.log("sent pic to db", res.data.imagePath)
