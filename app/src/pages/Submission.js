@@ -17,7 +17,8 @@ class Submission extends Component {
                 latitude: "",
                 longitude: ""
             },
-            geolocationStatus: "Locate me"
+            geolocationStatus: "Locate me",
+            image: null
         };
     }
 
@@ -33,20 +34,45 @@ class Submission extends Component {
             validated: true
         });
 
-        // Send store info to DB 
+        if (this.state.validated) {
+            this.submitImage(e)
+        }
+    };
 
+    submitImage = async e => {
+        e.preventDefault()
+        this.postImage({image: this.state.image})
+    }
+
+    postImage() {
+        const formData = new FormData();
+        formData.append("image", this.state.image)
+
+        console.log("trying to upload image", formData)
         // Send photo to DB
-        // axios({
-        //     method: "post",
-        //     url: "http://localhost:3001/images",
-        //     data: formData,
-        //     headers: { "Content-Type": "multipart/form-data" }
-        //   }).then(res => {
-        //     if (res.status === 200) {
-        //         console.log("sent pic to db")
-        //     }
-        //   });
-    
+        const result = axios({
+            method: "post",
+            url: "http://localhost:3001/images",
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data",
+            "Access-Control-Allow-Origin": "*",
+            }
+          }).then(res => {
+              console.log("res", res)
+            if (res.status == 200) {
+                // Save the picture key in the db
+                console.log("sent pic to db", res.data.imagePath)
+                // res.data.imagePath is the path /images/{image key in s3}
+            }
+          }).catch((e) => {
+            console.log(e)
+        });
+    }
+
+    fileSelectedHandler(e) {
+        this.setState({
+            image: e.target.files[0]
+        });
     };
 
     // Get geolocation (if possible) and update coordinates in state
@@ -92,7 +118,7 @@ class Submission extends Component {
             }
         });
     };
-
+    
     render() {
         return (
             <div className="wrapper">
@@ -114,8 +140,8 @@ class Submission extends Component {
                             <Form.Control as="textarea" rows={3} placeholder="Description of business" required />
                         </Form.Group>
                         <Form.Group controlId="formReviewPhotoUpload" className="mb-3">
-                            <Form.Label>Add photos of business</Form.Label>
-                            <Form.Control type="file" multiple accept=".jpg,.jpeg,.png" />
+                            <Form.Label>Add a photo of the business</Form.Label>
+                            <Form.Control type="file" accept=".jpg,.jpeg,.png" multiple={false} onChange={this.fileSelectedHandler.bind(this)}/>
                         </Form.Group>
                         <Row>
                             <Col>

@@ -16,38 +16,6 @@ const port = process.env.HTTP_PORT;
 
 const app = express();
 
-// // Image Storage
-// const multer = require("multer");
-// const upload = multer({dest: './uploads'});
-// const { uploadFile, getFileStream } = require('./s3');
-
-// const fs = require('fs')
-// const util = require('util')
-// const unlinkFile = util.promisify(fs.unlink)
-
-// app.get('/images/:key', (req, res) => {
-//   const key = req.params.key
-//   const readStream = getFileStream(key)
-
-//   readStream.pipe(res)
-// })
-
-// app.post('/images', upload.single('image'), async (req, res) => {
-//   const file = req.file
-//   console.log(file)
-//   // Use the path and filename for the s3 bucket. Also store the filename in the db so we can easily get it later
-  
-//   // Wait for upload to be successful 
-//   const result = await uploadFile(file)
-
-//   // Delete the file after it is uploaded to S3
-//   await unlinkFile(file.path)
-//   console.log(result)
-//   const description = req.body.description
-
-//   res.send({imagePath: `/images/${result.Key}`})
-// })
-
 // For parsing application/json
 app.use(bodyParser.json());
 // Cross-origin resource sharing
@@ -69,4 +37,35 @@ app.listen(port, hostname, function () {
 	console.log('HTTP Listening on ' + port);
 });
 
+// IMAGE STORAGE START
+// When moving to new file remember to add cors!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+const multer = require("multer");
+const upload = multer({dest: './uploads'});
+const { uploadFile, getFileStream } = require('./s3');
 
+const fs = require('fs')
+const util = require('util')
+const unlinkFile = util.promisify(fs.unlink)
+
+app.get('/images/:key', (req, res) => {
+  const key = req.params.key
+  const readStream = getFileStream(key)
+
+  readStream.pipe(res)
+})
+
+app.post('/images', upload.single('image'), async (req, res) => {
+  const file = req.file
+  console.log(file)
+  // Use the path and filename for the s3 bucket. Also store the filename in the db so we can easily get it later
+  
+  // Wait for upload to be successful 
+  const result = await uploadFile(file)
+  console.log("uploadfile result", result)
+
+  // Delete the file after it is uploaded to S3
+  await unlinkFile(file.path)
+
+  res.send(JSON.stringify({imagePath: `/images/${result.Key}`}))
+})
+// IMAGE STORAGE END
