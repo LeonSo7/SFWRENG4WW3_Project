@@ -4,7 +4,8 @@ import '../styles/pages/ResultsSample.css';
 import SearchBar from '../components/SearchBar';
 import SearchListing from '../components/SearchListing';
 import Map from '../components/Map';
-import {Animated} from "react-animated-css";
+import {Animated} from 'react-animated-css';
+import axios from 'axios';
 
 // Sample search results page
 class ResultsSample extends Component {
@@ -12,8 +13,6 @@ class ResultsSample extends Component {
         super(props)
 
         this.state = {
-            initialLat: 43.263,
-            initialLng: -79.921,
             activeMarkers: {},
             showInfo: false,
             // The user's geolocation or null if not searching by geolocation
@@ -25,48 +24,74 @@ class ResultsSample extends Component {
                     (this.props.location.state.longitude ? this.props.location.state.longitude : null) 
                     : null,
             },
-            searchResults: {
-                0: {
-                    storeId: 0,
-                    store: "FruitYoyo",
-                    averageRating: 4,
-                    lat: 43.262342,
-                    lng: -79.9234,
-                },
-                1: {
-                    storeId: 1,
-                    store: "Coco Gelato",
-                    averageRating: 3.5,
-                    lat: 43.2658,
-                    lng: -79.92545
-                },
-                2: {
-                    storeId: 2,
-                    store: "Emily's Ice Cream Parlour",
-                    averageRating: 4,
-                    lat: 43.2612,
-                    lng: -79.92
-                }
-            }
+            searchResults: [],
+            rating: this.props.location.state.rating ? this.props.location.state.rating : null,
+            searchStr: this.props.location.state.searchStr ? this.props.location.state.searchStr: null,
+            showMap: false
         }
 
         // Construct GET url to get businesses with url query parameters for search filtering
-        // Search by latitude and longitude -- 'Search Nearby' option selected on search page
-        if (this.state.coordinates.latitude && this.state.coordinates.longitude) {
-            // TODO
+        var reqUrl = "http://localhost:3001/business"
+        var queryParams = ""
+
+        // Filter search by search string
+        if (this.state.searchStr) {
+            if (queryParams == "") {
+                queryParams += "?";
+            } else {
+                queryParams += "&";
+            }
+            queryParams += "searchStr=" + this.state.searchStr;
         }
+
+        // Filter search by rating
+        if (this.state.rating) {
+            if (queryParams == "") {
+                queryParams += "?";
+            } else {
+                queryParams += "&";
+            }
+            queryParams += "rating=" + this.state.rating;
+        }
+
+        // Filter search by latitude and longitude -- 'Search Nearby' option selected on search page
+        if (this.state.coordinates.latitude && this.state.coordinates.longitude) {
+            if (queryParams == "") {
+                queryParams += "?";
+            } else {
+                queryParams += "&";
+            }
+            queryParams += "latitude=" + this.state.coordinates.latitude + "&longitude=" + this.state.coordinates.longitude;
+        }
+
+        // Make axios call to retrieve filtered search results
+        axios({
+            method: 'get',
+            url: reqUrl+queryParams,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+            }
+        }).then((res) => {
+            if (res.status == "200") {
+                this.setState({
+                    searchResults: res.data,
+                    showMap: true
+                });
+            }
+        });
     }
 
     componentDidMount() {
         //TODO: replace searchResults state variable above with the businesses returned in search results
+
     }
 
     render() {
         return (
             <div className="wrapper">
-                <div id="searchPageSearchBarDiv">
+                {/* <div id="searchPageSearchBarDiv">
                     <SearchBar />
-                </div>
+                </div> */}
 
                 {/* Display the geolocation value if it is searched using geolocation */}
                 {this.state.coordinates.latitude != null && this.state.coordinates.longitude != null ?
@@ -83,13 +108,17 @@ class ResultsSample extends Component {
                 <div id="searchResultsDiv">
                     <div>
                         {/* Show map with business shown with markers */}
-                        <Map param={this.state} />
+                        {this.state.showMap ?
+                            <Map param={this.state} />
+                            :
+                            <></>
+                        }
                     </div>
                     <Animated animationIn="slideInUp" isVisible={true}>
                         <div id="listingsDiv">
                             {
                                 /* Search results from user query */
-                                Object.values(this.state.searchResults).map(info => (
+                                this.state.searchResults.map(info => (
                                     <SearchListing storeInfo={info} />
                                 ))
                             }

@@ -98,7 +98,6 @@ exports.getBusinesses = function (latitude, longitude, rating, searchStr, callba
     }
 
     _connectAndQuery(sql, function (err, cb) {
-        console.log(cb);
         if (err) {
             console.log(err);
             callback(true);
@@ -114,8 +113,10 @@ exports.getBusinessById = function (businessId, callback) {
         callback(false);
     }
 
-    var sql = `SELECT * FROM STORES WHERE ` +
-        `STOREID = ${businessId}`;
+    var sql = `SELECT *, COALESCE(AVG(RATING), 5) AS AVGRATING FROM STORES S` + 
+        ` LEFT JOIN REVIEWS R ON S.STOREID = R.STOREID` +
+        ` WHERE S.STOREID = ${businessId}`;
+
 
     _connectAndQuery(sql, function (err, businessData) {
         if (err) {
@@ -154,7 +155,7 @@ exports.addUser = function (userData, callback) {
         callback(false);
     }
 
-    _getTableSize("USERS", function (err, size) {
+    _getTableSize("USERS", function (err, size) { // Use size as id (assume no entries can be deleted)
         var sql = `INSERT INTO USERS VALUES(${size}, "${userData.firstName}", "${userData.lastName}", ` +
             `"${userData.phoneNumber}", "${userData.email}", "${userData.password}", "${userData.postalCode}")`;
 
@@ -196,8 +197,13 @@ exports.authUser = function (loginData, callback) {
 
 /* REVIEWS QUERIES */
 // GET reviews from database
-exports.getReviews = function (callback) {
-    var sql = "SELECT * FROM REVIEWS";
+exports.getReviews = function (storeId, callback) {
+    var sql = `SELECT * FROM REVIEWS`;
+
+    // If storeId url param is provided, filter reviews by storeId
+    if (storeId) {
+        sql += ` WHERE STOREID = ${storeId}`;
+    }
 
     _connectAndQuery(sql, function (err, cb) {
         if (err) {
@@ -205,6 +211,28 @@ exports.getReviews = function (callback) {
             return;
         }
         callback(false, cb);
+    });
+};
+
+// Add review to database
+exports.addReview = function (reviewData, callback) {
+    // Process user data and format into SQL statement
+    if (!reviewData) {
+        callback(false);
+    }
+
+    _getTableSize("REVIEWS", function (err, size) { // Use size as id (assume no entries can be deleted)
+        var sql = `INSERT INTO REVIEWS VALUES(${size}, "${reviewData.name}", "${reviewData.title}",` +
+            ` "${reviewData.review}", ${reviewData.rating}, ${reviewData.storeId}, ${reviewData.userId})`;
+
+        _connectAndQuery(sql, function (err, cb) {
+            if (err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false);
+        });
     });
 };
 

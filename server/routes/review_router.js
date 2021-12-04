@@ -6,7 +6,9 @@ const db = require('../common/database');
 
 // Get list of reviews
 api.get('/', function (req, res) {
-    db.getReviews(function (err, results) {
+    var storeId = req.query.storeId;
+
+    db.getReviews(storeId, function (err, results) {
         if (err) {
             res.send(500, "Server Error");
             return;
@@ -24,12 +26,25 @@ api.get('/', function (req, res) {
                     title: reviewData.TITLE,
                     reviewContent: reviewData.REVIEW,
                     rating: reviewData.RATING,
-                    storeId: reviewData.STOREID
+                    storeId: reviewData.STOREID,
+                    userId: reviewData.USERID
                 }
             )
         }
 
         res.status(200).send(JSON.stringify(formattedReviewData));
+    });
+});
+
+// Add a review to the database
+api.post('/', function(req, res) {
+    db.addReview(req.body, function (err) {
+        if (err) {
+            res.status(400).send("Bad request");
+            return;
+        }
+        // Successfully added review
+        res.status(200).send("Successfully added user");
     });
 });
 

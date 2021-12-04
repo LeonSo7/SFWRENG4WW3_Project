@@ -1,7 +1,7 @@
 /* Reviewers name styling */
 .name {
     font-size: 15px;
-    font-weight: 600;
+    color: grey;
 }
 
 /* Rating given by reviewer styling */
@@ -14,4 +14,10 @@
 .review {
     font-size: 14px;
     font-weight: 400;
+}
+
+/* Review title styling */
+.title {
+    font-size: 15px;
+    font-weight: bold;
 }

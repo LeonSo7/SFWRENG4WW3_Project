@@ -5,6 +5,7 @@ import '../styles/App.css';
 import '../styles/pages/ReviewSubmissionPage.css'
 import { Animated } from "react-animated-css";
 import axios from 'axios';
+import { connect } from "react-redux";
 
 // Form to submit a review for a business 
 class ReviewSubmissionPage extends Component {
@@ -15,7 +16,11 @@ class ReviewSubmissionPage extends Component {
             validated: false,
             businessOptions: [],
             selectedBusinessOption: null, // id of selected business,
-            submitted: false
+            submitted: false,
+            selectedRating: null,
+            user: this.props.user.user ? this.props.user.user : {},
+            title: "",
+            review: ""
         };
 
         // Make a fetch/get request using axios (an ajax framework) to get list of businesses
@@ -48,12 +53,52 @@ class ReviewSubmissionPage extends Component {
         });
     };
 
+    // Handle input for review title
+    handleTitleInput(e) {
+        this.setState({
+            title: e.target.value
+        });
+    };
+
+    // Handle input for review content
+    handleReview(e) {
+        this.setState({
+            review: e.target.value
+        });
+    };
+
     // Handle submission button click and validation state
     handleSubmit(e) {
         const form = e.currentTarget;
         if (form.checkValidity() === false) {
             e.preventDefault();
             e.stopPropagation();
+        } else {
+            e.preventDefault();
+            e.stopPropagation();
+
+            let body = {
+                name: this.state.user.firstName + " " + this.state.user.lastName,
+                title: this.state.title,
+                review: this.state.review,
+                rating: this.state.selectedRating,
+                storeId: this.state.selectedBusinessOption.value,
+                userId: this.state.user.userId
+            };
+            // HTTP POST request to add user to database
+            axios({
+                method: 'post',
+                url: 'http://localhost:3001/review',
+                data: JSON.stringify(body),
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Access-Control-Allow-Origin": "*",
+                }
+            }).then((res) => {
+                if (res.status == "200") {
+                    console.log("Successfully added review");
+                }
+            });
         }
 
         this.setState({
@@ -121,6 +166,8 @@ class ReviewSubmissionPage extends Component {
                                     id={`inline-radio-1`}
                                     type={'radio'}
                                     required
+                                    value={1}
+                                    onChange={(e) => this.setState({selectedRating: e.currentTarget.value})}
                                 />
                                 <Form.Check
                                     inline
@@ -128,6 +175,8 @@ class ReviewSubmissionPage extends Component {
                                     name="ratingRadioGroup"
                                     id={`inline-radio-2`}
                                     type={'radio'}
+                                    value={2}
+                                    onChange={(e) => this.setState({selectedRating: e.currentTarget.value})}
                                 />
                                 <Form.Check
                                     inline
@@ -135,6 +184,8 @@ class ReviewSubmissionPage extends Component {
                                     name="ratingRadioGroup"
                                     id={`inline-radio-3`}
                                     type={'radio'}
+                                    value={3}
+                                    onChange={(e) => this.setState({selectedRating: e.currentTarget.value})}
                                 />
                                 <Form.Check
                                     inline
@@ -142,6 +193,8 @@ class ReviewSubmissionPage extends Component {
                                     name="ratingRadioGroup"
                                     id={`inline-radio-4`}
                                     type={'radio'}
+                                    value={4}
+                                    onChange={(e) => this.setState({selectedRating: e.currentTarget.value})}
                                 />
                                 <Form.Check
                                     inline
@@ -149,12 +202,20 @@ class ReviewSubmissionPage extends Component {
                                     name="ratingRadioGroup"
                                     id={`inline-radio-5`}
                                     type={'radio'}
+                                    value={5}
+                                    onChange={(e) => this.setState({selectedRating: e.currentTarget.value})}
                                 />
                             </div>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formReviewTitle">
                             <Form.Label>Add a title</Form.Label>
-                            <Form.Control type="text" placeholder="Review title" required />
+                            <Form.Control 
+                                type="text" 
+                                placeholder="Review title" 
+                                required
+                                onChange={(e) => this.handleTitleInput(e)}
+                                value={this.state.title}
+                            />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formReviewBody">
                             <Form.Label>Add a written review</Form.Label>
@@ -163,6 +224,8 @@ class ReviewSubmissionPage extends Component {
                                 rows={3}
                                 placeholder="What did you like or dislike? How did it taste?"
                                 required
+                                onChange={(e) => this.handleReview(e)}
+                                value={this.state.review}
                             />
                         </Form.Group>
                         {/* <Form.Group controlId="formReviewPhotoUpload" className="mb-3">
@@ -179,4 +242,12 @@ class ReviewSubmissionPage extends Component {
     }
 }
 
-export default ReviewSubmissionPage;
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    };
+};
+
+export default connect(
+    mapStateToProps
+)(ReviewSubmissionPage);

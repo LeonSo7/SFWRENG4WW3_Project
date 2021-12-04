@@ -61,7 +61,8 @@ api.get('/:businessId', function (req, res) {
                 storeName: businessData.STORENAME,
                 description: businessData.DESCR,
                 latitude: businessData.LATITUDE,
-                longitude: businessData.LONGITUDE
+                longitude: businessData.LONGITUDE,
+                rating: businessData.AVGRATING
             });
             res.status(200).send(formattedBusinessData);
         }

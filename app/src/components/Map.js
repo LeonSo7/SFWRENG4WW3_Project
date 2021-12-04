@@ -6,6 +6,7 @@ class MapComponent extends Component {
     constructor(props) {
         super(props)
 
+        console.log("props", this.props)
         //Set state to values passed in or set to default values
         this.state = {
             initialLat: this.props.param.initialLat ? this.props.param.initialLat : 43.263,
@@ -16,6 +17,12 @@ class MapComponent extends Component {
             storeName: this.props.param.storeName ? this.props.param.storeName : null,
             storeId: this.props.param.storeId ? this.props.param.searchResults : null
         }
+    }
+
+    componentDidMount() {
+        this.setState({
+            searchResults: this.props.param.searchResults ? this.props.param.searchResults : null
+        })
     }
 
     /* Method to change the state when the marker on the map is clicked */
@@ -36,6 +43,7 @@ class MapComponent extends Component {
     }
 
     render() {
+        console.log("map state", this.state.searchResults)
         return (
             <div>
                 {/* Map */}
@@ -52,15 +60,15 @@ class MapComponent extends Component {
 
                         this.state.searchResults != null ?
                             // Display multiple markers for search results page
-                            Object.values(this.state.searchResults).map(info => (
+                            this.state.searchResults.map(info => (
                                 <Marker
-                                    name={info.store}
-                                    averageRating={info.averageRating}
-                                    location={info.lat + ", " + info.lng}
+                                    name={info.storeName}
+                                    averageRating={info.rating}
+                                    location={info.latitude + ", " + info.longitude}
                                     path={`business/${info.storeId}`}
                                     position={{
-                                        lat: info.lat,
-                                        lng: info.lng
+                                        lat: info.latitude,
+                                        lng: info.longitude
                                     }}
                                     storeId={info.storeId}
                                     onClick={this.onMarkerClick.bind(this)}
@@ -71,8 +79,8 @@ class MapComponent extends Component {
                             <Marker
                                 name={this.state.storeName}
                                 position={{
-                                    lat: this.state.initialLat,
-                                    lng: this.state.initialLng
+                                    lat: this.state.latitude,
+                                    lng: this.state.longitude
                                 }}
                                 storeId={this.state.storeId}
                                 onClick={this.onMarkerClick.bind(this)}
