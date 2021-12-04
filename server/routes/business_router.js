@@ -33,7 +33,8 @@ api.get('/', function (req, res) {
                     description: businessData.DESCR,
                     latitude: businessData.LATITUDE,
                     longitude: businessData.LONGITUDE,
-                    rating: businessData.AVGRATING
+                    rating: businessData.AVGRATING,
+                    imagePath: businessData.IMAGEPATH
                 }
             );
         }
@@ -62,7 +63,8 @@ api.get('/:businessId', function (req, res) {
                 description: businessData.DESCR,
                 latitude: businessData.LATITUDE,
                 longitude: businessData.LONGITUDE,
-                rating: businessData.AVGRATING
+                rating: businessData.AVGRATING,
+                imagePath: businessData.IMAGEPATH
             });
             res.status(200).send(formattedBusinessData);
         }

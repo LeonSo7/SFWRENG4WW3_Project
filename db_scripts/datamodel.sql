@@ -4,14 +4,15 @@ CREATE TABLE STORES (
     DESCR varchar(255) NOT NULL,
     LATITUDE decimal(10,6) DEFAULT NULL,
     LONGITUDE decimal(10,6) DEFAULT NULL,
+    IMAGEPATH varchar(255) DEFAULT NULL,
     PRIMARY KEY (STOREID)
 );
 
-INSERT INTO STORES VALUES(0, "Emily's Ice Cream Parlour", "Cute Mom and Pop shop", 43.25930525276186, -79.912408656859953);
-INSERT INTO STORES VALUES(1, "FruitYoyo", "Asthetic, relaxing, ice cream", 43.25679154361946, -79.92481721503928);
-INSERT INTO STORES VALUES(2, "Coco Gelato", "Best ice cream", 43.25538506117054, -79.9199677814544);
-INSERT INTO STORES VALUES(3, "Dairy Queen", "Fast food", 43.25157176755302, -79.9198819507715);
-INSERT INTO STORES VALUES(4, "Marble Slab", "Slab ice cream with all the mix ins", 43.25690215059384, -79.93176542603081);
+INSERT INTO STORES VALUES(0, "Emily's Ice Cream Parlour", "Cute Mom and Pop shop", 43.25930525276186, -79.912408656859953, "/images/icecream1.jpeg");
+INSERT INTO STORES VALUES(1, "FruitYoyo", "Asthetic, relaxing, ice cream", 43.25679154361946, -79.92481721503928, "/images/icecream2.jpeg");
+INSERT INTO STORES VALUES(2, "Coco Gelato", "Best ice cream", 43.25538506117054, -79.9199677814544, "/images/icecream3.jpeg");
+INSERT INTO STORES VALUES(3, "Dairy Queen", "Fast food", 43.25157176755302, -79.9198819507715, "/images/icecream4.jpeg");
+INSERT INTO STORES VALUES(4, "Marble Slab", "Slab ice cream with all the mix ins", 43.25690215059384, -79.93176542603081, "/images/icecream5.jpeg");
 
 CREATE TABLE USERS (
     USERID INTEGER NOT NULL,

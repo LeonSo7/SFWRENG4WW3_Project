@@ -30,6 +30,8 @@ class BusinessPage extends Component {
             .then((res) => {
                 if (res.status === 200) {
                     var data = res.data;
+
+                    console.log(res.data)
                     this.setState({
                         storeName: data.storeName,
                         latitude: data.latitude,
@@ -57,7 +59,6 @@ class BusinessPage extends Component {
 
         // TODO: get the review data from db using store id: this.props.match.params.id
 
-        // TODO: get the image key
     }
 
     render() {
@@ -73,8 +74,12 @@ class BusinessPage extends Component {
                         <p>Average Rating: {this.state.averageRating}</p>
 
                         {/* Image uploaded by the user */}
-                        <img id="businessImg" src={"http://localhost:3001" + this.state.imagePath} alt="Business Image"></img>
-
+                        { this.state.imagePath != "" 
+                            ? 
+                            <img id="businessImg" src={"http://localhost:3001" + this.state.imagePath} alt="Business Image"></img>
+                            :
+                            <div/>
+                        }
                     </div>
 
                     {/* Map showing location of business */}
