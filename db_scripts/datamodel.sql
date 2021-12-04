@@ -13,6 +13,7 @@ INSERT INTO STORES VALUES(1, "FruitYoyo", "Asthetic, relaxing, ice cream", 43.25
 INSERT INTO STORES VALUES(2, "Coco Gelato", "Best ice cream", 43.25538506117054, -79.9199677814544, "/images/icecream3.jpeg");
 INSERT INTO STORES VALUES(3, "Dairy Queen", "Fast food", 43.25157176755302, -79.9198819507715, "/images/icecream4.jpeg");
 INSERT INTO STORES VALUES(4, "Marble Slab", "Slab ice cream with all the mix ins", 43.25690215059384, -79.93176542603081, "/images/icecream5.jpeg");
+INSERT INTO STORES VALUES(5, "Lulu", "Hawaiian shaved ice", 43.25691215059384, -79.93180542603081, null);
 
 CREATE TABLE USERS (
     USERID INTEGER NOT NULL,

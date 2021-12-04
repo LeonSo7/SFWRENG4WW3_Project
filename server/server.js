@@ -56,12 +56,10 @@ app.get('/images/:key', (req, res) => {
 
 app.post('/images', upload.single('image'), async (req, res) => {
   const file = req.file
-  console.log(file)
   // Use the path and filename for the s3 bucket. Also store the filename in the db so we can easily get it later
   
   // Wait for upload to be successful 
   const result = await uploadFile(file)
-  console.log("uploadfile result", result)
 
   // Delete the file after it is uploaded to S3
   await unlinkFile(file.path)

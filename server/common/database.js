@@ -53,7 +53,7 @@ function _getTableSize(tableName, callback) {
 exports.getBusinesses = function (latitude, longitude, rating, searchStr, callback) {
     // Construct SQL query based on search parameters
     /* SELECT portion of sql query */
-    var sql = "SELECT *"; // Default sql to select all businesses
+    var sql = "SELECT S.*"; // Default sql to select all businesses
 
     // Modify sql query if latitude and longitude exists; narrow search using distance
     if (latitude & longitude) {
@@ -113,7 +113,7 @@ exports.getBusinessById = function (businessId, callback) {
         callback(false);
     }
 
-    var sql = `SELECT *, COALESCE(AVG(RATING), 5) AS AVGRATING FROM STORES S` + 
+    var sql = `SELECT S.*, COALESCE(AVG(RATING), 5) AS AVGRATING FROM STORES S` + 
         ` LEFT JOIN REVIEWS R ON S.STOREID = R.STOREID` +
         ` WHERE S.STOREID = ${businessId}`;
 

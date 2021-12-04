@@ -23,7 +23,7 @@ class BusinessPage extends Component {
             reviews: {},
             storeId: this.props.match.params.id,
             description: null,
-            imagePath: ""
+            imagePath: null
         }
 
         axios.get('http://localhost:3001/business/' + this.state.storeId)
@@ -31,7 +31,6 @@ class BusinessPage extends Component {
                 if (res.status === 200) {
                     var data = res.data;
 
-                    console.log(res.data)
                     this.setState({
                         storeName: data.storeName,
                         latitude: data.latitude,
@@ -74,7 +73,7 @@ class BusinessPage extends Component {
                         <p>Average Rating: {this.state.averageRating}</p>
 
                         {/* Image uploaded by the user */}
-                        { this.state.imagePath != "" 
+                        { this.state.imagePath != null 
                             ? 
                             <img id="businessImg" src={"http://localhost:3001" + this.state.imagePath} alt="Business Image"></img>
                             :

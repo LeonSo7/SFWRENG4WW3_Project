@@ -81,11 +81,6 @@ class ResultsSample extends Component {
         });
     }
 
-    componentDidMount() {
-        //TODO: replace searchResults state variable above with the businesses returned in search results
-
-    }
-
     render() {
         return (
             <div className="wrapper">
