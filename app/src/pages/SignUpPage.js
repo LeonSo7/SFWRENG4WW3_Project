@@ -57,7 +57,7 @@ class SignUpPage extends Component {
                     "Access-Control-Allow-Origin": "*",
                 }
             }).then((res) => {
-                if (res.status == "200") {
+                if (res.status === 200) {
                     this.setState({
                         show: true
                     });

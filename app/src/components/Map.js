@@ -18,6 +18,12 @@ class MapComponent extends Component {
         }
     }
 
+    componentDidMount() {
+        this.setState({
+            searchResults: this.props.param.searchResults ? this.props.param.searchResults : null
+        })
+    }
+
     /* Method to change the state when the marker on the map is clicked */
     onMarkerClick = (props, marker, e) => {
         this.setState({
@@ -52,15 +58,15 @@ class MapComponent extends Component {
 
                         this.state.searchResults != null ?
                             // Display multiple markers for search results page
-                            Object.values(this.state.searchResults).map(info => (
+                            this.state.searchResults.map(info => (
                                 <Marker
-                                    name={info.store}
-                                    averageRating={info.averageRating}
-                                    location={info.lat + ", " + info.lng}
+                                    name={info.storeName}
+                                    averageRating={info.rating}
+                                    location={info.latitude + ", " + info.longitude}
                                     path={`business/${info.storeId}`}
                                     position={{
-                                        lat: info.lat,
-                                        lng: info.lng
+                                        lat: info.latitude,
+                                        lng: info.longitude
                                     }}
                                     storeId={info.storeId}
                                     onClick={this.onMarkerClick.bind(this)}
@@ -71,8 +77,8 @@ class MapComponent extends Component {
                             <Marker
                                 name={this.state.storeName}
                                 position={{
-                                    lat: this.state.initialLat,
-                                    lng: this.state.initialLng
+                                    lat: this.state.latitude,
+                                    lng: this.state.longitude
                                 }}
                                 storeId={this.state.storeId}
                                 onClick={this.onMarkerClick.bind(this)}

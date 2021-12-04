@@ -19,7 +19,6 @@ class CommonHeader extends Component {
         return (
 
         <Navbar bg="light" expand="lg">
-            {console.log(this.props.user)}
             <Container>
                 <Navbar.Brand href="/">
                     <Animated animationIn="swing" isVisible={true}>

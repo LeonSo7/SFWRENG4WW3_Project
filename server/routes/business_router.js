@@ -24,16 +24,18 @@ api.get('/', function (req, res) {
         var formattedBusinessData = []
 
         for (var key of Object.keys(results)) {
-            var businessData = results[key]
+            var businessData = results[key];
+            
             formattedBusinessData.push(
                 {
                     storeId: businessData.STOREID,
                     storeName: businessData.STORENAME,
                     description: businessData.DESCR,
                     latitude: businessData.LATITUDE,
-                    longitude: businessData.LONGITUDE
+                    longitude: businessData.LONGITUDE,
+                    rating: businessData.AVGRATING
                 }
-            )
+            );
         }
 
         res.status(200).send(JSON.stringify(formattedBusinessData));
@@ -59,7 +61,8 @@ api.get('/:businessId', function (req, res) {
                 storeName: businessData.STORENAME,
                 description: businessData.DESCR,
                 latitude: businessData.LATITUDE,
-                longitude: businessData.LONGITUDE
+                longitude: businessData.LONGITUDE,
+                rating: businessData.AVGRATING
             });
             res.status(200).send(formattedBusinessData);
         }
