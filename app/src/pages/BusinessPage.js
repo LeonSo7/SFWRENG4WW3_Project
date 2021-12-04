@@ -43,7 +43,6 @@ class BusinessPage extends Component {
         axios.get('http://localhost:3001/review?storeId=' + this.state.storeId)
             .then((res) => {
                 if (res.status === 200) {
-                    console.log("Review data", res.data);
                     this.setState({
                         reviews: res.data
                     })

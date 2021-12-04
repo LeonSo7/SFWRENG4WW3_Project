@@ -6,7 +6,6 @@ class MapComponent extends Component {
     constructor(props) {
         super(props)
 
-        console.log("props", this.props)
         //Set state to values passed in or set to default values
         this.state = {
             initialLat: this.props.param.initialLat ? this.props.param.initialLat : 43.263,
@@ -43,7 +42,6 @@ class MapComponent extends Component {
     }
 
     render() {
-        console.log("map state", this.state.searchResults)
         return (
             <div>
                 {/* Map */}

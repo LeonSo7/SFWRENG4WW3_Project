@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 class SearchListing extends Component {
     render() {
-        console.log(this.props.storeInfo.storeId)
         return(
             <Link 
                 className="searchListingLink"
