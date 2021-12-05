@@ -71,4 +71,16 @@ api.get('/:businessId', function (req, res) {
     });
 });
 
+// Add a business to the database
+api.post('/', function(req, res) {
+    db.addBusineses(req.body, function (err) {
+        if (err) {
+            res.status(400).send("Bad request");
+            return;
+        }
+        // Successfully added business
+        res.status(200).send("Successfully added business");
+    });
+});
+
 module.exports = api;

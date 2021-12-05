@@ -133,6 +133,28 @@ exports.getBusinessById = function (businessId, callback) {
     });
 }
 
+// Add business to database
+exports.addBusiness = function (businessData, callback) {
+    // Process business data and format into SQL statement
+    if (!businessData) {
+        callback(false);
+    }
+
+    _getTableSize("STORES", function (err, size) { // Use size as id (assume no entries can be deleted)
+        var sql = `INSERT INTO STORES VALUES(${size}, "${businessData.storeName}", "${business.description}",` +
+            ` ${businessData.longitude}, ${businessData.latitude}, "${businessData.imagePath}"`;
+
+        _connectAndQuery(sql, function (err, cb) {
+            if (err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false);
+        });
+    });
+};
+
 /* USERS QUERIES */
 // GET users from database
 exports.getUsers = function (callback) {
@@ -216,7 +238,7 @@ exports.getReviews = function (storeId, callback) {
 
 // Add review to database
 exports.addReview = function (reviewData, callback) {
-    // Process user data and format into SQL statement
+    // Process review data and format into SQL statement
     if (!reviewData) {
         callback(false);
     }

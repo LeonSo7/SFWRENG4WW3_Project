@@ -44,7 +44,7 @@ api.post('/', function(req, res) {
             return;
         }
         // Successfully added review
-        res.status(200).send("Successfully added user");
+        res.status(200).send("Successfully added review");
     });
 });
 
