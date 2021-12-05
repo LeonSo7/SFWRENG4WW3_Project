@@ -1,6 +1,9 @@
 # Getting Started Scoop's React App
 
 In the project directory, you can run:
+### `npm install`
+
+Install dependencies for the app.
 
 ### `npm start`
 
