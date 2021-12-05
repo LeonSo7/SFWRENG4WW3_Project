@@ -1,7 +1,7 @@
 # Getting Started Scoop's Node.js Server
 
 ### Configure environment variables
-Add a .env file to the /server directory containing the following:
+Add a `.env` file to the `/server` directory containing the following:
 ```
 # Server connection
 HTTP_PORT = 
@@ -22,7 +22,7 @@ AWS_ACCESS_KEY_ID =
 AWS_SECRET_ACCESS_KEY = 
 ```
 
-In the /server directory, you can run:
+In the `/server` directory, you can run:
 ### `npm install`
 
 Install dependencies for the server.
