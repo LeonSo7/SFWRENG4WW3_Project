@@ -12,14 +12,14 @@ const util = require('util');
 
 const unlinkFile = util.promisify(fs.unlink);
 
-api.get('/images/:key', (req, res) => {
+api.get('/:key', (req, res) => {
   const key = req.params.key;
   const readStream = getFileStream(key);
 
   readStream.pipe(res);
-})
+});
 
-api.post('/images', upload.single('image'), async (req, res) => {
+api.post('/', upload.single('image'), async (req, res) => {
   const file = req.file;
   // Use the path and filename for the s3 bucket. Also store the filename in the db so we can easily get it later
   
@@ -30,6 +30,6 @@ api.post('/images', upload.single('image'), async (req, res) => {
   await unlinkFile(file.path);
 
   res.send(JSON.stringify({imagePath: `/images/${result.Key}`}));
-})
+});
 
 module.exports = api;
