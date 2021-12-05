@@ -29,6 +29,6 @@ Install dependencies for the server.
 
 ### `nodemon server.js`
 
-Runs the server in the development mode.\
+Runs the server in the development mode.
 
-The server will reload if you make edits.\
+The server will reload if you make edits.
