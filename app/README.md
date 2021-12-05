@@ -3,7 +3,7 @@
 ### Configure environment variables
 Add a .env file containing the following:\
 ```
-# GOOGLE MAPS\
+# GOOGLE MAPS
 REACT_APP_GOOGLE_API_KEY=
 ```
 
