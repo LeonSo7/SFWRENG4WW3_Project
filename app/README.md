@@ -2,8 +2,8 @@
 
 ### Configure environment variables
 Add a .env file containing the following:\
-# GOOGLE MAPS\
-REACT_APP_GOOGLE_API_KEY=
+`# GOOGLE MAPS`\
+`REACT_APP_GOOGLE_API_KEY=`
 
 In the /app directory, you can run:
 ### `npm install`
