@@ -15,10 +15,10 @@ api.get('/', function (req, res) {
         }
 
         // Format review data
-        var formattedReviewData = []
+        var formattedReviewData = [];
 
         for (var key of Object.keys(results)) {
-            var reviewData = results[key]
+            var reviewData = results[key];
             formattedReviewData.push(
                 {
                     reviewerId: reviewData.REVIEWID,
@@ -29,7 +29,7 @@ api.get('/', function (req, res) {
                     storeId: reviewData.STOREID,
                     userId: reviewData.USERID
                 }
-            )
+            );
         }
 
         res.status(200).send(JSON.stringify(formattedReviewData));

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import { Button, Col, Form, Row, Modal } from 'react-bootstrap';
 import '../styles/App.css';
 import '../styles/pages/Submission.css'
 import { TiLocationArrowOutline } from 'react-icons/ti';
-import {Animated} from "react-animated-css";
+import { Animated } from "react-animated-css";
 import axios from 'axios';
 
 // Form to add a new business to the site
@@ -18,53 +18,74 @@ class Submission extends Component {
                 longitude: ""
             },
             geolocationStatus: "Locate me",
-            image: null
+            image: null,
+            businessNameInputValue: "",
+            show: false // Show model after successful submission
         };
     }
 
     // Handle for submission and validation state
     handleSubmit(e) {
+
         const form = e.currentTarget;
         if (form.checkValidity() === false) {
             e.preventDefault();
             e.stopPropagation();
+        } else {
+            e.preventDefault();
+            e.stopPropagation();
+            // Upload image to s3
+            this.submitImage();
+            this.setState({
+                show: true
+            })
         }
 
         this.setState({
             validated: true
         });
-
-        if (this.state.validated) {
-            this.submitImage(e)
-        }
     };
 
-    submitImage = async e => {
-        e.preventDefault()
-        this.postImage({image: this.state.image})
+    submitImage() {
+        this.postImage();
     }
+
+    // Redirect to home page after successful submission
+    navigateToHome() {
+        this.setState({
+            show: false
+        });
+        window.location.href = '/'
+    }
+
+    handleBusinessNameInput(e) {
+        this.setState({
+            businessNameInputValue: e.target.value
+        });
+    };
 
     postImage() {
         const formData = new FormData();
-        formData.append("image", this.state.image)
+        formData.append("image", this.state.image);
 
-        console.log("trying to upload image", formData)
+        console.log("Attemping to upload image", formData);
         // Send photo to DB
-        const result = axios({
+        axios({
             method: "post",
             url: "http://localhost:3001/images",
             data: formData,
-            headers: { "Content-Type": "multipart/form-data",
-            "Access-Control-Allow-Origin": "*",
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "Access-Control-Allow-Origin": "*",
             }
-          }).then(res => {
+        }).then(res => {
             if (res.status == 200) {
                 // Save the picture key in the db
-                console.log("sent pic to db", res.data.imagePath)
+                console.log("Picture uploaded successfully", res.data.imagePath)
                 // res.data.imagePath is the path /images/{image key in s3}
             }
-          }).catch((e) => {
-            console.log(e)
+        }).catch((e) => {
+            console.log(e);
         });
     }
 
@@ -117,7 +138,7 @@ class Submission extends Component {
             }
         });
     };
-    
+
     render() {
         return (
             <div className="wrapper">
@@ -132,7 +153,13 @@ class Submission extends Component {
                     <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit.bind(this)}>
                         <Form.Group className="mb-3" controlId="formBusinessName">
                             <Form.Label>Business Name</Form.Label>
-                            <Form.Control type="text" placeholder="Business name" required />
+                            <Form.Control
+                                type="text"
+                                placeholder="Business name"
+                                required
+                                onChange={(e) => this.handleBusinessNameInput(e)}
+                                value={this.state.businessNameInputValue}
+                            />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBusinessDescription">
                             <Form.Label>Business Description</Form.Label>
@@ -140,7 +167,7 @@ class Submission extends Component {
                         </Form.Group>
                         <Form.Group controlId="formReviewPhotoUpload" className="mb-3">
                             <Form.Label>Add a photo of the business</Form.Label>
-                            <Form.Control type="file" accept=".jpg,.jpeg,.png" multiple={false} onChange={this.fileSelectedHandler.bind(this)}/>
+                            <Form.Control type="file" accept=".jpg,.jpeg,.png" multiple={false} onChange={this.fileSelectedHandler.bind(this)} />
                         </Form.Group>
                         <Row>
                             <Col>
@@ -178,6 +205,21 @@ class Submission extends Component {
                         </Button>
                     </Form>
                 </div>
+                <Modal
+                    show={this.state.show}
+                    backdrop="static"
+                    keyboard={false}
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Thank you for adding a business!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        {this.state.businessNameInputValue} has been added!
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={e => this.navigateToHome(e)}>Return to Home Page</Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         );
     }

@@ -21,7 +21,7 @@ api.get('/', function (req, res) {
         }
 
         // Format business data
-        var formattedBusinessData = []
+        var formattedBusinessData = [];
 
         for (var key of Object.keys(results)) {
             var businessData = results[key];
