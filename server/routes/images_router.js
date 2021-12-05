@@ -7,31 +7,31 @@ const multer = require("multer");
 const upload = multer({dest: '../uploads'});
 const { uploadFile, getFileStream } = require('../common/s3');
 
-const fs = require('fs')
-const util = require('util')
-const unlinkFile = util.promisify(fs.unlink)
+const fs = require('fs');
+const util = require('util');
+const unlinkFile = util.promisify(fs.unlink);
 
-api.get('/:key', (req, res) => {
-  const key = req.params.key
-  const readStream = getFileStream(key)
+api.get('/:key', function (req, res) {
+  const key = req.params.key;
+  const readStream = getFileStream(key);
 
-  readStream.pipe(res)
+  readStream.pipe(res);
 })
 
 // Upload picture to S3
-api.post('/', upload.single('image'), async (req, res) => {
+api.post('/', upload.single('image'), async function (req, res) {
 
-  const file = req.file
+  const file = req.file;
   // Use the path and filename for the s3 bucket. Also store the filename in the db so we can easily get it later
 
   // Wait for upload to be successful 
-  const result = await uploadFile(file)
+  const result = await uploadFile(file);
 
   // Delete the file after it is uploaded to S3
-  await unlinkFile(file.path)
+  await unlinkFile(file.path);
 
 
-  res.send(JSON.stringify({imagePath: `/images/${result.Key}`}))
+  res.send(JSON.stringify({imagePath: `/images/${result.Key}`}));
 })
 
 module.exports = api;
