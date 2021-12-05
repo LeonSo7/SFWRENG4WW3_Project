@@ -1,13 +1,13 @@
 # Getting Started Scoop's React App
 
 ### Configure environment variables
-Add a .env file to the /app directory containing the following:
+Add a `.env` file to the `/app` directory containing the following:
 ```
 # GOOGLE MAPS
 REACT_APP_GOOGLE_API_KEY=
 ```
 
-In the /app directory, you can run:
+In the `/app` directory, you can run:
 ### `npm install`
 
 Install dependencies for the app.
