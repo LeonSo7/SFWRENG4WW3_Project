@@ -141,8 +141,8 @@ exports.addBusiness = function (businessData, callback) {
     }
 
     _getTableSize("STORES", function (err, size) { // Use size as id (assume no entries can be deleted)
-        var sql = `INSERT INTO STORES VALUES(${size}, "${businessData.storeName}", "${business.description}",` +
-            ` ${businessData.longitude}, ${businessData.latitude}, "${businessData.imagePath}"`;
+        var sql = `INSERT INTO STORES VALUES(${size}, "${businessData.storeName}", "${businessData.description}",` +
+            ` ${businessData.latitude}, ${businessData.longitude}, "${businessData.imagePath}")`;
 
         _connectAndQuery(sql, function (err, cb) {
             if (err) {

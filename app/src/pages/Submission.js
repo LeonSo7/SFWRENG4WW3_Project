@@ -13,14 +13,13 @@ class Submission extends Component {
         super(props);
         this.state = {
             validated: false,
-            coordinates: {
-                latitude: "",
-                longitude: ""
-            },
+            latitude: null,
+            longitude: null,
             geolocationStatus: "Locate me",
-            image: null,
+            imagePath: null,
             businessNameInputValue: "",
-            show: false // Show model after successful submission
+            show: false, // Show model after successful submission
+            description: ""
         };
     }
 
@@ -35,20 +34,63 @@ class Submission extends Component {
             e.preventDefault();
             e.stopPropagation();
             // Upload image to s3
-            this.submitImage();
-            this.setState({
-                show: true
-            })
+            const formData = new FormData();
+            formData.append("image", this.state.image);
+    
+            // Send photo to DB
+            axios({
+                method: "post",
+                url: "http://localhost:3001/images",
+                data: formData,
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "Access-Control-Allow-Origin": "*",
+                }
+            }).then(res => {
+                if (res.status == 200) {
+                    // Save the picture key in the db                    
+                    this.setState({
+                        imagePath: res.data.imagePath
+                    })
+                    // res.data.imagePath is the path /images/{image key in s3}
+
+                    let body = {
+                        storeName: this.state.businessNameInputValue,
+                        description: this.state.description,
+                        latitude: this.state.latitude,
+                        longitude: this.state.longitude,
+                        imagePath: this.state.imagePath
+                    };
+    
+                    // HTTP POST request to add bussiness to database
+                    axios({
+                        method: 'post',
+                        url: 'http://localhost:3001/business',
+                        data: JSON.stringify(body),
+                        headers: {
+                            'Content-Type': 'application/json',
+                            "Access-Control-Allow-Origin": "*",
+                        }
+                    }).then((res) => {
+                        if (res.status === 200) {
+                            this.setState({
+                                show: true
+                            });
+                        }
+                    });
+
+                }
+            }).catch((e) => {
+                console.log(e);
+            });
+
+        
         }
 
         this.setState({
             validated: true
         });
     };
-
-    submitImage() {
-        this.postImage();
-    }
 
     // Redirect to home page after successful submission
     navigateToHome() {
@@ -64,30 +106,11 @@ class Submission extends Component {
         });
     };
 
-    postImage() {
-        const formData = new FormData();
-        formData.append("image", this.state.image);
-
-        console.log("Attemping to upload image", formData);
-        // Send photo to DB
-        axios({
-            method: "post",
-            url: "http://localhost:3001/images",
-            data: formData,
-            headers: {
-                "Content-Type": "multipart/form-data",
-                "Access-Control-Allow-Origin": "*",
-            }
-        }).then(res => {
-            if (res.status == 200) {
-                // Save the picture key in the db
-                console.log("Picture uploaded successfully", res.data.imagePath)
-                // res.data.imagePath is the path /images/{image key in s3}
-            }
-        }).catch((e) => {
-            console.log(e);
+    handleDescriptionInput(e) {
+        this.setState({
+            description: e.target.value
         });
-    }
+    };
 
     fileSelectedHandler(e) {
         this.setState({
@@ -108,10 +131,8 @@ class Submission extends Component {
             navigator.geolocation.getCurrentPosition((position) => {
                 this.setState({
                     geolocationStatus: "Locate me",
-                    coordinates: {
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude
-                    }
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
                 })
             }, () => {
                 this.setState({
@@ -124,18 +145,14 @@ class Submission extends Component {
     // Update longitude value in state
     handleLongitudeInput(e) {
         this.setState({
-            coordinates: {
-                longitude: e.target.value
-            }
+            longitude: e.target.value
         });
     };
 
     // Update latitude value in state
     handleLatitudeInput(e) {
         this.setState({
-            coordinates: {
-                latitude: e.target.value
-            }
+            latitude: e.target.value,
         });
     };
 
@@ -163,7 +180,14 @@ class Submission extends Component {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBusinessDescription">
                             <Form.Label>Business Description</Form.Label>
-                            <Form.Control as="textarea" rows={3} placeholder="Description of business" required />
+                            <Form.Control 
+                                as="textarea" 
+                                rows={3} 
+                                placeholder="Description of business" 
+                                required 
+                                onChange={(e) => this.handleDescriptionInput(e)}
+                                value={this.state.description}
+                            />
                         </Form.Group>
                         <Form.Group controlId="formReviewPhotoUpload" className="mb-3">
                             <Form.Label>Add a photo of the business</Form.Label>
@@ -179,7 +203,7 @@ class Submission extends Component {
                                         placeholder="Latitude"
                                         required
                                         onChange={(e) => this.handleLatitudeInput(e)}
-                                        value={this.state.coordinates.latitude}
+                                        value={this.state.latitude}
                                     />
                                 </Form.Group>
                             </Col>
@@ -192,7 +216,7 @@ class Submission extends Component {
                                         placeholder="Longitude"
                                         required
                                         onChange={(e) => this.handleLongitudeInput(e)}
-                                        value={this.state.coordinates.longitude}
+                                        value={this.state.longitude}
                                     />
                                 </Form.Group>
                             </Col>

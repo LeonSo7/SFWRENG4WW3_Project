@@ -23,7 +23,8 @@ class BusinessPage extends Component {
             reviews: {},
             storeId: this.props.match.params.id,
             description: null,
-            imagePath: null
+            imagePath: null,
+            showMap: false
         }
 
         axios.get('http://localhost:3001/business/' + this.state.storeId)
@@ -54,11 +55,13 @@ class BusinessPage extends Component {
 
     }
 
-    componentDidMount() {
-
-        // TODO: get the review data from db using store id: this.props.match.params.id
-
-    }
+    componentDidUpdate() {
+        if (this.state.longitude && this.state.latitude && !this.state.showMap) {
+            this.setState({
+                showMap: true
+            });
+        }
+    };
 
     render() {
         return (
@@ -84,7 +87,11 @@ class BusinessPage extends Component {
                     {/* Map showing location of business */}
                     <div id="businessMap">
                         {/* Show map with business shown with markers */}
-                        <Map param={this.state} />
+                        { this.state.showMap ?
+                            <Map param={this.state} />
+                            :
+                            <div/>
+                        }
                     </div>
                 </div>
 

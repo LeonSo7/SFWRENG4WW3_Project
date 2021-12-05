@@ -8,8 +8,8 @@ class MapComponent extends Component {
 
         //Set state to values passed in or set to default values
         this.state = {
-            initialLat: this.props.param.initialLat ? this.props.param.initialLat : 43.263,
-            initialLng: this.props.param.initialLng ? this.props.param.initialLng : -79.921,
+            initialLat: this.props.param.latitude ? this.props.param.latitude : 43.263,
+            initialLng: this.props.param.longitude ? this.props.param.longitude : -79.921,
             activeMarkers: this.props.param.activeMarkers ? this.props.param.activeMarkers : {},
             showInfo: this.props.param.showInfo ? this.props.param.showInfo : false,
             searchResults: this.props.param.searchResults ? this.props.param.searchResults : null,
@@ -48,7 +48,7 @@ class MapComponent extends Component {
                 <Map
                     containerStyle={containerStyle}
                     google={window.google}
-                    zoom={14}
+                    zoom={13.5}
                     initialCenter={{
                         lat: this.state.initialLat,
                         lng: this.state.initialLng
@@ -77,8 +77,8 @@ class MapComponent extends Component {
                             <Marker
                                 name={this.state.storeName}
                                 position={{
-                                    lat: this.state.latitude,
-                                    lng: this.state.longitude
+                                    lat: this.state.initialLat,
+                                    lng: this.state.initialLng
                                 }}
                                 storeId={this.state.storeId}
                                 onClick={this.onMarkerClick.bind(this)}
