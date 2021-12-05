@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Modal } from 'react-bootstrap';
 import Select from 'react-select';
 import '../styles/App.css';
 import '../styles/pages/ReviewSubmissionPage.css'
@@ -16,11 +16,12 @@ class ReviewSubmissionPage extends Component {
             validated: false,
             businessOptions: [],
             selectedBusinessOption: null, // id of selected business,
-            submitted: false,
+            submitted: false, // for form validation
             selectedRating: null,
             user: this.props.user.user ? this.props.user.user : {},
             title: "",
-            review: ""
+            review: "",
+            show: false // for successful submission modal
         };
 
         // Make a fetch/get request using axios (an ajax framework) to get list of businesses
@@ -97,6 +98,9 @@ class ReviewSubmissionPage extends Component {
             }).then((res) => {
                 if (res.status == "200") {
                     console.log("Successfully added review");
+                    this.setState({
+                        show: true
+                    });
                 }
             });
         }
@@ -106,6 +110,14 @@ class ReviewSubmissionPage extends Component {
             submitted: true
         });
     };
+
+    // Redirect to home page after successful submission
+    navigateToHome() {
+        this.setState({
+            show: false
+        });
+        window.location.href = '/'
+    }
 
     // Custom (invalid) styling for form validation of business dropdown
     noBusinessOptionSelected = {
@@ -167,7 +179,7 @@ class ReviewSubmissionPage extends Component {
                                     type={'radio'}
                                     required
                                     value={1}
-                                    onChange={(e) => this.setState({selectedRating: e.currentTarget.value})}
+                                    onChange={(e) => this.setState({ selectedRating: e.currentTarget.value })}
                                 />
                                 <Form.Check
                                     inline
@@ -176,7 +188,7 @@ class ReviewSubmissionPage extends Component {
                                     id={`inline-radio-2`}
                                     type={'radio'}
                                     value={2}
-                                    onChange={(e) => this.setState({selectedRating: e.currentTarget.value})}
+                                    onChange={(e) => this.setState({ selectedRating: e.currentTarget.value })}
                                 />
                                 <Form.Check
                                     inline
@@ -185,7 +197,7 @@ class ReviewSubmissionPage extends Component {
                                     id={`inline-radio-3`}
                                     type={'radio'}
                                     value={3}
-                                    onChange={(e) => this.setState({selectedRating: e.currentTarget.value})}
+                                    onChange={(e) => this.setState({ selectedRating: e.currentTarget.value })}
                                 />
                                 <Form.Check
                                     inline
@@ -194,7 +206,7 @@ class ReviewSubmissionPage extends Component {
                                     id={`inline-radio-4`}
                                     type={'radio'}
                                     value={4}
-                                    onChange={(e) => this.setState({selectedRating: e.currentTarget.value})}
+                                    onChange={(e) => this.setState({ selectedRating: e.currentTarget.value })}
                                 />
                                 <Form.Check
                                     inline
@@ -203,15 +215,15 @@ class ReviewSubmissionPage extends Component {
                                     id={`inline-radio-5`}
                                     type={'radio'}
                                     value={5}
-                                    onChange={(e) => this.setState({selectedRating: e.currentTarget.value})}
+                                    onChange={(e) => this.setState({ selectedRating: e.currentTarget.value })}
                                 />
                             </div>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formReviewTitle">
                             <Form.Label>Add a title</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                placeholder="Review title" 
+                            <Form.Control
+                                type="text"
+                                placeholder="Review title"
                                 required
                                 onChange={(e) => this.handleTitleInput(e)}
                                 value={this.state.title}
@@ -237,6 +249,21 @@ class ReviewSubmissionPage extends Component {
                         </Button>
                     </Form>
                 </div>
+                <Modal
+                    show={this.state.show}
+                    backdrop="static"
+                    keyboard={false}
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Thank you for adding a review!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        Your review has been added!
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={e => this.navigateToHome(e)}>Return to Home Page</Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         );
     }
