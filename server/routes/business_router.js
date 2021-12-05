@@ -73,7 +73,7 @@ api.get('/:businessId', function (req, res) {
 
 // Add a business to the database
 api.post('/', function(req, res) {
-    db.addBusineses(req.body, function (err) {
+    db.addBusiness(req.body, function (err) {
         if (err) {
             res.status(400).send("Bad request");
             return;
