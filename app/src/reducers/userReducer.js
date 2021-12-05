@@ -1,4 +1,4 @@
-import { FETCH_USER, UPDATE_USER, LOGOUT_USER } from "../actions/types";
+import { UPDATE_USER, LOGOUT_USER } from "../actions/types";
 
 const initialState = {
   user: {}

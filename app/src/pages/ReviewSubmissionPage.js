@@ -96,7 +96,7 @@ class ReviewSubmissionPage extends Component {
                     "Access-Control-Allow-Origin": "*",
                 }
             }).then((res) => {
-                if (res.status == "200") {
+                if (res.status === 200) {
                     console.log("Successfully added review");
                     this.setState({
                         show: true

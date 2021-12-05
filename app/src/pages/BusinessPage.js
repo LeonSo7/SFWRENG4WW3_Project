@@ -5,7 +5,6 @@ import Review from '../components/Review';
 import Map from '../components/Map';
 import { Animated } from "react-animated-css";
 import axios from 'axios';
-import ResultsSample from './ResultsSample';
 
 // Business page
 class BusinessPage extends Component {
@@ -78,7 +77,7 @@ class BusinessPage extends Component {
                         {/* Image uploaded by the user */}
                         { this.state.imagePath != null 
                             ? 
-                            <img id="businessImg" src={"http://localhost:3001" + this.state.imagePath} alt="Business Image"></img>
+                            <img id="businessImg" src={"http://localhost:3001" + this.state.imagePath} alt="Photograph of business"></img>
                             :
                             <div/>
                         }

@@ -42,7 +42,7 @@ class LoginPage extends Component {
                 "Access-Control-Allow-Origin": "*",
             }
         }).then((res) => {
-            if (res.status == "200") {
+            if (res.status === 200) {
                 // Update the global state with the user data
                 this.props.updateUser(res.data);
 

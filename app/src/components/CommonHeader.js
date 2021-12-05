@@ -34,7 +34,7 @@ class CommonHeader extends Component {
                 <Nav className="me-auto">
                     <Nav.Link href="/">Home</Nav.Link>
                     {/* Only allow writing a review and adding a business when user is logged in */}
-                    {Object.keys(this.state.user).length != 0 ?
+                    {Object.keys(this.state.user).length !== 0 ?
                         <>
                             <Nav.Link href="/review">Write a Review</Nav.Link>
                             <Nav.Link href="/add-business">Add an Ice Cream Spot</Nav.Link>
@@ -46,7 +46,7 @@ class CommonHeader extends Component {
                 </Nav>
 
                 {/* Show login and sign up when the user is not logged in */}
-                {Object.keys(this.state.user).length == 0 ?
+                {Object.keys(this.state.user).length === 0 ?
                     <>
                         <Nav className="justify-content-end"> 
                             <Nav.Link href="login">Log In</Nav.Link>

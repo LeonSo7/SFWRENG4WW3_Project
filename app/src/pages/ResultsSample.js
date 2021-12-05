@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import '../styles/pages/ResultsSample.css';
-import SearchBar from '../components/SearchBar';
 import SearchListing from '../components/SearchListing';
 import Map from '../components/Map';
 import {Animated} from 'react-animated-css';
@@ -36,7 +35,7 @@ class ResultsSample extends Component {
 
         // Filter search by search string
         if (this.state.searchStr) {
-            if (queryParams == "") {
+            if (queryParams === "") {
                 queryParams += "?";
             } else {
                 queryParams += "&";
@@ -46,7 +45,7 @@ class ResultsSample extends Component {
 
         // Filter search by rating
         if (this.state.rating) {
-            if (queryParams == "") {
+            if (queryParams === "") {
                 queryParams += "?";
             } else {
                 queryParams += "&";
@@ -56,7 +55,7 @@ class ResultsSample extends Component {
 
         // Filter search by latitude and longitude -- 'Search Nearby' option selected on search page
         if (this.state.coordinates.latitude && this.state.coordinates.longitude) {
-            if (queryParams == "") {
+            if (queryParams === "") {
                 queryParams += "?";
             } else {
                 queryParams += "&";
@@ -72,7 +71,7 @@ class ResultsSample extends Component {
                 "Access-Control-Allow-Origin": "*",
             }
         }).then((res) => {
-            if (res.status == "200") {
+            if (res.status === 200) {
                 this.setState({
                     searchResults: res.data,
                     showMap: true

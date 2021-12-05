@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import '../styles/pages/Search.css';
-import SearchBar from '../components/SearchBar';
 import { Button, Form, Dropdown, DropdownButton, Spinner } from 'react-bootstrap';
 import ScoopsSloganImg from '../assets/images/scoops.png';
 import ThreeConesImg from '../assets/images/three-cones.png';
 import { withRouter } from 'react-router-dom';
 import { Animated } from "react-animated-css";
 import '../styles/components/SearchBar.css';
-import { Link } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi'
 
 // The search page with search bar
