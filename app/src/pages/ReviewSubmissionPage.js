@@ -25,7 +25,7 @@ class ReviewSubmissionPage extends Component {
         };
 
         // Make a fetch/get request using axios (an ajax framework) to get list of businesses
-        axios.get('http://' + process.env.REACT_APP_SERVER_HOST + ':' + process.env.REACT_APP_SERVER_PORT + '/business')
+        axios.get(process.env.REACT_APP_SERVER_URL + '/business')
             .then((res) => {
                 var businesses = res.data;
                 // Populate select business dropdown options
@@ -89,7 +89,7 @@ class ReviewSubmissionPage extends Component {
             // HTTP POST request to add user to database
             axios({
                 method: 'post',
-                url: 'http://' + process.env.REACT_APP_SERVER_HOST + ':' + process.env.REACT_APP_SERVER_PORT + '/review',
+                url: process.env.REACT_APP_SERVER_URL + '/review',
                 data: JSON.stringify(body),
                 headers: {
                     'Content-Type': 'application/json',

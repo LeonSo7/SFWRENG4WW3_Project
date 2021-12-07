@@ -30,7 +30,7 @@ class ResultsSample extends Component {
         }
 
         // Construct GET url to get businesses with url query parameters for search filtering
-        var reqUrl = 'http://' + process.env.REACT_APP_SERVER_HOST + ':' + process.env.REACT_APP_SERVER_PORT + '/business'
+        var reqUrl = process.env.REACT_APP_SERVER_URL + '/business'
         var queryParams = ""
 
         // Filter search by search string

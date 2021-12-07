@@ -35,7 +35,7 @@ class LoginPage extends Component {
         }
         axios({
             method: 'post',
-            url: 'http://' + process.env.REACT_APP_SERVER_HOST + ':' + process.env.REACT_APP_SERVER_PORT + '/user/auth',
+            url: process.env.REACT_APP_SERVER_URL + '/user/auth',
             data: JSON.stringify(body),
             headers: {
                 'Content-Type': 'application/json',
