@@ -50,7 +50,7 @@ class SignUpPage extends Component {
             // HTTP POST request to add user to database
             axios({
                 method: 'post',
-                url: 'http://localhost:3001/user',
+                url: 'http://' + process.env.REACT_APP_SERVER_HOST + ':' + process.env.REACT_APP_SERVER_PORT + '/user',
                 data: JSON.stringify(body),
                 headers: {
                     'Content-Type': 'application/json',

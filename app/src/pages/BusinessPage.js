@@ -26,7 +26,7 @@ class BusinessPage extends Component {
             showMap: false
         }
 
-        axios.get('http://localhost:3001/business/' + this.state.storeId)
+        axios.get('http://' + process.env.REACT_APP_SERVER_HOST + ':' + process.env.REACT_APP_SERVER_PORT + '/business/' + this.state.storeId)
             .then((res) => {
                 if (res.status === 200) {
                     var data = res.data;
@@ -43,7 +43,7 @@ class BusinessPage extends Component {
                 }
             })
 
-        axios.get('http://localhost:3001/review?storeId=' + this.state.storeId)
+        axios.get('http://' + process.env.REACT_APP_SERVER_HOST + ':' + process.env.REACT_APP_SERVER_PORT + '/review?storeId=' + this.state.storeId)
             .then((res) => {
                 if (res.status === 200) {
                     this.setState({
@@ -77,7 +77,7 @@ class BusinessPage extends Component {
                         {/* Image uploaded by the user */}
                         { this.state.imagePath != null 
                             ? 
-                            <img id="businessImg" src={"http://localhost:3001" + this.state.imagePath} alt="Photograph of business"></img>
+                            <img id="businessImg" src={'http://' + process.env.REACT_APP_SERVER_HOST + ':' + process.env.REACT_APP_SERVER_PORT + this.state.imagePath} alt="Photograph of business"></img>
                             :
                             <div/>
                         }

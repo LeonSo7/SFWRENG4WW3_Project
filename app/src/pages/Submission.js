@@ -40,7 +40,7 @@ class Submission extends Component {
             // Send photo to DB
             axios({
                 method: "post",
-                url: "http://localhost:3001/images",
+                url: 'http://' + process.env.REACT_APP_SERVER_HOST + ':' + process.env.REACT_APP_SERVER_PORT + '/images',
                 data: formData,
                 headers: {
                     "Content-Type": "multipart/form-data",
@@ -65,7 +65,7 @@ class Submission extends Component {
                     // HTTP POST request to add bussiness to database
                     axios({
                         method: 'post',
-                        url: 'http://localhost:3001/business',
+                        url: 'http://' + process.env.REACT_APP_SERVER_HOST + ':' + process.env.REACT_APP_SERVER_PORT + '/business',
                         data: JSON.stringify(body),
                         headers: {
                             'Content-Type': 'application/json',
