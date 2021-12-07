@@ -3,11 +3,11 @@
 ### Configure environment variables
 Add a `.env` file to the `/server` directory containing the following:
 ```
-# Server connection
+# Server host and port
 HTTP_PORT = 
 HOSTNAME = 
 
-# Database connection
+# MySQL Database connection
 
 DB_HOST = 
 DB_PORT = 
