@@ -17,6 +17,7 @@ Github repo: https://github.com/LeonSo7/Scoops
 ## Notes to marker:
 - Approval was obtained from Professor Do to use Node.js in place of PHP for the server-side implementation, and React for dynamic rendering.
 - To reach the search results page, please click the search bar button from the home page (or 'Search Nearby' button to search with geolocation).
+  - If there are no stores nearby, the map will be empty and no stores will be listed
 - To reach the business object page, please click on a search result from the search results page. The reviews for each business (if any) are also listed on this page.
 - You must login to see the pages to write a review and submit a business.
 - To sign up, please visit the 'Sign up' page.
