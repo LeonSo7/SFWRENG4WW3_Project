@@ -17,13 +17,15 @@ Github repo: https://github.com/LeonSo7/Scoops
 ## Notes to marker:
 - Approval was obtained from Professor Do to use Node.js in place of PHP for the server-side implementation, and React for dynamic rendering.
 - To reach the search results page, please click the search bar button from the home page (or 'Search Nearby' button to search with geolocation).
-  - If there are no stores nearby, the map will be empty and no stores will be listed
+  - If there are no stores nearby, the map will be empty and no stores will be listed.
+  - The current location (latitude and longitude) will be shown above the map.
 - To reach the business object page, please click on a search result from the search results page. The reviews for each business (if any) are also listed on this page.
 - You must login to see the pages to write a review and submit a business.
 - To sign up, please visit the 'Sign up' page.
 - To login, please visit the 'Log In' page, and use the email and password used to sign up. Optionally, you may use the following existing account (u: leon@email.com / p: TestPass1!).
 - Redux.js is used to manage the global application state. (Only logged in users can submit a review or business).
 - Currently, the coordinates (latitude and longitude) of the sample businesses provided are located near McMaster university. To search nearby, results will only show near if you are close to this location.
+- Click a pin on the map to see the information of the business. You can click the "Store Details" link to go to the business page of that business.
 
 ### Search:
 - The search algorithm can filter by rating, a search string, and geolocation (and any combination of the three).
