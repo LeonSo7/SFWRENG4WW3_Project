@@ -5,6 +5,9 @@ Add a `.env` file to the `/app` directory containing the following:
 ```
 # GOOGLE MAPS
 REACT_APP_GOOGLE_API_KEY=
+
+# NODE.JS REST SERVER URL
+REACT_APP_SERVER_URL=
 ```
 
 In the `/app` directory, you can run:
