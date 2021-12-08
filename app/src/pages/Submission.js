@@ -37,7 +37,7 @@ class Submission extends Component {
             const formData = new FormData();
             formData.append("image", this.state.image);
     
-            // Send photo to DB
+            // Send photo data to DB and S3
             axios({
                 method: "post",
                 url: process.env.REACT_APP_SERVER_URL + '/images',

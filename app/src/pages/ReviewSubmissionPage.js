@@ -24,7 +24,7 @@ class ReviewSubmissionPage extends Component {
             show: false // for successful submission modal
         };
 
-        // Make a fetch/get request using axios (an ajax framework) to get list of businesses
+        // Make a fetch/get request using axios (an ajax framework/library) to get list of businesses
         axios.get(process.env.REACT_APP_SERVER_URL + '/business')
             .then((res) => {
                 var businesses = res.data;
@@ -86,7 +86,8 @@ class ReviewSubmissionPage extends Component {
                 storeId: this.state.selectedBusinessOption.value,
                 userId: this.state.user.userId
             };
-            // HTTP POST request to add user to database
+
+            // Make a post request using axios (an ajax framework/library) to add a review/rating
             axios({
                 method: 'post',
                 url: process.env.REACT_APP_SERVER_URL + '/review',

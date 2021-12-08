@@ -63,7 +63,7 @@ class ResultsSample extends Component {
             queryParams += "latitude=" + this.state.coordinates.latitude + "&longitude=" + this.state.coordinates.longitude;
         }
 
-        // Make axios call to retrieve filtered search results
+        // Make an axios (an ajax framework/library) GET request to retrieve filtered search results
         axios({
             method: 'get',
             url: reqUrl+queryParams,

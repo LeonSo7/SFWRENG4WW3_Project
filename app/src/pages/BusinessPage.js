@@ -14,7 +14,6 @@ class BusinessPage extends Component {
         this.state = {
             storeName: "",
             averageRating: null,
-            // reviews: ["The ice cream here is the best! I've been coming here multiple times a week because it's just that good!", "My favourite flavour here is peach. Soooo good!!"],
             latitude: null,
             longitude: null,
             activeMarkers: {},
@@ -26,6 +25,7 @@ class BusinessPage extends Component {
             showMap: false
         }
 
+        // Make a get request using axios (an ajax framework/library) to retrieve the business data with a store id
         axios.get(process.env.REACT_APP_SERVER_URL + '/business/' + this.state.storeId)
             .then((res) => {
                 if (res.status === 200) {
@@ -43,6 +43,7 @@ class BusinessPage extends Component {
                 }
             })
 
+        // Make a get request using axios (an ajax framework/library) to retrieve the reviews for a business with store id
         axios.get(process.env.REACT_APP_SERVER_URL + '/review?storeId=' + this.state.storeId)
             .then((res) => {
                 if (res.status === 200) {
