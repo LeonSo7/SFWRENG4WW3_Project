@@ -1,4 +1,4 @@
-### COMPSCI 4WW3 Project: Scoops
+# COMPSCI 4WW3 Project: Scoops
 
 Scoops is a website that allows users to browse for ice cream shops, and contribute through writing reviews.
 
@@ -24,17 +24,17 @@ Github repo: https://github.com/LeonSo7/Scoops
 - Redux.js is used to manage the global application state. (Only logged in users can submit a review or business).
 - Currently, the coordinates (latitude and longitude) of the sample businesses provided are located near McMaster university. To search nearby, results will only show near if you are close to this location.
 
-# Search:
+### Search:
 - The search algorithm can filter by rating, a search string, and geolocation (and any combination of the three).
 - When searching using a search string, the current implementation will return results with a business name containing the search string.
 - Click the 'Search Nearby' (found in Search.js) to search by geolocation. The current location (latitude and longitude) will be shown above the map.
 
-# App:
+### App:
 - Please find the front-end code base under the `/app` directory.
 - Please find the axios/ajax call (HTTP post request) to upload an image to S3 (and insert the relevant image data to the database) in `/app/src/pages/Submission.js`.
 - To find the header, footer, and other common page components (shared between different pages), please see the components found in the `/app/src/components` directory.
 
-# Server:
+### Server:
 - Please find the back-end (server) code base under the `/server` directory.
 - The database (MySQL) connection and queries are handled in `/server/common/database.js`.
 - The logic to handle uploading and retrieving a file from S3 are handled in `server/common/s3.js`.
@@ -44,20 +44,20 @@ Github repo: https://github.com/LeonSo7/Scoops
 - `server/routes/images_router` contains the API end points for uploading or retrieving an image from S3.
 - `server/routes/review_router` contains the API end points for handling HTTP GET and POST requests for retrieving review data or adding a review.
 
-# MySQL Script:
+### MySQL Script:
 - Please find the SQL script for creating the (STORES, USERS, REVIEWS) tables and populating the initial data entries under `/db_scripts/datamodel.sql`.
 
-# (Bonus) Add-on Programming Task:
+### (Bonus) Add-on Programming Task:
 - On the review object submission page (`app/src/pages/ReviewSubmissionPage.js`), a post request is sent to the server using axios (an ajax framework/library) to submit and insert a review/rating to the database. The response will include a status code indicating success or failure. 
 - On the business page (`app/src/pages/BusinessPage.js`), a get request is sent to the server using axios (an ajax framework) to retrieve the reviews for a business with store id; in addition, a get request is sent to the server using axios to retrieve the data/informtion for a business with a store id.
 - Similarly, axios/ajax calls can be found throughout the front-end code base to insert to the database and to retrieve data from the database.
 
-# Setup:
+### Setup:
 - For instructions regarding deploying the front-end React application, pease see the `README.md` file in the `/app` directory.
 - For instructions regarding deploying the back-end Node.js server, pease see the `README.md` file in the `/server` directory.
 - Environment variables will need to be set as described in the above two readme files.
 
-# Troubleshooting:
+### Troubleshooting:
 - Please disable any AdBlocker; this may interfere with the HTTP requests (depending on the browser).
 - Please contact (Leon So) sol4@mcmaster.ca or (Joy Xiao) xiaoz18@mcmaster.ca for further troubleshooting.
 
