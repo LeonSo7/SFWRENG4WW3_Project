@@ -14,23 +14,10 @@ Demo: https://insidescoops.live/
 
 Github repo: https://github.com/LeonSo7/Scoops
 
-## Notes to marker:
-- Approval was obtained from Professor Do to use Node.js in place of PHP for the server-side implementation, and React for dynamic rendering.
-- To reach the search results page, please click the search bar button from the home page (or 'Search Nearby' button to search with geolocation).
-  - If there are no stores nearby, the map will be empty and no stores will be listed.
-  - The current location (latitude and longitude) will be shown above the map.
-- To reach the business object page, please click on a search result from the search results page. The reviews for each business (if any) are also listed on this page.
-- You must login to see the pages to write a review and submit a business.
-- To sign up, please visit the 'Sign up' page.
-- To login, please visit the 'Log In' page, and use the email and password used to sign up. Optionally, you may use the following existing account (u: leon@email.com / p: TestPass1!).
+## Notes:
 - Redux.js is used to manage the global application state. (Only logged in users can submit a review or business).
 - Currently, the coordinates (latitude and longitude) of the sample businesses provided are located near McMaster university. To search nearby, results will only show near if you are close to this location.
 - Click a pin on the map to see the information of the business. You can click the "Store Details" link to go to the business page of that business.
-
-### Search:
-- The search algorithm can filter by rating, a search string, and geolocation (and any combination of the three).
-- When searching using a search string, the current implementation will return results with a business name containing the search string.
-- Click the 'Search Nearby' (found in Search.js) to search by geolocation. The current location (latitude and longitude) will be shown above the map.
 
 ### App:
 - Please find the front-end code base under the `/app` directory.
@@ -50,10 +37,10 @@ Github repo: https://github.com/LeonSo7/Scoops
 ### MySQL Script:
 - Please find the SQL script for creating the (STORES, USERS, REVIEWS) tables and populating the initial data entries under `/db_scripts/datamodel.sql`.
 
-### (Bonus) Add-on Programming Task:
-- On the review object submission page (`app/src/pages/ReviewSubmissionPage.js`), a post request is sent to the server using axios (an ajax framework/library) to submit and insert a review/rating to the database. The response will include a status code indicating success or failure. 
-- On the business page (`app/src/pages/BusinessPage.js`), a get request is sent to the server using axios (an ajax framework) to retrieve the reviews for a business with store id; in addition, a get request is sent to the server using axios to retrieve the data/informtion for a business with a store id.
-- Similarly, axios/ajax calls can be found throughout the front-end code base to insert to the database and to retrieve data from the database.
+### Search:
+- The search algorithm can filter by rating, a search string, and geolocation (and any combination of the three).
+- When searching using a search string, the current implementation will return results with a business name containing the search string.
+- Click the 'Search Nearby' (found in Search.js) to search by geolocation. The current location (latitude and longitude) will be shown above the map.
 
 ### Setup:
 - For instructions regarding deploying the front-end React application, pease see the `README.md` file in the `/app` directory.
@@ -61,7 +48,6 @@ Github repo: https://github.com/LeonSo7/Scoops
 - Environment variables will need to be set as described in the above two readme files.
 
 ### Troubleshooting:
-- Please disable any AdBlocker; this may interfere with the HTTP requests (depending on the browser).
 - Please contact (Leon So) sol4@mcmaster.ca or (Joy Xiao) xiaoz18@mcmaster.ca for further troubleshooting.
 
 
